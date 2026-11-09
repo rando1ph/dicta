@@ -1,11 +1,20 @@
 # Dicta
 
-Android 原生 BYOK AI 词典。已批准五屏设计位于 `design/`；M0 已交付可执行配置验证，尚无 Android 应用/APK。
+Android 原生 BYOK AI 词典。已批准五屏设计位于 `design/`；M1 已实现 Kotlin / Jetpack Compose 原型，使用 M0 默认 Profile 与 Fake Provider。真实 BYOK 尚未开放。
 
+- [M1 原生工程、真机测试与截图审阅](docs/m1/REPORT.md)
 - [M0 报告与验收证据](docs/m0/REPORT.md)
 - [五屏字段、交互与状态](docs/m0/VISUAL-CONTRACT.md)
 - [默认 Profile 规范与编辑方法](profiles/default/README.md)
 - [最小架构与 M1 交接](docs/m0/ARCHITECTURE-M1.md)
+
+```bash
+# 原生 Debug APK + JVM tests + lint（隔离 JDK/SDK）
+./tools/m1/build.sh
+# APK: app/build/outputs/apk/debug/app-debug.apk
+```
+
+M1 使用临时包名 `dev.dicta.prototype`，无网络权限；支持 luminous、ephemeral、qzxvplmnonce 演示样例。历史仅在本次进程内保留，收藏/每日词/配置编辑/TTS 留待后续阶段。截图已上传指定 Drive，视觉仍待用户人工审阅。
 
 ```bash
 python3 -m venv .venv

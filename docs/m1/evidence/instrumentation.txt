@@ -1,0 +1,7 @@
+
+dev.dicta.prototype.LargeFontPopupTest:..
+dev.dicta.prototype.PlatformTest:........
+
+Time: 16.73
+
+OK (10 tests)

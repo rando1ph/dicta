@@ -1,0 +1,36 @@
+
+dev.dicta.prototype.LargeFontPopupTest:.
+dev.dicta.prototype.PlatformTest:.......
+Error in backDismissesPopup(dev.dicta.prototype.PlatformTest):
+androidx.test.espresso.NoActivityResumedException: Pressed back and killed the app
+	at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+	at java.lang.Thread.getStackTrace(Thread.java:1955)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+	at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+	at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+	at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+	at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+	at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+	at androidx.test.espresso.Espresso.pressBack(Espresso.java:237)
+	at dev.dicta.prototype.PlatformTest.backDismissesPopup(PlatformTest.kt:100)
+
+
+Time: 24.776
+There was 1 failure:
+1) backDismissesPopup(dev.dicta.prototype.PlatformTest)
+androidx.test.espresso.NoActivityResumedException: Pressed back and killed the app
+	at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+	at java.lang.Thread.getStackTrace(Thread.java:1955)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+	at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+	at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+	at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+	at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+	at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+	at androidx.test.espresso.Espresso.pressBack(Espresso.java:237)
+	at dev.dicta.prototype.PlatformTest.backDismissesPopup(PlatformTest.kt:100)
+
+FAILURES!!!
+Tests run: 9,  Failures: 1

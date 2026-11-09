@@ -1,0 +1,9 @@
+{
+  "apk": "app/build/outputs/apk/debug/app-debug.apk",
+  "sha256": "a15b8e32ae5814e90af77ab1da9a8ef53f791d3f8d19026a521bfbbd6607868d",
+  "bytes": 11435844,
+  "secretAbsent": true,
+  "canonicalAssetsEqual": true,
+  "internetPermission": false,
+  "assetCount": 9
+}

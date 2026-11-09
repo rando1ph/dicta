@@ -1,0 +1,73 @@
+[
+  {
+    "case": "explicit-intent-diagnostic",
+    "result": "pass",
+    "separateFromChromeMenu": true
+  },
+  {
+    "case": "chrome-real-long-press-menu-popup-close",
+    "result": "pass",
+    "readerBoundsBefore": "[75,681][1004,796]",
+    "readerBoundsAfter": "[75,681][1004,796]"
+  },
+  {
+    "case": "chrome-popup-system-back",
+    "result": "pass"
+  },
+  {
+    "case": "chrome-popup-outside-dismiss",
+    "result": "pass"
+  },
+  {
+    "case": "popup-luminous",
+    "result": "pass"
+  },
+  {
+    "case": "popup-qzxvplmnonce",
+    "result": "pass"
+  },
+  {
+    "case": "popup-unavailableword",
+    "result": "pass"
+  },
+  {
+    "case": "popup-empty",
+    "result": "pass"
+  },
+  {
+    "case": "popup-overlong",
+    "result": "pass"
+  },
+  {
+    "case": "popup-:error",
+    "result": "pass"
+  },
+  {
+    "case": "popup-:timeout",
+    "result": "pass"
+  },
+  {
+    "case": "cancel-slow-no-late-popup",
+    "result": "pass"
+  },
+  {
+    "case": "editable-source-no-replacement-explicit",
+    "result": "pass"
+  },
+  {
+    "case": "home-user-input-ephemeral-shared-renderer",
+    "result": "pass"
+  },
+  {
+    "case": "navigation-history",
+    "result": "pass"
+  },
+  {
+    "case": "navigation-vocabulary",
+    "result": "pass"
+  },
+  {
+    "case": "navigation-settings",
+    "result": "pass"
+  }
+]

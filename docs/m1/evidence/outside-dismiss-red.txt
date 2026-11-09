@@ -1,0 +1,10 @@
+explicit-intent-diagnostic
+chrome-real-long-press-menu-popup-close
+chrome-popup-system-back
+Traceback (most recent call last):
+  File "/home/randolph/Projects/Dicta/tools/m1/run_acceptance.py", line 30, in <module>
+    menu();device.shell('input','tap','20','400');smoke.wait_text('A quiet reading room');note('chrome-popup-outside-dismiss')
+                                                  ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/randolph/Projects/Dicta/tools/m1/smoke.py", line 23, in wait_text
+    raise AssertionError('UI timeout: '+text)
+AssertionError: UI timeout: A quiet reading room

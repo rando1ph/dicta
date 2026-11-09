@@ -25,3 +25,6 @@ Thumbs.db
 .venv/
 __pycache__/
 *.pyc
+
+# Local native artifacts and raw device captures
+artifacts/
