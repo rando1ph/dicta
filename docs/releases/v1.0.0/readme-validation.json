@@ -1,0 +1,55 @@
+{
+  "pages": [
+    {
+      "page": "README.md",
+      "githubRenderedImages": 7,
+      "imageAltText": true,
+      "downloadLink": true
+    },
+    {
+      "page": "README.zh-CN.md",
+      "githubRenderedImages": 7,
+      "imageAltText": true,
+      "downloadLink": true
+    }
+  ],
+  "publicImages": [
+    {
+      "file": "hero-guardian-popup.png",
+      "publicHttpStatus": 200,
+      "mimeType": "image/png",
+      "sha256MatchesOriginal": true
+    },
+    {
+      "file": "hero-bbc-popup.png",
+      "publicHttpStatus": 200,
+      "mimeType": "image/png",
+      "sha256MatchesOriginal": true
+    },
+    {
+      "file": "home.png",
+      "publicHttpStatus": 200,
+      "mimeType": "image/png",
+      "sha256MatchesOriginal": true
+    },
+    {
+      "file": "history.png",
+      "publicHttpStatus": 200,
+      "mimeType": "image/png",
+      "sha256MatchesOriginal": true
+    },
+    {
+      "file": "vocabulary.png",
+      "publicHttpStatus": 200,
+      "mimeType": "image/png",
+      "sha256MatchesOriginal": true
+    },
+    {
+      "file": "profile-template.png",
+      "publicHttpStatus": 200,
+      "mimeType": "image/png",
+      "sha256MatchesOriginal": true
+    }
+  ],
+  "method": "GitHub HTML rendering API plus unauthenticated public image download and original digest comparison. All six source PNGs were visually inspected locally. Browser UI inspection was unavailable."
+}

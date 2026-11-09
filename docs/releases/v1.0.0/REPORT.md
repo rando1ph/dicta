@@ -21,7 +21,10 @@ Verification date: 2026-11-10 (Asia/Shanghai).
 The Manifest resolves the Application and both activities to their existing
 fully qualified Kotlin names while using the new installed package ID. No
 FileProvider authority or deep link needed changing. Android's generated
-receiver permission uses the new application ID. No key, database, credential
+receiver permission uses the new application ID. The generated test package is
+`dev.randolf.dicta.test`, with instrumentation targeting `dev.randolf.dicta` via
+`androidx.test.runner.AndroidJUnitRunner`; its Manifest task completed successfully.
+No key, database, credential
 or user-data migration is performed between the separate installed packages.
 
 ## Build and signing
@@ -85,6 +88,10 @@ class definitions and are not evidence of a bundled test dependency.
 link to each other and to GitHub Releases. They describe the actual product,
 BYOK costs, supported TTS voices, configurable Profiles and current UI language.
 Technical build/signing instructions live in separate documentation.
+[Public rendering checks](readme-validation.json) confirm GitHub renders all seven
+images in each README and that all six public PNG URLs return the unchanged
+originals. Browser UI inspection was unavailable; source images were visually
+inspected locally and the GitHub rendering API was checked directly.
 
 All six selected Google Drive PNGs were downloaded, inspected individually and
 matched to their archived SHA-256 digests, byte sizes and 1080×2340 dimensions.
