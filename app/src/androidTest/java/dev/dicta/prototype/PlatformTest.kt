@@ -152,9 +152,10 @@ class PlatformTest {
         }
         val before = DictaRepository.get(context).history.value.size
         ActivityScenario.launch<MainActivity>(Intent(context, MainActivity::class.java).putExtra("snapshotId", snapshotId)).use { scenario ->
-            scenario.onActivity {
-                val state = it.model.state.value as LookupState.Success
-                assertEquals(snapshotId, state.entry.id)
+            await("Saved details must load from Room") {
+                var matches=false
+                scenario.onActivity {matches=(it.model.state.value as? LookupState.Success)?.entry?.id==snapshotId}
+                matches
             }
         }
         assertEquals(before, DictaRepository.get(context).history.value.size)

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "dev.dicta.prototype.data.DailyPolicyTest",
+    "tests": "3",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "dev.dicta.prototype.profile.ProfileEngineTest",
+    "tests": "25",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "dev.dicta.prototype.query.LookupSessionTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "dev.dicta.prototype.provider.DeepSeekProviderTest",
+    "tests": "12",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "dev.dicta.prototype.profile.ProfilePackageTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "dev.dicta.prototype.query.FakeProviderTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  }
+]

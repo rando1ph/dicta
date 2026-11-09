@@ -1,0 +1,9 @@
+{
+  "temporaryAdbReverseRemoved": true,
+  "preexistingReversesPreserved": true,
+  "projectHttpServerStopped": true,
+  "testApkRemoved": true,
+  "temporaryExportAndUiDumpRemoved": true,
+  "mainAppAndOriginalCredentialsRetained": true,
+  "safeBuiltinProfileActive": true
+}

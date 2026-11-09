@@ -37,12 +37,15 @@ import dev.dicta.prototype.render.EntryRenderer
 @Composable
 fun MainScreen(model: LookupViewModel) {
     var page by rememberSaveable { mutableStateOf("Search") }
+    androidx.activity.compose.BackHandler(enabled=page=="Profile") {page="Settings"}
     val state by model.state.collectAsState()
     val history by model.history.collectAsState()
+    val warning by model.storageMessage.collectAsState()
+    val action by model.actionMessage.collectAsState()
     Scaffold(containerColor=MaterialTheme.colorScheme.background,
         bottomBar = { NavigationBar(containerColor=MaterialTheme.colorScheme.background) {
             listOf("Search" to "search","Vocabulary" to "book","History" to "history","Settings" to "settings").forEach { (name,glyph) ->
-                NavigationBarItem(selected=page==name,onClick={page=name},icon={Glyph(glyph)},label={Text(name)},modifier=Modifier.testTag("nav$name"))
+                NavigationBarItem(selected=page==name || (page=="Profile" && name=="Settings"),onClick={page=name},icon={Glyph(glyph)},label={Text(name)},modifier=Modifier.testTag("nav$name"))
             }
         } }
     ) { padding ->
@@ -54,11 +57,14 @@ fun MainScreen(model: LookupViewModel) {
                     if(page=="Search") Text("Less is More",fontFamily=FontFamily.Serif,style=MaterialTheme.typography.titleMedium)
                 }
             }
+            if(warning.isNotBlank()) Text(warning,color=MaterialTheme.colorScheme.error)
+            if(action.isNotBlank()) Text(action,color=MaterialTheme.colorScheme.error)
             when(page) {
                 "Search" -> Home(state,history,model, onHistory={page="History"}, onSettings={page="Settings"})
-                "History" -> History(history) { model.openSnapshot(it.id);page="Search" }
-                "Vocabulary" -> Vocabulary()
-                "Settings" -> Settings(model)
+                "History" -> CollectionScreen(model,false) { model.openSnapshot(it.id);page="Search" }
+                "Vocabulary" -> CollectionScreen(model,true) { model.openSnapshot(it.id);page="Search" }
+                "Settings" -> Settings(model) {page="Profile"}
+                "Profile" -> ProfileScreen(model) {page="Settings"}
             }
         }
     }
@@ -67,27 +73,59 @@ fun MainScreen(model: LookupViewModel) {
 @Composable
 private fun Home(state: LookupState, history: List<EntrySnapshot>, model: LookupViewModel, onHistory:()->Unit, onSettings:()->Unit) {
     var query by rememberSaveable { mutableStateOf("") }
+    var clearHistory by remember {mutableStateOf(false)}
     val keyboard = LocalSoftwareKeyboardController.current
     val submit = { keyboard?.hide();model.lookup(query) }
+    val daily by model.daily.collectAsState()
+    val active by model.activeProfile.collectAsState()
+    val lifecycle=androidx.lifecycle.compose.LocalLifecycleOwner.current
+    DisposableEffect(lifecycle,active?.revision?.id) {
+        val observer=androidx.lifecycle.LifecycleEventObserver {_,event->if(event==androidx.lifecycle.Lifecycle.Event.ON_RESUME) model.daily()}
+        lifecycle.lifecycle.addObserver(observer)
+        if(lifecycle.lifecycle.currentState.isAtLeast(androidx.lifecycle.Lifecycle.State.RESUMED)) model.daily()
+        onDispose {lifecycle.lifecycle.removeObserver(observer)}
+    }
     Column(Modifier.verticalScroll(rememberScrollState()).testTag("homeScroll"),verticalArrangement=Arrangement.spacedBy(16.dp)) {
         OutlinedTextField(value=query,onValueChange={query=it},modifier=Modifier.fillMaxWidth().testTag("queryInput"),
             singleLine=true,shape=RoundedCornerShape(50),placeholder={Text("Search a word / 查词…")},leadingIcon={Glyph("search")},
             trailingIcon={IconButton(onClick=submit,modifier=Modifier.semantics { contentDescription="查询" }) { Glyph("arrow") }},
             keyboardOptions=KeyboardOptions(imeAction=ImeAction.Search),keyboardActions=KeyboardActions(onSearch={submit()}))
 
-        val template = (state as? LookupState.Success)?.entry?.templateJson
-        val homeCorner = remember(template) { template?.let { Json.parseToJsonElement(it).jsonObject["containers"]?.jsonObject?.get("home")?.jsonObject?.get("cornerDp")?.jsonPrimitive?.int } ?: 28 }
-        EntryCard(corner=homeCorner.dp) { LookupContent(state, model::retry, model::cancel) }
+        val template = (state as? LookupState.Success)?.entry?.takeIf {it.compatibilityWarning==null}?.templateJson
+        val homeCorner = remember(template) { template?.let { runCatching { Json.parseToJsonElement(it).jsonObject["containers"]?.jsonObject?.get("home")?.jsonObject?.get("cornerDp")?.jsonPrimitive?.int }.getOrNull() } ?: 28 }
+        if(state!=LookupState.Idle) EntryCard(corner=homeCorner.dp) {
+            LookupContent(state, model::retry, model::cancel)
+            if(state is LookupState.Success) BookmarkButton(state.entry,model)
+        }
+        EntryCard {
+            Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,verticalAlignment=Alignment.CenterVertically) {
+                Text("WORD OF THE DAY",style=MaterialTheme.typography.labelLarge,color=MaterialTheme.colorScheme.primary)
+                Text(daily.localDate,style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            daily.entry?.let { entry->
+                entry.compatibilityWarning?.let {Text(it,color=MaterialTheme.colorScheme.error)}
+                EntryRenderer(entry.rendered)
+                BookmarkButton(entry,model,"dailySave")
+            }
+            if(daily.busy) LinearProgressIndicator(Modifier.fillMaxWidth().testTag("dailyLoading"))
+            if(daily.message.isNotBlank()) Text(daily.message,color=MaterialTheme.colorScheme.onSurfaceVariant)
+            if(daily.entry==null && !daily.busy && daily.message.isBlank()) Text("每日一个值得发现的英文词。")
+            OutlinedButton(onClick={model.daily(true)},enabled=!daily.busy,modifier=Modifier.testTag("dailyShuffle")) {Text(if(daily.entry==null) "获取每日词" else "换一换")}
+        }
         if(state == LookupState.Idle || state is LookupState.Error) TextButton(onClick={onSettings()}) { Text("模型设置") }
         Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,verticalAlignment=Alignment.CenterVertically) {
             Text("最近查询",style=MaterialTheme.typography.titleLarge)
-            TextButton(onClick=onHistory) {Text("查看历史")}
+            Row {
+                TextButton(onClick=onHistory) {Text("管理")}
+                TextButton(onClick={clearHistory=true},enabled=history.isNotEmpty()) {Text("清空")}
+            }
         }
         if(history.isEmpty()) Text("暂无查询记录。",style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
         history.take(3).forEach { entry -> EntryRow(entry) {model.openSnapshot(entry.id)} }
 
         Spacer(Modifier.height(8.dp))
     }
+    if(clearHistory) AlertDialog(onDismissRequest={clearHistory=false},title={Text("清空查询历史？")},text={Text("已收藏词条和每日词仍会保留。")},confirmButton={TextButton(onClick={model.deleteHistory(history.map {it.historyEventId});clearHistory=false}) {Text("确认清空")}},dismissButton={TextButton(onClick={clearHistory=false}) {Text("取消")}})
 }
 
 @Composable
@@ -108,6 +146,7 @@ fun LookupContent(state: LookupState, retry:()->Unit, cancel:()->Unit) {
             TextButton(onClick=cancel) { Text("取消") }
         }
         is LookupState.Success -> {
+            state.entry.compatibilityWarning?.let {Text(it,color=MaterialTheme.colorScheme.error)}
             EntryRenderer(state.entry.rendered)
 
         }
@@ -135,44 +174,16 @@ private fun EntryRow(entry: EntrySnapshot, onClick:()->Unit) {
     }
 }
 
-@Composable
-private fun History(history: List<EntrySnapshot>, onOpen:(EntrySnapshot)->Unit) {
-    var filter by rememberSaveable {mutableStateOf("")}
-    val visible=history.filter { it.rendered.summary.values.any {value->value.contains(filter,true)} }
-    Column(Modifier.verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(12.dp)) {
-        Text("查询历史",style=MaterialTheme.typography.headlineMedium)
-        Text("本次会话 · ${history.size} 条",style=MaterialTheme.typography.labelMedium,color=MaterialTheme.colorScheme.secondary)
-        OutlinedTextField(value=filter,onValueChange={filter=it},singleLine=true,label={Text("搜索历史")},shape=RoundedCornerShape(20.dp),modifier=Modifier.fillMaxWidth())
-
-        if(visible.isEmpty()) Text(if(history.isEmpty()) "尚无会话记录" else "没有匹配词条",Modifier.padding(vertical=32.dp))
-        visible.forEach {entry->EntryRow(entry){onOpen(entry)}}
-        Spacer(Modifier.height(8.dp))
-    }
-}
-
-@Composable
-private fun Vocabulary() {
-    Column(Modifier.verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(20.dp)) {
-        Text("生词本",style=MaterialTheme.typography.headlineMedium)
-        Text("Vocabulary · 0 entries",style=MaterialTheme.typography.labelMedium,color=MaterialTheme.colorScheme.secondary)
-        EntryCard {
-            Glyph("book",Modifier.size(36.dp))
-            Text("留住值得重读的词",style=MaterialTheme.typography.titleLarge)
-            Text("已保存词条可再次查看。",color=MaterialTheme.colorScheme.onSurfaceVariant)
-
-        }
-    }
-}
-
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun Settings(model:LookupViewModel) {
+private fun Settings(model:LookupViewModel,onProfiles:()->Unit) {
     val context = LocalContext.current
     DisposableEffect(Unit) {
         val window = (context as? Activity)?.window
         window?.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
         onDispose { window?.clearFlags(WindowManager.LayoutParams.FLAG_SECURE); model.cancelConfig() }
     }
+    val active by model.activeProfile.collectAsState()
     val saved by model.configuration.collectAsState()
     val message by model.configMessage.collectAsState()
     val busy by model.configBusy.collectAsState()
@@ -201,26 +212,27 @@ private fun Settings(model:LookupViewModel) {
         }
         Text("DICTIONARY PROFILE · 词典方案",style=MaterialTheme.typography.labelLarge,color=MaterialTheme.colorScheme.primary)
         EntryCard {
-            Text("Standard Literary · 文学精读",style=MaterialTheme.typography.titleLarge)
-            Text("默认 Profile v1 · Prompt / Schema / Template",style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(active?.revision?.name ?: "Standard Literary · 文学精读",style=MaterialTheme.typography.titleLarge)
+            Text("Prompt / Schema / Popup Template",style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
+            OutlinedButton(onClick=onProfiles,modifier=Modifier.testTag("openProfiles")) {Text("管理 Profile")}
 
         }
         Text("APPEARANCE · 外观",style=MaterialTheme.typography.labelLarge,color=MaterialTheme.colorScheme.primary)
         EntryCard {
             FlowRow(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
-                ThemeMode.entries.forEach { m -> FilterChip(selected=mode==m,onClick={Appearance.mode.value=m},label={Text(m.name)}) }
+                ThemeMode.entries.forEach { m -> FilterChip(selected=mode==m,onClick={Appearance.selectMode(m)},label={Text(m.name)}) }
             }
             Text("Accent Colour / 强调色",style=MaterialTheme.typography.bodyMedium)
             Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
                 accentColors.forEachIndexed {index,color ->
-                    Box(Modifier.size(48.dp).clickable {Appearance.accent.value=index}.semantics {contentDescription="Accent ${index+1}"},contentAlignment=Alignment.Center) {
+                    Box(Modifier.size(48.dp).clickable {Appearance.selectAccent(index)}.semantics {contentDescription="Accent ${index+1}"},contentAlignment=Alignment.Center) {
                         Box(Modifier.size(if(accent==index) 38.dp else 30.dp).background(color,CircleShape),contentAlignment=Alignment.Center) {
                             if(accent==index) Text("✓",color=androidx.compose.ui.graphics.Color(0xFF141218))
                         }
                     }
                 }
             }
-            Text("外观选择仅在本次会话生效。",style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+            Text("外观选择已保存在此设备。",style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
         }
         EntryCard {
             Text("发音 · Android TTS",style=MaterialTheme.typography.titleLarge)

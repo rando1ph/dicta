@@ -1,0 +1,18 @@
+{
+  "forceStoppedAndRelaunched": true,
+  "historyUnchanged": true,
+  "bookmarksUnchanged": true,
+  "dailyCacheEntryIdsAndCountersUnchanged": true,
+  "userProfilesAndActiveRevisionUnchanged": true,
+  "originalEncryptedByokUnchanged": true,
+  "oldEntryUsesOwnTemplateUnderDifferentActiveProfile": true,
+  "reopenCreatesNoHistoryEvent": true,
+  "countsAfterRestart": {
+    "history": 10,
+    "bookmarks": 4,
+    "daily": 3,
+    "profiles": 6
+  },
+  "homeAndPopupHistoriesPresent": true,
+  "homeAndPopupBookmarksPresent": true
+}

@@ -1,0 +1,6 @@
+{
+  "targetedRechecksPassed": 2,
+  "preexistingHistoryBookmarksDailyProfilesAndCredentialsUnchanged": true,
+  "testFixturesUseUniqueIdsAndExactCleanup": true,
+  "testApkRemoved": true
+}

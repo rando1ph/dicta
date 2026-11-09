@@ -24,7 +24,7 @@ sealed interface LookupState {
 class LookupSession(
     private val scope: CoroutineScope,
     private val resolve: suspend (String) -> EntrySnapshot,
-    private val remember: (EntrySnapshot) -> Unit,
+    private val remember: suspend (EntrySnapshot) -> Unit,
 ) {
     private val mutableState = MutableStateFlow<LookupState>(LookupState.Idle)
     val state: StateFlow<LookupState> = mutableState.asStateFlow()
@@ -47,7 +47,7 @@ class LookupSession(
                 val entry = resolve(query)
                 if (generation == current) {
                     remember(entry)
-                    mutableState.value = LookupState.Success(entry)
+                    if (generation == current) mutableState.value = LookupState.Success(entry)
                 }
             } catch (_: TimeoutCancellationException) {
                 if (generation == current) mutableState.value = LookupState.Error("查询超时，请重试。", query)

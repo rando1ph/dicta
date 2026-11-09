@@ -36,14 +36,16 @@ class DeepSeekProvider(
     private val prompt: () -> String,
     private val client: OkHttpClient = defaultClient(),
 ) : Provider {
-    override suspend fun generate(query: String): String {
+    override suspend fun generate(query: String): String = request(query, "lookup", emptyList())
+    suspend fun daily(exclude: List<String>): String = request("", "daily", exclude)
+    private suspend fun request(query:String, mode:String, exclude:List<String>):String {
         val active = config().validated()
         if (active.apiKey.isBlank()) throw ProviderFailure("请先在设置中添加 API Key。", FailureKind.CONFIGURATION)
         val body = buildJsonObject {
             put("model", active.model)
             put("messages", buildJsonArray {
                 add(buildJsonObject { put("role", "system"); put("content", prompt()) })
-                add(buildJsonObject { put("role", "user"); put("content", buildJsonObject { put("mode", "lookup"); put("query", query) }.toString()) })
+                add(buildJsonObject { put("role", "user"); put("content", buildJsonObject { put("mode", mode); put("query", query); put("exclude", JsonArray(exclude.map { JsonPrimitive(it) })) }.toString()) })
             })
             put("response_format", buildJsonObject { put("type", "json_object") })
             put("thinking", buildJsonObject { put("type", "disabled") })

@@ -1,0 +1,53 @@
+
+dev.dicta.prototype.M3StorageTest:...
+dev.dicta.prototype.M3ProfileDeviceTest:..
+dev.dicta.prototype.M3UiTest:
+Error in liveHomeHistoryBookmarkSearchAndIndependentBatchRemoval(dev.dicta.prototype.M3UiTest):
+androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 65000 ms
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at dev.dicta.prototype.M3UiTest.liveHomeHistoryBookmarkSearchAndIndependentBatchRemoval(M3UiTest.kt:24)
+.
+Error in vocabularyFilterClearsSelectionAndBatchRemoveKeepsHistory(dev.dicta.prototype.M3UiTest):
+java.util.regex.PatternSyntaxException: Syntax error in regexp pattern near index 31
+\{\{(schema_json|example_json)}}
+                               ^
+	at com.android.icu.util.regex.PatternNative.compileImpl(Native Method)
+	at com.android.icu.util.regex.PatternNative.<init>(PatternNative.java:53)
+	at com.android.icu.util.regex.PatternNative.create(PatternNative.java:49)
+	at java.util.regex.Pattern.compile(Pattern.java:3533)
+	at java.util.regex.Pattern.<init>(Pattern.java:1419)
+	at java.util.regex.Pattern.compile(Pattern.java:921)
+	at kotlin.text.Regex.<init>(Regex.kt:90)
+	at dev.dicta.prototype.profile.ProfileDraft.systemPrompt(ProfilePackage.kt:16)
+	at dev.dicta.prototype.data.DictaRepository$provider$2.invoke(DictaRepository.kt:94)
+	at dev.dicta.prototype.data.DictaRepository$provider$2.invoke(DictaRepository.kt:94)
+	at dev.dicta.prototype.provider.DeepSeekProvider.request(DeepSeekProvider.kt:47)
+	at dev.dicta.prototype.provider.DeepSeekProvider.generate(DeepSeekProvider.kt:39)
+	at dev.dicta.prototype.data.DictaRepository$lookup$2.invokeSuspend(DictaRepository.kt:105)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+
+Error in dailyCacheRefreshAndUserProfilesPersistInDatabase(dev.dicta.prototype.M3UiTest):
+java.lang.AssertionError: 每日词暂不可用，已保留原卡片。
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at dev.dicta.prototype.M3UiTest$dailyCacheRefreshAndUserProfilesPersistInDatabase$1.invokeSuspend(M3UiTest.kt:129)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at dev.dicta.prototype.M3UiTest.dailyCacheRefreshAndUserProfilesPersistInDatabase(M3UiTest.kt:122)
+.
+dev.dicta.prototype.LargeFontPopupTest:INSTRUMENTATION_RESULT: shortMsg=Process crashed.
+INSTRUMENTATION_CODE: 0

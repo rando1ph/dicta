@@ -31,7 +31,9 @@ import dev.dicta.prototype.query.LookupViewModel
 import dev.dicta.prototype.ui.*
 import kotlinx.serialization.json.*
 
-class DictaApplication : Application()
+class DictaApplication : Application() {
+    override fun onCreate() {super.onCreate();Appearance.initialize(this)}
+}
 
 class MainActivity : ComponentActivity() {
     val model: LookupViewModel by viewModels()
@@ -40,8 +42,8 @@ class MainActivity : ComponentActivity() {
         val entryId = intent.getStringExtra("snapshotId") ?: savedInstanceState?.getString("snapshotId")
         if (model.state.value == LookupState.Idle) {
             when {
-                entryId != null && model.openSnapshot(entryId) -> Unit
-                entryId != null || savedInstanceState != null -> model.restoredWithoutRequest(savedInstanceState?.getString("query").orEmpty())
+                entryId != null -> model.openSnapshot(entryId)
+                savedInstanceState != null -> model.restoredWithoutRequest(savedInstanceState?.getString("query").orEmpty())
                 else -> Unit
             }
         }
@@ -67,8 +69,8 @@ class ProcessTextActivity : ComponentActivity() {
         if (model.state.value == LookupState.Idle) {
             if (savedInstanceState != null) {
                 val id = savedInstanceState.getString("snapshotId")
-                if (id == null || !model.openSnapshot(id)) model.restoredWithoutRequest(savedInstanceState.getString("query").orEmpty())
-            } else model.lookup(selectedText(intent))
+                if (id != null) model.openSnapshot(id) else model.restoredWithoutRequest(savedInstanceState.getString("query").orEmpty())
+            } else model.lookup(selectedText(intent), "popup")
         }
         setContent { DictaTheme { Popup(model, ::dismiss) { id ->
             startActivity(Intent(this, MainActivity::class.java).putExtra("snapshotId",id))
@@ -80,7 +82,7 @@ class ProcessTextActivity : ComponentActivity() {
         if (!validIntent(intent)) { dismiss();return }
         setIntent(intent)
         sourceReadOnly = readOnly(intent)
-        model.lookup(selectedText(intent))
+        model.lookup(selectedText(intent), "popup")
     }
     private fun readOnly(intent:Intent):Boolean = try { intent.getBooleanExtra(Intent.EXTRA_PROCESS_TEXT_READONLY,true) } catch (_: RuntimeException) { true }
     private fun validIntent(intent:Intent) = intent.action == Intent.ACTION_PROCESS_TEXT && intent.type == "text/plain"
@@ -111,8 +113,8 @@ private fun saveQueryState(bundle:Bundle,state:LookupState) {
 @Composable
 internal fun Popup(model:LookupViewModel, dismiss:()->Unit, details:(String)->Unit) {
     val state by model.state.collectAsState()
-    val template = (state as? LookupState.Success)?.entry?.templateJson
-    val config = remember(template) { template?.let { Json.parseToJsonElement(it).jsonObject } }
+    val template = (state as? LookupState.Success)?.entry?.takeIf {it.compatibilityWarning==null}?.templateJson
+    val config = remember(template) { template?.let { runCatching { Json.parseToJsonElement(it).jsonObject }.getOrNull() } }
     val popup = config?.get("containers")?.jsonObject?.get("popup")?.jsonObject
     val actions = config?.get("actions")?.jsonObject?.get("popup")?.jsonArray?.map { it.jsonPrimitive.content }.orEmpty()
     val density = LocalDensity.current
@@ -163,7 +165,7 @@ internal fun Popup(model:LookupViewModel, dismiss:()->Unit, details:(String)->Un
                 if(state is LookupState.Success) {
                     HorizontalDivider(color=MaterialTheme.colorScheme.outlineVariant.copy(alpha=.5f))
                     FlowRow(Modifier.fillMaxWidth().padding(top=8.dp),horizontalArrangement=Arrangement.SpaceBetween,verticalArrangement=Arrangement.spacedBy(0.dp)) {
-                        if("save" in actions) TextButton(onClick={},enabled=false) {Text("收藏")}
+                        if("save" in actions) BookmarkButton((state as LookupState.Success).entry, model, "popupSave")
                         if("details" in actions) Button(onClick={details((state as LookupState.Success).entry.id)},modifier=Modifier.testTag("popupDetails")) {Text("打开")}
                     }
 

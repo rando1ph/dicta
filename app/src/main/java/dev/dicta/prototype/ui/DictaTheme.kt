@@ -8,11 +8,20 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.flow.MutableStateFlow
+import androidx.core.content.edit
 
 enum class ThemeMode { System, Light, Dark }
 object Appearance {
     val mode = MutableStateFlow(ThemeMode.Dark)
     val accent = MutableStateFlow(0)
+    private var preferences:android.content.SharedPreferences?=null
+    fun initialize(context:android.content.Context) {
+        preferences=context.getSharedPreferences("appearance",android.content.Context.MODE_PRIVATE)
+        mode.value=runCatching {ThemeMode.valueOf(preferences?.getString("mode","Dark") ?: "Dark")}.getOrDefault(ThemeMode.Dark)
+        accent.value=(preferences?.getInt("accent",0) ?: 0).coerceIn(0,4)
+    }
+    fun selectMode(value:ThemeMode) {mode.value=value;preferences?.edit {putString("mode",value.name)}}
+    fun selectAccent(value:Int) {accent.value=value.coerceIn(0,4);preferences?.edit {putInt("accent",accent.value)}}
 }
 val accentColors = listOf(Color(0xFFC6BFFF), Color(0xFF76D1FF), Color(0xFF8ED5AD), Color(0xFFF5BD6C), Color(0xFFECA6C3))
 

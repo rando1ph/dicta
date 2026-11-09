@@ -15,6 +15,10 @@ import dev.dicta.prototype.query.LookupState
 import dev.dicta.prototype.query.LookupViewModel
 import dev.dicta.prototype.ui.DictaTheme
 import org.junit.Assert.assertTrue
+import androidx.compose.ui.graphics.toPixelMap
+import androidx.compose.ui.semantics.SemanticsProperties
+import dev.dicta.prototype.ui.Appearance
+import dev.dicta.prototype.ui.accentColors
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -23,6 +27,37 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class LargeFontPopupTest {
     @get:Rule val compose = createComposeRule()
+
+
+    @Test fun popupBookmarkUsesCurrentAccentAndSynchronizesSavedState() {
+        val application=InstrumentationRegistry.getInstrumentation().targetContext.applicationContext as Application
+        val model=LookupViewModel(application)
+        val originalAccent=Appearance.accent.value
+        compose.setContent {DictaTheme {Popup(model,dismiss={},details={})}}
+        compose.runOnIdle {model.lookup("ephemeral")}
+        compose.waitUntil(65000) {model.state.value is LookupState.Success}
+        val entry=(model.state.value as LookupState.Success).entry
+        val originalSaved=model.vocabulary.value.any {it.id==entry.id}
+        try {
+            for(accent in listOf(0,2)) {
+                compose.runOnIdle {Appearance.accent.value=accent;model.bookmarks(listOf(entry.id),true)}
+                compose.waitUntil(5000) {model.vocabulary.value.any {it.id==entry.id}}
+                compose.onNodeWithTag("popupSave").assertIsEnabled().assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription,"已收藏"))
+                compose.waitForIdle()
+                val pixels=compose.onNodeWithTag("popupSave").captureToImage().toPixelMap()
+                val expected=accentColors[accent]
+                var matching=0
+                for(y in 0 until pixels.height) for(x in 0 until pixels.width) {
+                    val color=pixels[x,y]
+                    if(kotlin.math.abs(color.red-expected.red)<.025 && kotlin.math.abs(color.green-expected.green)<.025 && kotlin.math.abs(color.blue-expected.blue)<.025) matching++
+                }
+                assertTrue("Saved button must use current Accent Colour",matching>pixels.width*pixels.height/3)
+                compose.onNodeWithTag("popupSave").performClick()
+                compose.waitUntil(5000) {model.vocabulary.value.none {it.id==entry.id}}
+                compose.onNodeWithTag("popupSave").assertIsEnabled().assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription,"未收藏"))
+            }
+        } finally {compose.runOnIdle {Appearance.accent.value=originalAccent;model.bookmarks(listOf(entry.id),originalSaved)}}
+    }
 
     @Test fun transparentSideGuttersDismissButCardBodyDoesNot() {
         val application = InstrumentationRegistry.getInstrumentation().targetContext.applicationContext as Application

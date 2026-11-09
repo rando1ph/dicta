@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import dev.dicta.prototype.data.DictaRepository
+import dev.dicta.prototype.profile.*
+import dev.dicta.prototype.data.ProfileChoice
 import dev.dicta.prototype.provider.ProviderConfig
 import dev.dicta.prototype.provider.ProviderFailure
 import kotlinx.coroutines.*
@@ -15,9 +17,19 @@ data class ConfigSummary(val endpoint: String = "https://api.deepseek.com", val 
 
 class LookupViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = DictaRepository.get(application)
-    private val session = LookupSession(viewModelScope, repository::lookup, repository::remember)
+    private var source = "home"
+    private var openJob:Job?=null
+    private val session = LookupSession(viewModelScope, {repository.lookup(it)}, { repository.remember(it,source) })
     val state = session.state
     val history = repository.history
+    val vocabulary=repository.vocabulary
+    val profiles=repository.profiles
+    val activeProfile=repository.activeProfile
+    val daily=repository.daily
+    val storageMessage=repository.warning
+    val actionMessage=MutableStateFlow("")
+    val profileMessage=MutableStateFlow("")
+    val profileBusy=MutableStateFlow(false)
     val configuration = MutableStateFlow(ConfigSummary())
     val configMessage = MutableStateFlow("")
     val configBusy = MutableStateFlow(false)
@@ -45,7 +57,7 @@ class LookupViewModel(application: Application) : AndroidViewModel(application) 
         configMessage.value = "配置与密钥已清除。"
     }
     fun testConfig() = configAction {
-        repository.lookup("serendipity")
+        repository.lookup("serendipity",useCache=false)
         configMessage.value = "连接成功，词条格式校验通过。"
     }
     fun cancelConfig() {
@@ -68,13 +80,36 @@ class LookupViewModel(application: Application) : AndroidViewModel(application) 
             finally { if (generation == configGeneration) configBusy.value = false }
         }
     }
-    fun lookup(raw: String) = session.lookup(raw)
-    fun retry() = session.retry()
-    fun cancel() = session.cancel()
-    fun restoredWithoutRequest(query: String = "") = session.restoredWithoutRequest(query)
-    fun openSnapshot(id: String): Boolean {
-        val snapshot = repository.find(id) ?: return false
-        session.open(snapshot)
-        return true
+    fun lookup(raw:String, origin:String="home") {openJob?.cancel();source=origin;session.lookup(raw)}
+    fun retry() {openJob?.cancel();session.retry()}
+    fun cancel() {openJob?.cancel();session.cancel()}
+    fun restoredWithoutRequest(query:String="")=session.restoredWithoutRequest(query)
+    fun openSnapshot(id:String) {
+        openJob?.cancel();session.cancel()
+        openJob=viewModelScope.launch {
+            try { val entry=repository.find(id);ensureActive();if(entry!=null) session.open(entry) else session.restoredWithoutRequest() }
+            catch(e:CancellationException) {throw e}
+            catch(_:Exception) {session.restoredWithoutRequest()}
+        }
+    }
+    fun bookmarks(ids:List<String>,saved:Boolean)=action {repository.setBookmarks(ids,saved)}
+    fun deleteHistory(ids:List<String>)=action {repository.deleteHistory(ids)}
+    private fun action(block:suspend ()->Unit) {viewModelScope.launch {
+        try {block();actionMessage.value=""} catch(_:Exception) {actionMessage.value="操作未保存，请重试；原有数据已保留。"}
+    }}
+    fun daily(refresh:Boolean=false) {viewModelScope.launch {repository.ensureDaily(refresh)}}
+    fun saveProfile(draft:ProfileDraft,id:String?=null)=profileAction {repository.saveProfile(draft,id);"Profile 已保存并启用。"}
+    fun activateProfile(choice:ProfileChoice)=profileAction {repository.activate(choice);"Profile 已切换。"}
+    fun restoreDefault()=activateProfile(repository.builtin)
+    suspend fun importValidatedProfile(draft:ProfileDraft) {repository.saveProfile(draft)}
+    fun importProfile(raw:String)=profileAction {repository.saveProfile(ProfileDraft.import(raw));"Profile 已导入并启用。"}
+    fun profileAction(block:suspend ()->String) {
+        if(profileBusy.value) return
+        profileBusy.value=true;profileMessage.value=""
+        viewModelScope.launch {
+            try {profileMessage.value=withContext(Dispatchers.IO) {block()}}
+            catch(e:Exception) {profileMessage.value=dev.dicta.prototype.profile.profileMessage(e)}
+            finally {profileBusy.value=false}
+        }
     }
 }

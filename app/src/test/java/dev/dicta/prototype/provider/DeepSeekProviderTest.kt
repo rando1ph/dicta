@@ -47,6 +47,18 @@ class DeepSeekProviderTest {
         assertEquals("disabled", body["thinking"]!!.jsonObject["type"]!!.jsonPrimitive.content)
         assertEquals("luminous", Json.parseToJsonElement(body["messages"]!!.jsonArray[1].jsonObject["content"]!!.jsonPrimitive.content).jsonObject["query"]!!.jsonPrimitive.content)
     } }
+    @Test fun dailyUsesSameEndpointSchemaProtocolAndOneRequestWithExcludes() = server {server,client->runBlocking {
+        server.enqueue(MockResponse().setBody(envelope()))
+        provider(server,client).daily(listOf("verdant","petrichor"))
+        val request=server.takeRequest(2,TimeUnit.SECONDS)!!
+        assertEquals("/chat/completions",request.path)
+        val body=Json.parseToJsonElement(request.body.readUtf8()).jsonObject
+        val user=Json.parseToJsonElement(body.getValue("messages").jsonArray[1].jsonObject.getValue("content").jsonPrimitive.content).jsonObject
+        assertEquals("daily",user["mode"]?.jsonPrimitive?.content)
+        assertEquals("",user["query"]?.jsonPrimitive?.content)
+        assertEquals(listOf("verdant","petrichor"),user["exclude"]?.jsonArray?.map {it.jsonPrimitive.content})
+        assertEquals(1,server.requestCount)
+    } }
     @Test fun missingKeySendsNoRequest() = server { server, client -> runBlocking {
         try { provider(server,client,"").generate("word"); fail() } catch(e: ProviderFailure) { assertEquals(FailureKind.CONFIGURATION,e.kind) }
         assertEquals(0,server.requestCount)

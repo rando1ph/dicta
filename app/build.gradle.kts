@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.kapt")
 }
 
 // Package the canonical M0 files, without copies drifting from the source Profile.
@@ -21,8 +22,8 @@ android {
         applicationId = "dev.dicta.prototype"
         minSdk = 26
         targetSdk = 36
-        versionCode = 2
-        versionName = "0.2.0-m2"
+        versionCode = 3
+        versionName = "0.3.0-m3"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures { compose = true }
@@ -56,6 +57,9 @@ dependencies {
     implementation(libs.serialization.json)
     implementation(libs.coroutines.android)
     implementation(libs.okhttp)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    kapt(libs.room.compiler)
     debugImplementation(libs.compose.tooling)
     debugImplementation(libs.compose.test.manifest)
     testImplementation(libs.junit)
@@ -70,3 +74,5 @@ dependencies {
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.espresso.core)
 }
+
+kapt { arguments { arg("room.schemaLocation", "$projectDir/schemas") } }
