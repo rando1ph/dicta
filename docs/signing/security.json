@@ -1,0 +1,16 @@
+{
+  "repositoryFilesScanned": 210,
+  "historicalBlobsScanned": 237,
+  "archiveMembersScanned": true,
+  "jksAndPasswordAbsent": true,
+  "existingApiCredentialAbsent": true,
+  "credentialFilesOutsideRepository": true,
+  "directoryMode": "0700",
+  "credentialFileMode": "0600",
+  "currentUserOwned": true,
+  "symlinksAndHardlinksAbsent": true,
+  "gitIgnoreVerified": true,
+  "repeatInitPreservesIdentity": true,
+  "localFilesystem": "ext4",
+  "cloudUploadPerformed": false
+}
