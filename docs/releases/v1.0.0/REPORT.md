@@ -115,3 +115,13 @@ private snapshots remain in ignored local `artifacts/`.
 
 Release assets are the signed APK, [SHA256SUMS](SHA256SUMS),
 [English notes](Release-Notes.en.md), and [Chinese notes](Release-Notes.zh-CN.md).
+
+## Published asset verification
+
+[Publication record](publication.json): the public GitHub Release is published,
+not a draft or prerelease, and `releases/latest` resolves to `v1.0.0`. All four
+assets were downloaded without authentication and matched the local files and
+GitHub SHA-256 digests byte-for-byte. The downloaded APK passed independent
+`apksigner` verification again. The annotated tag points to
+`7e310adcfcdaddfaf50c57a2724f1af8a35c6fa1`; later documentation-only commits on
+`main` record publication evidence without changing the released app source.
