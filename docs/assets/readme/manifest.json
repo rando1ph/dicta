@@ -1,0 +1,77 @@
+{
+  "review": "Approved screenshots selected by the user in T06; originals preserved byte-for-byte.",
+  "files": [
+    {
+      "id": "1CSLCeQ--icOAhqsIamKymWhodmyp-Xlr",
+      "file": "hero-guardian-popup.png",
+      "bytes": 429734,
+      "original": "M4-02-guardian-saved.png",
+      "sha256": "c2b831e85ee772e74f1e886559f72bbfa3db675d6ef32e9f7ed7616708ac3a75",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "source": "https://drive.google.com/file/d/1CSLCeQ--icOAhqsIamKymWhodmyp-Xlr/view"
+    },
+    {
+      "id": "1LHhVln8y527YazRswRqGaFJnvxTl53iI",
+      "file": "hero-bbc-popup.png",
+      "bytes": 401478,
+      "original": "M4-04-bbc-popup.png",
+      "sha256": "dd72620e4c03dca0907733cce0adbd99c1578ece44fdeab49003ebd1ddfabaf8",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "source": "https://drive.google.com/file/d/1LHhVln8y527YazRswRqGaFJnvxTl53iI/view"
+    },
+    {
+      "id": "1IHonzNuWaK06JUpjtLHhBrOSfGNGcAgb",
+      "file": "home.png",
+      "bytes": 230232,
+      "original": "M4-08-home.png",
+      "sha256": "d90cb06e21956f0dd9b7ef4286b6bd7addec482c52dbd7229e300cbdf5d2aea0",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "source": "https://drive.google.com/file/d/1IHonzNuWaK06JUpjtLHhBrOSfGNGcAgb/view"
+    },
+    {
+      "id": "13h8S3evHv4DIIt5vXXv7UFLa3tm0Pkrq",
+      "file": "history.png",
+      "bytes": 195896,
+      "original": "M4-09-history.png",
+      "sha256": "40e67e71b044599e29dc24a60ab1af38e13bab24d003731218ce1fe79d718bcd",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "source": "https://drive.google.com/file/d/13h8S3evHv4DIIt5vXXv7UFLa3tm0Pkrq/view"
+    },
+    {
+      "id": "1cPPWkzoxvx3ZzKl5ULRqXRWwbQrEBYvs",
+      "file": "vocabulary.png",
+      "bytes": 230221,
+      "original": "M4-10-vocabulary.png",
+      "sha256": "25bd02b3a3efa8b8110f0d96ba43e62ec31692738491d28baa15b2f94eec397c",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "source": "https://drive.google.com/file/d/1cPPWkzoxvx3ZzKl5ULRqXRWwbQrEBYvs/view"
+    },
+    {
+      "id": "1Pizk4t2txQ5MPqLs-QgCK6kYaejIOCt3",
+      "file": "profile-template.png",
+      "bytes": 248537,
+      "original": "M3-09-profile-template-preview.png",
+      "sha256": "14e7d31ebe63d15bc3ba4853fe0dfcc46fcbc0668cadaa0dc010209f3ffb0c3c",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "source": "https://drive.google.com/file/d/1Pizk4t2txQ5MPqLs-QgCK6kYaejIOCt3/view"
+    }
+  ]
+}

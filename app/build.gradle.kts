@@ -19,11 +19,11 @@ android {
     compileSdk = 36
     buildToolsVersion = "35.0.0"
     defaultConfig {
-        applicationId = "dev.dicta.prototype"
+        applicationId = "dev.randolf.dicta"
         minSdk = 26
         targetSdk = 36
-        versionCode = 4
-        versionName = "0.4.0-m4"
+        versionCode = 5
+        versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures { compose = true }

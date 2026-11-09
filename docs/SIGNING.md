@@ -1,8 +1,10 @@
 # Dicta local automatic APK signing
 
-The signing system is ready. It signs an existing reviewed APK and does not
-build, install, tag, upload, or publish a release. The acceptance APK is a copy
-of the existing M4 debug build; it is **not** a formal release candidate.
+The signing system signs an existing reviewed APK using the established Dicta
+Release identity. Building, device verification and GitHub publication are
+separate steps. Version 1.0.0 uses this identity; see the
+[release verification record](releases/v1.0.0/REPORT.md). The earlier signing-only
+acceptance APK was a copy of the M4 debug build, not a formal release candidate.
 
 ## Identity and credentials
 
@@ -32,13 +34,14 @@ From the Dicta repository root:
 ```sh
 python3 scripts/android-signing.py check
 python3 scripts/android-signing.py release --auto \
-  --apk artifacts/m4/Dicta-M4-debug.apk \
-  --out artifacts/signing/local-test-signed.apk
+  --apk app/build/outputs/apk/release/app-release-unsigned.apk \
+  --out artifacts/release/v1.0.0/Dicta-v1.0.0.apk
 ```
 
-For later release preparation, use the same signing command with the reviewed
-unsigned release APK and a new output path. Building the formal release is a
-separate step and is outside this preparation.
+Build the unsigned release with `./tools/m1/build.sh :app:assembleRelease` first.
+Use a new output path for every release; the signer refuses to overwrite any
+existing output. For a complete build/verify/publish procedure, see
+[development notes](DEVELOPMENT.md) and the versioned release record.
 
 `release` requires `--auto`, `--apk`, and `--out`. It copies the input into a
 private temporary directory, checks it, aligns it, signs it, verifies it, and

@@ -1,0 +1,97 @@
+Dicta
+Copyright 2026 rando1ph
+Original Dicta code is licensed under the Apache License, Version 2.0.
+
+Third-party runtime libraries retain their upstream licenses and copyrights.
+The following resolved release artifacts are licensed under Apache-2.0:
+
+androidx.activity:activity-compose:1.11.0
+androidx.activity:activity-ktx:1.11.0
+androidx.activity:activity:1.11.0
+androidx.annotation:annotation-experimental:1.5.0
+androidx.annotation:annotation-jvm:1.9.1
+androidx.arch.core:core-common:2.2.0
+androidx.arch.core:core-runtime:2.2.0
+androidx.autofill:autofill:1.0.0
+androidx.collection:collection-jvm:1.5.0
+androidx.collection:collection-ktx:1.5.0
+androidx.compose.animation:animation-android:1.9.4
+androidx.compose.animation:animation-core-android:1.9.4
+androidx.compose.foundation:foundation-android:1.9.4
+androidx.compose.foundation:foundation-layout-android:1.9.4
+androidx.compose.material3:material3-android:1.4.0
+androidx.compose.material:material-ripple-android:1.9.4
+androidx.compose.runtime:runtime-android:1.9.4
+androidx.compose.runtime:runtime-annotation-android:1.9.4
+androidx.compose.runtime:runtime-saveable-android:1.9.4
+androidx.compose.ui:ui-android:1.9.4
+androidx.compose.ui:ui-geometry-android:1.9.4
+androidx.compose.ui:ui-graphics-android:1.9.4
+androidx.compose.ui:ui-text-android:1.9.4
+androidx.compose.ui:ui-tooling-preview-android:1.9.4
+androidx.compose.ui:ui-unit-android:1.9.4
+androidx.compose.ui:ui-util-android:1.9.4
+androidx.concurrent:concurrent-futures:1.1.0
+androidx.core:core-ktx:1.15.0
+androidx.core:core-viewtree:1.0.0
+androidx.core:core:1.15.0
+androidx.core:core:1.15.0
+androidx.customview:customview-poolingcontainer:1.0.0
+androidx.emoji2:emoji2:1.4.0
+androidx.graphics:graphics-path:1.0.1
+androidx.interpolator:interpolator:1.0.0
+androidx.lifecycle:lifecycle-common-java8:2.9.4
+androidx.lifecycle:lifecycle-common-jvm:2.9.4
+androidx.lifecycle:lifecycle-livedata-core:2.9.4
+androidx.lifecycle:lifecycle-process:2.9.4
+androidx.lifecycle:lifecycle-runtime-android:2.9.4
+androidx.lifecycle:lifecycle-runtime-compose-android:2.9.4
+androidx.lifecycle:lifecycle-runtime-ktx-android:2.9.4
+androidx.lifecycle:lifecycle-viewmodel-android:2.9.4
+androidx.lifecycle:lifecycle-viewmodel-compose-android:2.9.4
+androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4
+androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.9.4
+androidx.profileinstaller:profileinstaller:1.4.0
+androidx.room:room-common-jvm:2.8.4
+androidx.room:room-ktx:2.8.4
+androidx.room:room-runtime-android:2.8.4
+androidx.savedstate:savedstate-android:1.3.3
+androidx.savedstate:savedstate-compose-android:1.3.3
+androidx.savedstate:savedstate-ktx:1.3.3
+androidx.sqlite:sqlite-android:2.6.2
+androidx.sqlite:sqlite-framework-android:2.6.2
+androidx.startup:startup-runtime:1.1.1
+androidx.tracing:tracing:1.2.0
+androidx.versionedparcelable:versionedparcelable:1.1.1
+com.google.guava:listenablefuture:1.0
+com.squareup.okhttp3:okhttp:4.12.0
+com.squareup.okio:okio-jvm:3.6.0
+org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.10
+org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10
+org.jetbrains.kotlin:kotlin-stdlib:2.2.21
+org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2
+org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2
+org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.8.1
+org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.8.1
+org.jetbrains:annotations:23.0.0
+org.jspecify:jspecify:1.0.0
+
+Attribution: The Android Open Source Project / AndroidX contributors;
+JetBrains s.r.o. and Kotlin contributors; Square, Inc. and contributors;
+The Guava Authors; JSpecify Authors. See each upstream project for its
+copyright notices and source. Upstream license and notice texts follow in
+licenses/; no library source modifications are made by Dicta.
+
+OkHttp's publicsuffixes.gz is distributed unmodified. Its upstream NOTICE:
+
+Note that publicsuffixes.gz is compiled from The Public Suffix List:
+https://publicsuffix.org/list/public_suffix_list.dat
+
+It is subject to the terms of the Mozilla Public License, v. 2.0:
+https://mozilla.org/MPL/2.0/
+
+Public Suffix List source: https://publicsuffix.org/list/public_suffix_list.dat
+The exact compiled resource is available in the unmodified OkHttp 4.12.0
+artifact: https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp/4.12.0/okhttp-4.12.0.jar
+Upstream project: https://github.com/publicsuffix/list
+This data retains MPL-2.0; it is not relicensed by Dicta.

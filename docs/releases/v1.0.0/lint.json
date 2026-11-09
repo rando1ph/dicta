@@ -1,0 +1,12 @@
+{
+  "errors": 0,
+  "warnings": 13,
+  "issues": {
+    "RedundantLabel": 1,
+    "AndroidGradlePluginVersion": 1,
+    "NewerVersionAvailable": 8,
+    "DataExtractionRules": 1,
+    "KaptUsageInsteadOfKsp": 1,
+    "UseKtx": 1
+  }
+}

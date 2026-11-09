@@ -1,0 +1,13 @@
+{
+  "releaseProfileTests": {
+    "tests": 31,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "dev.dicta.prototype.profile.*; no repeated historical full regression",
+  "canonicalProfileAssetsMatch": true,
+  "fullLicenseAndNoticesMatch": true,
+  "testOnlyClassesAbsent": true,
+  "dexClassDefinitionsInspected": 15286
+}

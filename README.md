@@ -1,37 +1,75 @@
-# Dicta
+[English](README.md) · [简体中文](README.zh-CN.md)
 
-Android 原生 BYOK AI 词典。已批准五屏设计位于 `design/`；M4 已实现 Android TTS，并完成针对性视觉检查及真实网站展示；Home 与 Chrome 划词 Popup 共用 DeepSeek BYOK、结构校验和配置驱动渲染。
+<p align="center">
+  <img src="docs/assets/readme/icon.svg" width="88" alt="Dicta app icon">
+</p>
 
-- [M4 TTS、视觉检查与 BBC/Guardian 真机展示](docs/m4/REPORT.md)
-- [M3 历史、收藏、每日词、Profile 与真机验收](docs/m3/REPORT.md)
-- [M2 真实查询、凭据安全与真机验收](docs/m2/REPORT.md)
-- [M1 原生工程、真机测试与截图审阅](docs/m1/REPORT.md)
-- [M0 报告与验收证据](docs/m0/REPORT.md)
-- [五屏字段、交互与状态](docs/m0/VISUAL-CONTRACT.md)
-- [默认 Profile 规范与编辑方法](profiles/default/README.md)
-- [最小架构与 M1 交接](docs/m0/ARCHITECTURE-M1.md)
+<h1 align="center">Dicta</h1>
+<p align="center"><strong>Meet a word. Keep your place.</strong></p>
+<p align="center">An AI dictionary for Android, built around the way you read.</p>
+<p align="center">
+  <a href="https://github.com/rando1ph/dicta/releases/latest">Download for Android</a> ·
+  <a href="#make-it-your-dictionary">Bring your own API key</a> ·
+  <a href="LICENSE">Apache-2.0</a>
+</p>
 
-```bash
-# 原生 Debug APK + JVM tests + lint（隔离 JDK/SDK）
-./tools/m1/build.sh
-# APK: app/build/outputs/apk/debug/app-debug.apk
-```
+<p align="center">
+  <img src="docs/assets/readme/hero-guardian-popup.png" width="360" alt="Dicta explaining rainforest in a native popup over The Guardian in Chrome">
+  <img src="docs/assets/readme/hero-bbc-popup.png" width="360" alt="Dicta explaining fossilised in a native popup over BBC News in Chrome">
+</p>
 
-使用临时包名 `dev.dicta.prototype`。在 Settings 保存 HTTPS Endpoint / Model / API Key，再从首页查词或 Chrome 选词菜单调用 Dicta。默认 DeepSeek / deepseek-flash；Key 用 Android Keystore 加密存储。历史、收藏、每日词缓存与用户 Profile 均持久保存。Settings → 管理 Profile 可复制、编辑、校验、预览、导入导出及恢复默认。旧词条使用自身配置快照，本地重开不调用 AI；每日换词使用相同 BYOK。原凭据配置保留。Home、每日词和 Popup 支持系统 UK/US TTS；Settings 显示实际引擎和可用 Voice。M4 APK、真实网站原图与一次 UK→US 试听样例已上传指定 Drive；技术验证完成，用户听感确认及本批截图人工审阅待进行。
+## A closer look, without losing the thread
 
-```bash
-python3 -m venv .venv
-.venv/bin/pip install -r tools/m0/requirements.txt
-.venv/bin/python tools/m0/verify.py
-.venv/bin/python -m unittest discover -s tools/m0 -v
-```
+An unfamiliar word should be a small detour. Select it in Chrome or another app that supports Android's text selection actions, choose **Dicta**, and explore a clear, readable entry in a native popup. Listen, save the word, then return to your reading.
 
-仅在需要重新获取证据时执行真实 API 测试（五次 POST，可能收费）：
+Prefer to start with a question? Open Dicta and look up a word from Home. The default profile brings together English and Chinese definitions, examples, pronunciation, and word origins in one place.
 
-```bash
-.venv/bin/python tools/m0/verify.py --live
-python3 tools/m0/check_device.py
-python3 tools/m0/check_secrets.py
-```
+## From a quick lookup to a lasting vocabulary
 
-测试密钥只从仓库外 `~/.config/dicta/deepseek_api_key` 读取，目录/文件权限须为 700/600。不能写入配置、日志、Git、Notion 或 APK。只在 `main` 工作；不创建分支/worktree，不使用 rebase/force push。
+- **Look up words where you find them.** A focused popup keeps your reading visible. Open the full entry whenever you want more room.
+- **Pick up where you left off.** Search your History and reopen saved entries locally, without another AI request.
+- **Keep the words that matter.** Build your own Vocabulary with a tap. Removing a history item leaves a bookmarked entry available.
+- **Find a little inspiration.** Discover a Word of the Day on Home, or ask for another using your configured provider.
+- **Hear the difference.** Play UK or US pronunciation with Android text-to-speech (TTS), wherever your installed speech engine provides those voices.
+- **Make yourself at home.** Choose a light or dark theme and your preferred accent colour.
+
+<table>
+  <tr>
+    <th>Home &amp; Word of the Day</th>
+    <th>History</th>
+    <th>Vocabulary</th>
+  </tr>
+  <tr>
+    <td><img src="docs/assets/readme/home.png" width="240" alt="Dicta Home with a daily word and UK and US pronunciation"></td>
+    <td><img src="docs/assets/readme/history.png" width="240" alt="Searchable history of words looked up in Dicta"></td>
+    <td><img src="docs/assets/readme/vocabulary.png" width="240" alt="Dicta Vocabulary with bookmarked words"></td>
+  </tr>
+</table>
+
+## Make it your dictionary
+
+**Your provider. Your API key.** Dicta uses BYOK: you choose an HTTPS API endpoint and model, and supply your own key in Settings. DeepSeek is the tested provider; other endpoints must support the same chat completions request and JSON output format, and compatibility varies. AI service access and any usage charges come from your provider. Dicta does not include an API key or AI credit.
+
+Your key is encrypted on the device using Android Keystore. New lookups send the selected or typed word and your profile instructions to your chosen provider; saved entries can be reopened locally. Pronunciation uses your Android speech engine, separately from the text model.
+
+**Start with a complete profile. Shape it as you learn.** The built-in Profile is ready once your API is configured. For more control, copy it and edit the Prompt, Schema, and Template to decide what an entry explains and how it appears. Validate and preview your changes, switch profiles, or import and export them. Previously saved entries retain their original presentation.
+
+<p align="center">
+  <img src="docs/assets/readme/profile-template.png" width="320" alt="Dicta Profile editor with template editing, validation, preview, and import and export controls">
+</p>
+
+## Get Dicta
+
+1. Download **Dicta-v1.0.0.apk** from [GitHub Releases](https://github.com/rando1ph/dicta/releases/latest) and install it. Android may ask you to allow installation from the app you used to download it.
+2. Open **Settings** and save your provider's endpoint, model, and API key.
+3. Search from Home, or select a word in a supported app and choose **Dicta** from the selection menu (sometimes under **More**).
+
+Requires **Android 8.0 or later**. Version **1.0.0** is the first public release; tested on a OnePlus 6T running Android 15. The current interface is primarily Simplified Chinese, with bilingual English–Chinese entries in the default profile. Selection actions and available TTS voices depend on the host app and device.
+
+The public app uses `dev.randolf.dicta`. Earlier prototype builds install separately; their data and API settings stay in the prototype app.
+
+## Open source
+
+Copyright © 2026 **rando1ph**. Dicta's original code is licensed under the [Apache License 2.0](LICENSE). See [third-party notices](THIRD_PARTY_NOTICES.md) for dependencies and asset attribution, and [development notes](docs/DEVELOPMENT.md) to build from source.
+
+Screenshots are unmodified captures from a real device. BBC and The Guardian names, marks, articles, and photographs belong to their respective owners and appear only as browsing context; no affiliation or endorsement is implied.
