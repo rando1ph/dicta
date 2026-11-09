@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>Dicta History - Mobile iOS</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Newsreader (Serif) & Inter (Sans) -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet">
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: {
+              DEFAULT: '#141218',
+              surface: '#1c1a22',
+              card: '#24212b',
+              cardHover: '#2a2733',
+              border: '#2f2c38',
+              borderLight: '#3a3645'
+            },
+            dicta: {
+              purple: '#897cff',
+              purpleSoft: '#6859eb',
+              purpleMuted: '#2a2544',
+              gold: '#e6b450',
+              goldMuted: '#38301e',
+              textPrimary: '#f2f0f7',
+              textSecondary: '#a5a0b5',
+              textMuted: '#6f6980',
+              danger: '#ef4444',
+              dangerMuted: '#381a1d'
+            }
+          },
+          fontFamily: {
+            serif: ['Newsreader', 'Georgia', 'serif'],
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+<style data-purpose="base-tokens">
+    body {
+      background-color: #141218;
+      color: #f2f0f7;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-dicta-textPrimary min-h-screen flex justify-center selection:bg-dicta-purpleMuted selection:text-dicta-purple">
+<!-- Mobile Screen Shell (iOS Dimensions) -->
+<div class="w-full max-w-md min-h-screen flex flex-col relative pb-28 pt-1 bg-obsidian">
+<!-- BEGIN: TopHeader -->
+<header class="px-5 pt-3 pb-2 flex items-center justify-between" data-purpose="screen-header">
+<!-- Dicta Wordmark -->
+<div class="flex items-baseline space-x-1.5">
+<h1 class="font-serif text-2xl font-medium tracking-tight text-white">Dicta</h1>
+</div>
+<!-- Right Header Eyebrow & Stats -->
+<div class="text-right"><span class="block text-[10px] tracking-wider uppercase font-semibold text-dicta-textMuted">SEARCH HISTORY</span></div>
+</header>
+<!-- END: TopHeader -->
+<!-- BEGIN: SearchAndFilters -->
+<section class="px-5 pt-2 pb-1 space-y-3" data-purpose="search-and-filters"><div class="flex items-center space-x-2.5"><div class="relative flex-1 flex items-center"><div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-dicta-textMuted"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg></div><input class="w-full pl-10 pr-3 py-2 bg-obsidian-surface rounded-xl border border-obsidian-border text-sm text-dicta-textPrimary placeholder:text-dicta-textMuted focus:outline-none focus:border-dicta-purple focus:ring-1 focus:ring-dicta-purple transition-all" id="history-search-input" placeholder="Search history / 搜索历史词条..." type="search"></div><button class="px-3 py-2 rounded-xl border border-obsidian-border bg-obsidian-surface hover:border-obsidian-borderLight hover:text-white text-xs font-medium text-dicta-textSecondary transition-all flex items-center space-x-1 flex-shrink-0" id="toggle-manage-btn" onclick="toggleManagementMode()"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span id="manage-btn-text" class="">Manage / 管理</span></button></div></section>
+<!-- END: SearchAndFilters -->
+<!-- BEGIN: BatchManagementToolbar -->
+<!-- END: BatchManagementToolbar -->
+<!-- BEGIN: HistoryList -->
+<main class="flex-1 px-4 pt-2.5 space-y-2.5" data-purpose="history-entries"><!-- Item 1: luminous -->
+<article class="history-card p-3.5 bg-obsidian-surface rounded-2xl border border-dicta-purple/40 hover:border-dicta-purple/70 transition-all flex items-center space-x-3 relative overflow-hidden" data-selected="true" onclick="toggleCardSelection(this)">
+<div class="select-indicator w-5 h-5 rounded-full bg-dicta-purple flex items-center justify-center flex-shrink-0 cursor-pointer">
+<svg class="w-3 h-3 text-white stroke-[2.5]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline space-x-2">
+<h2 class="font-serif text-lg font-medium text-white tracking-wide truncate">luminous</h2>
+<span class="text-[10px] font-semibold tracking-wider px-1.5 py-0.5 rounded bg-dicta-purpleMuted text-dicta-purple">ADJ.</span>
+</div>
+<p class="text-xs text-dicta-textSecondary truncate mt-0.5">发光的；明亮的 · Producing or reflecting bright light</p>
+</div>
+<div class="flex items-center space-x-2 flex-shrink-0 pl-1">
+<span class="text-[11px] text-dicta-textMuted font-sans">10m ago</span>
+<svg class="w-4 h-4 text-dicta-gold fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+</div>
+</article>
+<!-- Item 2: ephemeral -->
+<article class="history-card p-3.5 bg-obsidian-surface rounded-2xl border border-dicta-purple/40 hover:border-dicta-purple/70 transition-all flex items-center space-x-3 relative overflow-hidden" data-selected="true" onclick="toggleCardSelection(this)">
+<div class="select-indicator w-5 h-5 rounded-full bg-dicta-purple flex items-center justify-center flex-shrink-0 cursor-pointer">
+<svg class="w-3 h-3 text-white stroke-[2.5]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline space-x-2">
+<h2 class="font-serif text-lg font-medium text-white tracking-wide truncate">ephemeral</h2>
+<span class="text-[10px] font-semibold tracking-wider px-1.5 py-0.5 rounded bg-dicta-purpleMuted text-dicta-purple">ADJ.</span>
+</div>
+<p class="text-xs text-dicta-textSecondary truncate mt-0.5">短暂的，朝生暮死的 · Lasting for a brief time</p>
+</div>
+<div class="flex items-center space-x-2 flex-shrink-0 pl-1">
+<span class="text-[11px] text-dicta-textMuted font-sans">25m ago</span>
+<svg class="w-4 h-4 text-dicta-textMuted/40 hover:text-dicta-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+</div>
+</article>
+<!-- Item 3: phosphorescent -->
+<article class="history-card p-3.5 bg-obsidian-surface rounded-2xl border border-dicta-purple/40 hover:border-dicta-purple/70 transition-all flex items-center space-x-3 relative overflow-hidden" data-selected="true" onclick="toggleCardSelection(this)">
+<div class="select-indicator w-5 h-5 rounded-full bg-dicta-purple flex items-center justify-center flex-shrink-0 cursor-pointer">
+<svg class="w-3 h-3 text-white stroke-[2.5]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline space-x-2">
+<h2 class="font-serif text-lg font-medium text-white tracking-wide truncate">phosphorescent</h2>
+<span class="text-[10px] font-semibold tracking-wider px-1.5 py-0.5 rounded bg-dicta-purpleMuted text-dicta-purple">ADJ.</span>
+</div>
+<p class="text-xs text-dicta-textSecondary truncate mt-0.5">磷光的 · Emitting light without sensible heat</p>
+</div>
+<div class="flex items-center space-x-2 flex-shrink-0 pl-1">
+<span class="text-[11px] text-dicta-textMuted font-sans">2h ago</span>
+<svg class="w-4 h-4 text-dicta-textMuted/40 hover:text-dicta-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+</div>
+</article>
+<!-- Item 4: serendipity -->
+<article class="history-card p-3.5 bg-obsidian-surface rounded-2xl border border-obsidian-border hover:border-obsidian-borderLight transition-all flex items-center space-x-3 relative overflow-hidden" data-selected="false" onclick="toggleCardSelection(this)">
+<div class="select-indicator w-5 h-5 rounded-full border border-obsidian-borderLight bg-obsidian-card flex items-center justify-center flex-shrink-0 cursor-pointer"></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline space-x-2">
+<h2 class="font-serif text-lg font-medium text-white tracking-wide truncate">serendipity</h2>
+<span class="text-[10px] font-semibold tracking-wider px-1.5 py-0.5 rounded bg-obsidian-card border border-obsidian-border text-dicta-textSecondary">NOUN</span>
+</div>
+<p class="text-xs text-dicta-textSecondary truncate mt-0.5">意外发现珍奇事物的本领 · Finding valuable things by chance</p>
+</div>
+<div class="flex items-center space-x-2 flex-shrink-0 pl-1">
+<span class="text-[11px] text-dicta-textMuted font-sans">4h ago</span>
+<svg class="w-4 h-4 text-dicta-gold fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+</div>
+</article>
+<!-- Item 5: shingle -->
+<article class="history-card p-3.5 bg-obsidian-surface rounded-2xl border border-obsidian-border hover:border-obsidian-borderLight transition-all flex items-center space-x-3 relative overflow-hidden" data-selected="false" onclick="toggleCardSelection(this)">
+<div class="select-indicator w-5 h-5 rounded-full border border-obsidian-borderLight bg-obsidian-card flex items-center justify-center flex-shrink-0 cursor-pointer"></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline space-x-2">
+<h2 class="font-serif text-lg font-medium text-white tracking-wide truncate">shingle</h2>
+<span class="text-[10px] font-semibold tracking-wider px-1.5 py-0.5 rounded bg-obsidian-card border border-obsidian-border text-dicta-textSecondary">NOUN</span>
+</div>
+<p class="text-xs text-dicta-textSecondary truncate mt-0.5">鹅卵石海滩 · Mass of small rounded pebbles</p>
+</div>
+<div class="flex items-center space-x-2 flex-shrink-0 pl-1">
+<span class="text-[11px] text-dicta-textMuted font-sans">昨天</span>
+<svg class="w-3.5 h-3.5 text-dicta-textMuted" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+</div>
+</article>
+<!-- Item 6: reverie -->
+<article class="history-card p-3.5 bg-obsidian-surface rounded-2xl border border-obsidian-border hover:border-obsidian-borderLight transition-all flex items-center space-x-3 relative overflow-hidden" data-selected="false" onclick="toggleCardSelection(this)">
+<div class="select-indicator w-5 h-5 rounded-full border border-obsidian-borderLight bg-obsidian-card flex items-center justify-center flex-shrink-0 cursor-pointer"></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline space-x-2">
+<h2 class="font-serif text-lg font-medium text-white tracking-wide truncate">reverie</h2>
+<span class="text-[10px] font-semibold tracking-wider px-1.5 py-0.5 rounded bg-obsidian-card border border-obsidian-border text-dicta-textSecondary">NOUN</span>
+</div>
+<p class="text-xs text-dicta-textSecondary truncate mt-0.5">遐想，白日梦 · State of being pleasantly lost in thought</p>
+</div>
+<div class="flex items-center space-x-2 flex-shrink-0 pl-1">
+<span class="text-[11px] text-dicta-textMuted font-sans">昨天</span>
+<svg class="w-3.5 h-3.5 text-dicta-textMuted" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+</div>
+</article>
+<!-- Item 7: petrichor -->
+<article class="history-card p-3.5 bg-obsidian-surface rounded-2xl border border-obsidian-border hover:border-obsidian-borderLight transition-all flex items-center space-x-3 relative overflow-hidden" data-selected="false" onclick="toggleCardSelection(this)">
+<div class="select-indicator w-5 h-5 rounded-full border border-obsidian-borderLight bg-obsidian-card flex items-center justify-center flex-shrink-0 cursor-pointer"></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline space-x-2">
+<h2 class="font-serif text-lg font-medium text-white tracking-wide truncate">petrichor</h2>
+<span class="text-[10px] font-semibold tracking-wider px-1.5 py-0.5 rounded bg-obsidian-card border border-obsidian-border text-dicta-textSecondary">NOUN</span>
+</div>
+<p class="text-xs text-dicta-textSecondary truncate mt-0.5">初雨气象 · Pleasant earthy smell that accompanies the first rain</p>
+</div>
+<div class="flex items-center space-x-2 flex-shrink-0 pl-1">
+<span class="text-[11px] text-dicta-textMuted font-sans">4月15日</span>
+<svg class="w-3.5 h-3.5 text-dicta-textMuted" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+</div>
+</article></main>
+<!-- END: HistoryList -->
+<!-- BEGIN: BatchActionToast / Bottom Sheet Bar -->
+<!-- Floats right above bottom tab navigation when items are selected -->
+<aside class="fixed bottom-20 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-sm z-30 bg-[#25212f]/95 backdrop-blur-md border border-dicta-purple/40 rounded-2xl p-3 shadow-2xl flex items-center justify-between transition-all duration-300" data-purpose="batch-action-sheet" id="batch-management-bar"><div class="flex items-center space-x-2 pl-0.5"><div class="w-6 h-6 rounded-full bg-dicta-purpleMuted border border-dicta-purple/40 flex items-center justify-center text-xs font-serif text-dicta-purple font-medium" id="batch-counter-badge">3</div><span class="text-xs font-medium text-white tracking-tight" id="batch-counter-text">3/48 <span class="text-dicta-textSecondary text-[11px]">已选</span></span></div><div class="flex items-center space-x-1.5"><button class="px-2.5 py-1.5 rounded-xl text-xs font-medium text-dicta-textSecondary hover:text-white transition-colors" onclick="toggleManagementMode(false)">取消</button><button class="px-2.5 py-1.5 rounded-xl text-xs font-medium text-primary bg-dicta-purpleMuted hover:bg-dicta-purple/20 border border-dicta-purple/30 transition-colors flex items-center space-x-1"><svg class="w-3.5 h-3.5 stroke-[2]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg><span class="">存入生词本</span></button><button class="px-2.5 py-1.5 rounded-xl text-xs font-medium text-error hover:bg-error/20 bg-red-600/20 border border-red-500/30 transition-colors flex items-center space-x-1"><svg class="w-3.5 h-3.5 stroke-[2]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span class="">删除</span></button></div></aside>
+<!-- END: BatchActionToast -->
+<!-- BEGIN: BottomNavigation -->
+<nav class="fixed bottom-0 inset-x-0 w-full max-w-md mx-auto bg-[#141218]/95 backdrop-blur-lg border-t border-obsidian-border z-40 py-2 px-6" data-purpose="bottom-navigation-bar">
+<div class="flex justify-around items-center">
+<!-- Tab 1: Search (Inactive) -->
+<a class="flex flex-col items-center group py-1 text-dicta-textMuted hover:text-dicta-textSecondary transition-colors" data-purpose="nav-item" href="#">
+<div class="w-10 h-7 flex items-center justify-center">
+<svg class="w-5 h-5 stroke-[2]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+<circle cx="11" cy="11" r="8"></circle>
+<line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+</svg>
+</div>
+<span class="text-[11px] font-medium tracking-tight mt-0.5">Search</span>
+</a>
+<!-- Tab 2: Vocabulary (Inactive) -->
+<a class="flex flex-col items-center group py-1 text-dicta-textMuted hover:text-dicta-textSecondary transition-colors" data-purpose="nav-item" href="#">
+<div class="w-10 h-7 flex items-center justify-center">
+<svg class="w-5 h-5 stroke-[2]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+</svg>
+</div>
+<span class="text-[11px] font-medium tracking-tight mt-0.5">Vocabulary</span>
+</a>
+<!-- Tab 3: History (ACTIVE HIGHLIGHTED) -->
+<a class="flex flex-col items-center group py-1 text-dicta-purple font-semibold" data-purpose="nav-item-active" href="#">
+<!-- Active Pill Background Indicator -->
+<div class="w-12 h-7 rounded-full bg-dicta-purpleMuted flex items-center justify-center transition-all">
+<svg class="w-5 h-5 stroke-[2.2] text-dicta-purple" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+</div>
+<span class="text-[11px] font-semibold tracking-tight text-white mt-0.5">History</span>
+</a>
+<!-- Tab 4: Settings (Inactive) -->
+<a class="flex flex-col items-center group py-1 text-dicta-textMuted hover:text-dicta-textSecondary transition-colors" data-purpose="nav-item" href="#">
+<div class="w-10 h-7 flex items-center justify-center">
+<svg class="w-5 h-5 stroke-[2]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="3"></circle>
+<path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+</svg>
+</div>
+<span class="text-[11px] font-medium tracking-tight mt-0.5">Settings</span>
+</a>
+</div>
+</nav><script>
+  let isManagementMode = true;
+  function updateCounter() {
+    const selectedCards = document.querySelectorAll('.history-card[data-selected="true"]');
+    const count = selectedCards.length;
+    const badge = document.getElementById('batch-counter-badge');
+    const text = document.getElementById('batch-counter-text');
+    if (badge) badge.innerText = count;
+    if (text) text.innerHTML = count + '/48 <span class="text-dicta-textSecondary text-[11px]">已选</span>';
+  }
+  function toggleManagementMode(forceState) {
+    if (typeof forceState === 'boolean') {
+      isManagementMode = forceState;
+    } else {
+      isManagementMode = !isManagementMode;
+    }
+    const indicators = document.querySelectorAll('.select-indicator');
+    const bar = document.getElementById('batch-management-bar');
+    const btnText = document.getElementById('manage-btn-text');
+    if (isManagementMode) {
+      indicators.forEach(el => el.classList.remove('hidden'));
+      if (bar) bar.classList.remove('hidden');
+      if (btnText) btnText.innerText = 'Done / 完成';
+    } else {
+      indicators.forEach(el => el.classList.add('hidden'));
+      if (bar) bar.classList.add('hidden');
+      if (btnText) btnText.innerText = 'Manage / 管理';
+    }
+  }
+  function toggleCardSelection(card) {
+    if (!isManagementMode) return;
+    const isSelected = card.getAttribute('data-selected') === 'true';
+    const next = !isSelected;
+    card.setAttribute('data-selected', next ? 'true' : 'false');
+    const indicator = card.querySelector('.select-indicator');
+    if (next) {
+      card.classList.remove('border-obsidian-border');
+      card.classList.add('border-dicta-purple/40');
+      indicator.className = 'select-indicator w-5 h-5 rounded-full bg-dicta-purple flex items-center justify-center flex-shrink-0 cursor-pointer';
+      indicator.innerHTML = '<svg class="w-3 h-3 text-white stroke-[2.5]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+    } else {
+      card.classList.remove('border-dicta-purple/40');
+      card.classList.add('border-obsidian-border');
+      indicator.className = 'select-indicator w-5 h-5 rounded-full border border-obsidian-borderLight bg-obsidian-card flex items-center justify-center flex-shrink-0 cursor-pointer';
+      indicator.innerHTML = '';
+    }
+    updateCounter();
+  }
+</script>
+<!-- END: BottomNavigation -->
+</div>
+
+
+</body></html>

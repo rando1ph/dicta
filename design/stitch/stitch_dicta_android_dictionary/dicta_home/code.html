@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&amp;family=Roboto+Flex:wght,opsz@400..700,8..144&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary": "#76d1ff", "on-error-container": "#ffdad6", "secondary-fixed": "#ffddb2", "surface-tint": "#c6bfff", "primary-container": "#8c80ff", "on-tertiary-container": "#002e3f", "surface-container-lowest": "#0f0d13", "on-tertiary-fixed": "#001e2b", "surface-container-high": "#2b292f", "on-primary-fixed-variant": "#402db2", "secondary": "#f5bd6c", "tertiary-fixed-dim": "#76d1ff", "on-secondary-fixed-variant": "#624000", "surface-container": "#211f25", "inverse-on-surface": "#322f36", "on-background": "#e7e0e9", "surface-bright": "#3b383f", "surface-variant": "#36343a", "on-secondary": "#442b00", "outline": "#928f9f", "on-primary-container": "#22008d", "on-tertiary-fixed-variant": "#004d67", "secondary-fixed-dim": "#f5bd6c", "surface-dim": "#141218", "on-surface-variant": "#c8c4d6", "secondary-container": "#754d00", "primary-fixed-dim": "#c6bfff", "on-error": "#690005", "inverse-surface": "#e7e0e9", "on-surface": "#e7e0e9", "surface-container-low": "#1d1b21", "on-primary-fixed": "#160066", "tertiary-fixed": "#c2e8ff", "background": "#141218", "surface": "#141218", "on-primary": "#28049d", "surface-container-highest": "#36343a", "primary": "#c6bfff", "error": "#ffb4ab", "outline-variant": "#474554", "primary-fixed": "#e4dfff", "on-tertiary": "#003548", "tertiary-container": "#379ac6", "on-secondary-fixed": "#291800", "inverse-primary": "#594acb", "on-secondary-container": "#f8c06f", "error-container": "#93000a" }, "borderRadius": { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, "spacing": { "space-xl": "2rem", "space-xs": "0.25rem", "margin": "1rem", "space-md": "1rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "gutter": "1rem" }, "fontFamily": { "headline-sm": ["Newsreader"], "body-md": ["Roboto Flex"], "label-md": ["Roboto Flex"], "headline-lg": ["Newsreader"], "body-sm": ["Roboto Flex"], "label-sm": ["Roboto Flex"], "headline-md": ["Newsreader"], "body-lg": ["Newsreader"], "label-lg": ["Roboto Flex"], "headline-lg-mobile": ["Newsreader"] }, "fontSize": { "headline-sm": ["20px", {"lineHeight": "26px", "fontWeight": "600"}], "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}], "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500"}], "headline-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "500"}], "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}], "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600"}], "headline-md": ["24px", {"lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "500"}], "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}], "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}], "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "500"}] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="h-16 px-space-md flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-serif select-none">Dicta</span></div><div class="flex flex-col items-end text-right min-w-0"><span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Dicta AI Lexicon</span><span class="font-headline-sm text-[16px] text-on-surface font-serif truncate">Less is More</span></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-space-md pb-space-xl gap-space-lg">
+<!-- Status & Intelligence Bar -->
+<!-- M3 Expressive Search Box & Multi-Modal Controls -->
+<section class="flex flex-col gap-space-sm">
+<div class="w-full rounded-full bg-surface-container-high p-1.5 shadow-md flex items-center justify-between transition-all focus-within:shadow-lg focus-within:bg-surface-container-highest">
+<div class="flex items-center gap-space-sm pl-3 flex-1 min-w-0 pr-3">
+<span class="material-symbols-outlined text-[22px] text-primary shrink-0">search</span>
+<input class="w-full bg-transparent text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none truncate" placeholder="Search any word, idiom... / 查词..." type="text"/>
+</div>
+</div>
+<!-- Contextual Clipboard & Prompt Shortcuts -->
+</section>
+<!-- Editorial Card: Word of the Day (M3 Surface Elevation Level 3) -->
+<section class="w-full rounded-2xl bg-surface-container p-space-lg shadow-xl relative overflow-hidden flex flex-col gap-space-md">
+<!-- Atmospheric Ambient Glow -->
+<div class="absolute -top-16 -right-16 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-20 -left-12 w-44 h-44 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Header Badge & Quick Bookmark -->
+<div class="flex items-center justify-between z-10">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase tracking-wide">
+          今日词汇 · Word of the Day
+        </span>
+<div class="flex items-center gap-0.5 text-secondary" title="Corpus Frequency: High">
+<span class="w-1 h-3 rounded-full bg-secondary"></span>
+<span class="w-1 h-2 rounded-full bg-secondary"></span>
+<span class="w-1 h-1.5 rounded-full bg-secondary/40"></span>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Play pronunciation" class="w-9 h-9 rounded-full bg-surface-container-high text-primary flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container active:scale-90 transition-all" id="audio-btn">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+<button aria-label="Bookmark word" class="w-9 h-9 rounded-full bg-surface-container-high text-secondary flex items-center justify-center hover:bg-surface-bright active:scale-90 transition-all" id="star-btn">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+</div>
+<!-- Lexical Headword & Anatomy -->
+<div class="flex flex-col gap-1 z-10">
+<div class="flex items-baseline gap-3 flex-wrap">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-headline-lg tracking-tight">luminous</h1>
+<span class="font-label-lg text-label-lg text-tertiary font-medium bg-tertiary/10 px-2 py-0.5 rounded-full">ADJ.</span>
+</div>
+<div class="flex items-center gap-2 text-outline font-label-md text-label-md">
+<span>/ˈluː.mɪ.nəs/</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span class="text-on-surface-variant">UK &amp; US</span>
+</div>
+</div>
+<!-- Bilingual Sense Definitions -->
+<div class="flex flex-col gap-space-sm z-10">
+<!-- Sense 1 -->
+<div class="flex items-start gap-2.5">
+<span class="font-label-sm text-label-sm font-bold text-secondary bg-secondary-container/40 rounded-full w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">1</span>
+<div class="flex flex-col">
+<div class="font-body-md text-body-md text-on-surface">
+<span class="font-semibold text-primary-fixed-dim">发光的；明亮的</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm block sm:inline sm:ml-1">Producing or reflecting a bright, steady, and radiant light.</span>
+</div>
+</div>
+</div>
+<!-- Sense 2 -->
+<div class="flex items-start gap-2.5">
+<span class="font-label-sm text-label-sm font-bold text-secondary bg-secondary-container/40 rounded-full w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">2</span>
+<div class="flex flex-col">
+<div class="font-body-md text-body-md text-on-surface">
+<span class="font-semibold text-primary-fixed-dim">清澈的；令人愉悦的</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm block sm:inline sm:ml-1">Clear, lucid, and effortless to comprehend; full of brilliance.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Contextual AI Literature Quotation -->
+<div class="rounded-xl bg-surface-container-low p-space-md z-10 shadow-inner flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 text-primary text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[15px]">format_quote</span>
+<span>Literary Context / 经典例句</span>
+</div>
+<p class="font-body-lg text-body-lg italic text-on-surface leading-relaxed pl-2">
+        “The evening sky turned a <span class="text-secondary font-semibold not-italic">luminous</span> amber above the quiet lake.”
+      </p>
+<p class="font-body-sm text-body-sm text-outline pl-2">
+        傍晚的天空在静谧的湖泊上方泛着明澈的琥珀色光芒。
+      </p>
+</div>
+<!-- AI Etymology & Nuance Pill Box -->
+<div class="rounded-xl bg-surface-container-high/60 p-3 z-10 flex items-start gap-2.5"><span class="material-symbols-outlined text-tertiary text-[18px] shrink-0 mt-0.5">history_edu</span><p class="font-body-sm text-body-sm text-on-surface-variant leading-snug"><strong class="text-tertiary font-semibold">Etymology:</strong> From Latin <em>luminosus</em>, from <em>lumen</em> (light). Refers to producing or diffusing a radiant ambient glow without harshness.</p></div>
+<!-- Card Action Triggers -->
+<div class="flex items-center justify-between pt-1 z-10 gap-space-sm">
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-bright active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[16px] text-secondary">bookmark_add</span>
+<span>加入生词本</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:text-on-surface hover:bg-surface-bright active:scale-95 transition-all" type="button"><span class="material-symbols-outlined text-[16px]">refresh</span><span>换一词 · Shuffle</span></button>
+</div>
+</section>
+<!-- Curated Lexicon Visual: Visual Mnemonics -->
+<!-- Recent Searches & Lexical History -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">最近查词</h3>
+<span class="font-label-sm text-label-sm text-outline">Recent</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="font-label-sm text-label-sm text-primary hover:underline font-medium">管理 / Manage</button>
+<button class="font-label-sm text-label-sm text-outline hover:text-error transition-colors">清空 / Clear</button>
+</div>
+</div>
+<!-- History Stream List -->
+<div class="flex flex-col gap-2">
+<!-- Item 1 -->
+<div class="w-full p-3.5 rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex items-center justify-between shadow-sm active:scale-[0.99]">
+<div class="flex items-center gap-3 min-w-0">
+<div class="flex flex-col min-w-0">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-body-md text-on-surface font-semibold truncate">ephemeral</span>
+<span class="font-label-sm text-label-sm text-tertiary">ADJ.</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">短暂的，朝生暮死的 · Lasting for a brief time</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pl-2 shrink-0">
+<span class="font-label-sm text-label-sm text-outline">10m ago</span>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="w-full p-3.5 rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex items-center justify-between shadow-sm active:scale-[0.99]">
+<div class="flex items-center gap-3 min-w-0">
+<div class="flex flex-col min-w-0">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-body-md text-on-surface font-semibold truncate">phosphorescent</span>
+<span class="font-label-sm text-label-sm text-tertiary">ADJ.</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">磷光的 · Emitting light without sensible heat</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pl-2 shrink-0">
+<span class="font-label-sm text-label-sm text-outline">2h ago</span>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="w-full p-3.5 rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex items-center justify-between shadow-sm active:scale-[0.99]">
+<div class="flex items-center gap-3 min-w-0">
+<div class="flex flex-col min-w-0">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-body-md text-on-surface font-semibold truncate">shingle</span>
+<span class="font-label-sm text-label-sm text-tertiary">NOUN</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">鹅卵石海滩 · Mass of small rounded pebbles</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pl-2 shrink-0">
+<span class="font-label-sm text-label-sm text-outline">昨天</span>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="w-full p-3.5 rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex items-center justify-between shadow-sm active:scale-[0.99]">
+<div class="flex items-center gap-3 min-w-0">
+<div class="flex flex-col min-w-0">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-body-md text-on-surface font-semibold truncate">reverie</span>
+<span class="font-label-sm text-label-sm text-tertiary">NOUN</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">遐想，白日梦 · State of being pleasantly lost in thought</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pl-2 shrink-0">
+<span class="font-label-sm text-label-sm text-outline">2天前</span>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Micro-interactions for tactile delight
+  const starBtn = document.getElementById('star-btn');
+  if (starBtn) {
+    starBtn.addEventListener('click', () => {
+      const icon = starBtn.querySelector('.material-symbols-outlined');
+      if (icon) {
+        const isFilled = icon.style.fontVariationSettings.includes("'FILL' 1");
+        icon.style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
+      }
+    });
+  }
+
+  const audioBtn = document.getElementById('audio-btn');
+  if (audioBtn) {
+    audioBtn.addEventListener('click', () => {
+      audioBtn.classList.add('bg-primary', 'text-on-primary');
+      setTimeout(() => {
+        audioBtn.classList.remove('bg-primary', 'text-on-primary');
+      }, 450);
+    });
+  }
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.35)]" data-active-classes="text-primary [&amp;&gt;div:first-child]:bg-primary-container/20 [&amp;&gt;div:first-child]:text-primary"><div class="grid grid-cols-4 items-center h-20 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center gap-1 h-full transition-colors group text-primary [&amp;&gt;div:first-child]:bg-primary-container/20 [&amp;&gt;div:first-child]:text-primary" data-path="search" href="#"><div class="w-12 h-8 rounded-full flex items-center justify-center transition-colors group-hover:bg-surface-container-high"><span class="material-symbols-outlined text-[22px]">search</span></div><span class="font-label-sm text-label-sm truncate">Search</span></a><a class="flex flex-col items-center justify-center gap-1 h-full text-on-surface-variant transition-colors group" data-path="vocabulary" href="#"><div class="w-12 h-8 rounded-full flex items-center justify-center transition-colors group-hover:bg-surface-container-high"><span class="material-symbols-outlined text-[22px]">menu_book</span></div><span class="font-label-sm text-label-sm truncate">Vocabulary</span></a><a class="flex flex-col items-center justify-center gap-1 h-full text-on-surface-variant transition-colors group" data-path="history" href="#"><div class="w-12 h-8 rounded-full flex items-center justify-center transition-colors group-hover:bg-surface-container-high"><span class="material-symbols-outlined text-[22px]">schedule</span></div><span class="font-label-sm text-label-sm truncate">History</span></a><a class="flex flex-col items-center justify-center gap-1 h-full text-on-surface-variant transition-colors group" data-path="settings" href="#"><div class="w-12 h-8 rounded-full flex items-center justify-center transition-colors group-hover:bg-surface-container-high"><span class="material-symbols-outlined text-[22px]">settings</span></div><span class="font-label-sm text-label-sm truncate">Settings</span></a></div></nav></body></html>
