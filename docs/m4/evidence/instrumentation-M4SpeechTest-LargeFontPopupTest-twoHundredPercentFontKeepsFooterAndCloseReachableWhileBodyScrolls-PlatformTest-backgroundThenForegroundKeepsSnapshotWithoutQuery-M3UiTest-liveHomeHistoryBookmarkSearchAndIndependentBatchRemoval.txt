@@ -1,0 +1,9 @@
+
+dev.dicta.prototype.M4SpeechTest:..
+dev.dicta.prototype.LargeFontPopupTest:.
+dev.dicta.prototype.PlatformTest:.
+dev.dicta.prototype.M3UiTest:.
+
+Time: 20.517
+
+OK (5 tests)

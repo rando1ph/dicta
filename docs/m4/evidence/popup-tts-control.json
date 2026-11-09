@@ -1,0 +1,8 @@
+{
+  "ukButtonEnabled": true,
+  "button": {
+    "bounds": "[107,636][406,771]",
+    "enabled": "true",
+    "clickable": "true"
+  }
+}

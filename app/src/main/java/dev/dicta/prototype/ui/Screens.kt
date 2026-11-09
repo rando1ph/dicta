@@ -104,7 +104,7 @@ private fun Home(state: LookupState, history: List<EntrySnapshot>, model: Lookup
             }
             daily.entry?.let { entry->
                 entry.compatibilityWarning?.let {Text(it,color=MaterialTheme.colorScheme.error)}
-                EntryRenderer(entry.rendered)
+                EntryRenderer(entry.rendered) {Pronunciation(entry,"home")}
                 BookmarkButton(entry,model,"dailySave")
             }
             if(daily.busy) LinearProgressIndicator(Modifier.fillMaxWidth().testTag("dailyLoading"))
@@ -147,7 +147,7 @@ fun LookupContent(state: LookupState, retry:()->Unit, cancel:()->Unit) {
         }
         is LookupState.Success -> {
             state.entry.compatibilityWarning?.let {Text(it,color=MaterialTheme.colorScheme.error)}
-            EntryRenderer(state.entry.rendered)
+            EntryRenderer(state.entry.rendered) {Pronunciation(state.entry,if(LocalContext.current is dev.dicta.prototype.platform.ProcessTextActivity) "popup" else "home")}
 
         }
         is LookupState.Error -> Column(verticalArrangement=Arrangement.spacedBy(12.dp)) {
@@ -234,10 +234,7 @@ private fun Settings(model:LookupViewModel,onProfiles:()->Unit) {
             }
             Text("外观选择已保存在此设备。",style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
         }
-        EntryCard {
-            Text("发音 · Android TTS",style=MaterialTheme.typography.titleLarge)
-            Text("语音暂不可用",style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
-        }
+        SpeechSettings()
         Spacer(Modifier.height(8.dp))
     }
 }

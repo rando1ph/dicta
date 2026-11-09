@@ -1,0 +1,72 @@
+{
+  "counts": {
+    "Warning": 13
+  },
+  "issues": [
+    {
+      "id": "RedundantLabel",
+      "severity": "Warning",
+      "message": "Redundant label can be removed"
+    },
+    {
+      "id": "AndroidGradlePluginVersion",
+      "severity": "Warning",
+      "message": "A newer version of Gradle than 8.13 is available: 8.14.6"
+    },
+    {
+      "id": "NewerVersionAvailable",
+      "severity": "Warning",
+      "message": "A newer version of org.jetbrains.kotlin.android than 2.2.21 is available: 2.4.21"
+    },
+    {
+      "id": "NewerVersionAvailable",
+      "severity": "Warning",
+      "message": "A newer version of org.jetbrains.kotlin.plugin.compose than 2.2.21 is available: 2.4.21"
+    },
+    {
+      "id": "NewerVersionAvailable",
+      "severity": "Warning",
+      "message": "A newer version of org.jetbrains.kotlinx:kotlinx-serialization-json than 1.8.1 is available: 1.12.0"
+    },
+    {
+      "id": "NewerVersionAvailable",
+      "severity": "Warning",
+      "message": "A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-android than 1.10.2 is available: 1.11.0"
+    },
+    {
+      "id": "NewerVersionAvailable",
+      "severity": "Warning",
+      "message": "A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-test than 1.10.2 is available: 1.11.0"
+    },
+    {
+      "id": "NewerVersionAvailable",
+      "severity": "Warning",
+      "message": "A newer version of com.squareup.okhttp3:mockwebserver than 4.12.0 is available: 5.5.1"
+    },
+    {
+      "id": "NewerVersionAvailable",
+      "severity": "Warning",
+      "message": "A newer version of com.squareup.okhttp3:okhttp than 4.12.0 is available: 5.5.1"
+    },
+    {
+      "id": "NewerVersionAvailable",
+      "severity": "Warning",
+      "message": "A newer version of com.squareup.okhttp3:okhttp-tls than 4.12.0 is available: 5.5.1"
+    },
+    {
+      "id": "DataExtractionRules",
+      "severity": "Warning",
+      "message": "The attribute `android:dataExtractionRules` only applies for Android 12 and higher; since `minSdkVersion` is API 26 you should also set `android:fullBackupContent`"
+    },
+    {
+      "id": "KaptUsageInsteadOfKsp",
+      "severity": "Warning",
+      "message": "This library supports using KSP instead of kapt, which greatly improves performance. Learn more: https://developer.android.com/studio/build/migrate-to-ksp"
+    },
+    {
+      "id": "UseKtx",
+      "severity": "Warning",
+      "message": "Use the KTX extension function `SharedPreferences.edit` instead?"
+    }
+  ]
+}

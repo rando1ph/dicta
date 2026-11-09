@@ -30,6 +30,15 @@ fun DictaTheme(content: @Composable () -> Unit) {
     val mode by Appearance.mode.collectAsState()
     val accent by Appearance.accent.collectAsState()
     val dark = when (mode) { ThemeMode.System -> isSystemInDarkTheme(); ThemeMode.Dark -> true; ThemeMode.Light -> false }
+    val activity=androidx.activity.compose.LocalActivity.current as? dev.dicta.prototype.platform.MainActivity
+    SideEffect {
+        activity?.window?.let {window->
+            androidx.core.view.WindowCompat.getInsetsController(window,window.decorView).apply {
+                isAppearanceLightStatusBars=!dark
+                isAppearanceLightNavigationBars=!dark
+            }
+        }
+    }
     val colors = if (dark) darkColorScheme(
         primary = accentColors[accent], onPrimary = Color(0xFF28049D), primaryContainer = Color(0xFF403755),
         secondary = Color(0xFFF5BD6C), tertiary = Color(0xFF76D1FF),

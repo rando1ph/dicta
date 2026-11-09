@@ -1,0 +1,151 @@
+{
+  "folder": "https://drive.google.com/drive/folders/1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+  "visualApproval": "pending user review",
+  "listeningApproval": "pending user confirmation",
+  "files": [
+    {
+      "file": "M4-04-bbc-popup.png",
+      "url": "https://drive.google.com/file/d/1LHhVln8y527YazRswRqGaFJnvxTl53iI/view?usp=drivesdk",
+      "id": "1LHhVln8y527YazRswRqGaFJnvxTl53iI",
+      "role": "showcase",
+      "bytes": 401478,
+      "sha256": "dd72620e4c03dca0907733cce0adbd99c1578ece44fdeab49003ebd1ddfabaf8",
+      "localPath": "artifacts/m4/M4-04-bbc-popup.png",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "userVisualApproval": "pending"
+    },
+    {
+      "file": "M4-08-home.png",
+      "id": "1IHonzNuWaK06JUpjtLHhBrOSfGNGcAgb",
+      "url": "https://drive.google.com/file/d/1IHonzNuWaK06JUpjtLHhBrOSfGNGcAgb/view?usp=drivesdk",
+      "role": "showcase",
+      "bytes": 230232,
+      "sha256": "d90cb06e21956f0dd9b7ef4286b6bd7addec482c52dbd7229e300cbdf5d2aea0",
+      "localPath": "artifacts/m4/M4-08-home.png",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "userVisualApproval": "pending"
+    },
+    {
+      "file": "M4-09-history.png",
+      "id": "13h8S3evHv4DIIt5vXXv7UFLa3tm0Pkrq",
+      "url": "https://drive.google.com/file/d/13h8S3evHv4DIIt5vXXv7UFLa3tm0Pkrq/view?usp=drivesdk",
+      "role": "showcase",
+      "bytes": 195896,
+      "sha256": "40e67e71b044599e29dc24a60ab1af38e13bab24d003731218ce1fe79d718bcd",
+      "localPath": "artifacts/m4/M4-09-history.png",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "userVisualApproval": "pending"
+    },
+    {
+      "file": "M4-10-vocabulary.png",
+      "id": "1cPPWkzoxvx3ZzKl5ULRqXRWwbQrEBYvs",
+      "url": "https://drive.google.com/file/d/1cPPWkzoxvx3ZzKl5ULRqXRWwbQrEBYvs/view?usp=drivesdk",
+      "role": "showcase",
+      "bytes": 230221,
+      "sha256": "25bd02b3a3efa8b8110f0d96ba43e62ec31692738491d28baa15b2f94eec397c",
+      "localPath": "artifacts/m4/M4-10-vocabulary.png",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "userVisualApproval": "pending"
+    },
+    {
+      "file": "Dicta-M4-debug.apk",
+      "id": "1Geqg84NovZlfm9ut0kf6k0T1ui3mfnzZ",
+      "url": "https://drive.google.com/file/d/1Geqg84NovZlfm9ut0kf6k0T1ui3mfnzZ/view?usp=drivesdk",
+      "role": "apk",
+      "bytes": 12561861,
+      "sha256": "fd10c9de0f99e56836d062130b46ffea4cec259912f985f679de68a9111f1011",
+      "localPath": "artifacts/m4/Dicta-M4-debug.apk"
+    },
+    {
+      "file": "Dicta-UK-then-US.wav",
+      "id": "1S7HekrYAaiPGba-Hpy7V5A235GgiczR1",
+      "url": "https://drive.google.com/file/d/1S7HekrYAaiPGba-Hpy7V5A235GgiczR1/view?usp=drivesdk",
+      "role": "listening",
+      "bytes": 363340,
+      "sha256": "309df5cc17b1443e47b45e2e22467c7630b65d35c2a25ad3b015152a9004d935",
+      "localPath": "artifacts/m4/Dicta-UK-then-US.wav"
+    },
+    {
+      "file": "M4-00-guardian-menu.png",
+      "id": "16qaVC4eHFjGyn6c42lmPNtCeHSnnCwIc",
+      "url": "https://drive.google.com/file/d/16qaVC4eHFjGyn6c42lmPNtCeHSnnCwIc/view?usp=drivesdk",
+      "role": "evidence",
+      "bytes": 1470055,
+      "sha256": "a4b8073cb340e288269bf791f3ff15f7c36ef896bb2ff350e5c9c7079887f01e",
+      "localPath": "artifacts/m4/M4-00-guardian-menu.png",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "userVisualApproval": "pending"
+    },
+    {
+      "file": "M4-02-guardian-saved.png",
+      "id": "1CSLCeQ--icOAhqsIamKymWhodmyp-Xlr",
+      "url": "https://drive.google.com/file/d/1CSLCeQ--icOAhqsIamKymWhodmyp-Xlr/view?usp=drivesdk",
+      "role": "showcase",
+      "bytes": 429734,
+      "sha256": "c2b831e85ee772e74f1e886559f72bbfa3db675d6ef32e9f7ed7616708ac3a75",
+      "localPath": "artifacts/m4/M4-02-guardian-saved.png",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "userVisualApproval": "pending"
+    },
+    {
+      "file": "M4-03-guardian-return.png",
+      "id": "17nrBu2QjFI-OXDmL0YrzkaU2mijtGv_S",
+      "url": "https://drive.google.com/file/d/17nrBu2QjFI-OXDmL0YrzkaU2mijtGv_S/view?usp=drivesdk",
+      "role": "evidence",
+      "bytes": 1690903,
+      "sha256": "2e414638a04926dcfb6e124761ad6804184a9e21568193b20e772c56bfc7d763",
+      "localPath": "artifacts/m4/M4-03-guardian-return.png",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "userVisualApproval": "pending"
+    },
+    {
+      "file": "M4-07-bbc-return.png",
+      "id": "163q9lesS-UUjs8rjzVhviEjxYvj3mzkE",
+      "url": "https://drive.google.com/file/d/163q9lesS-UUjs8rjzVhviEjxYvj3mzkE/view?usp=drivesdk",
+      "role": "evidence",
+      "bytes": 1430457,
+      "sha256": "67b82545c532416314c49cf8a41ed13ec2f3eeaf267c637ecc649e8a9123f5e9",
+      "localPath": "artifacts/m4/M4-07-bbc-return.png",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "userVisualApproval": "pending"
+    },
+    {
+      "file": "M4-11-history-light.png",
+      "id": "10r0iJBNDrIhJPvNz3qCM0bdjb0my4hRA",
+      "url": "https://drive.google.com/file/d/10r0iJBNDrIhJPvNz3qCM0bdjb0my4hRA/view?usp=drivesdk",
+      "role": "showcase",
+      "bytes": 196264,
+      "sha256": "236b9da97da4530d4d32904d5a3a6b1dbf0b0a6edc45e23259d2f8a548e947a8",
+      "localPath": "artifacts/m4/M4-11-history-light.png",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "userVisualApproval": "pending"
+    }
+  ]
+}

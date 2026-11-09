@@ -1,0 +1,7 @@
+
+dev.dicta.prototype.M4SpeechUiTest:...
+dev.dicta.prototype.M4AppearanceTest:.
+
+Time: 8.659
+
+OK (4 tests)

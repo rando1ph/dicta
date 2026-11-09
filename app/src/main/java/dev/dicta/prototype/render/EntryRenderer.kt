@@ -16,19 +16,24 @@ import dev.dicta.prototype.profile.RenderedEntry
 
 /** Shared, data-agnostic native renderer. All values and ordering come from the template. */
 @Composable
-fun EntryRenderer(entry: RenderedEntry) {
+fun EntryRenderer(entry: RenderedEntry, speech: (@Composable () -> Unit)? = null) {
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        entry.nodes.forEach { Node(it) }
+        // Custom templates may omit a headline; their declared speech action remains reachable.
+        if (!entry.nodes.any { hasHeadline(it) }) speech?.invoke()
+        entry.nodes.forEach { Node(it, speech=speech) }
     }
 }
 
+private fun hasHeadline(node:RenderNode):Boolean =
+    node.style=="headline" || node.children.any(::hasHeadline) || node.items.any {it.any(::hasHeadline)}
+
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun Node(node: RenderNode, depth: Int = 0) {
+private fun Node(node: RenderNode, depth: Int = 0, speech: (@Composable () -> Unit)? = null) {
     val colors = MaterialTheme.colorScheme
     when (node.type) {
         "row" -> FlowRow(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            node.children.forEach { Node(it, depth + 1) }
+            node.children.forEach { Node(it, depth + 1, speech) }
         }
         "column" -> {
             val etymology = node.label != null && node.children.any { it.style == "etymology" }
@@ -39,7 +44,7 @@ private fun Node(node: RenderNode, depth: Int = 0) {
                         Text(node.label + if (expanded) "  −" else "  +", color = colors.secondary, style = MaterialTheme.typography.labelMedium)
                     } else Text(node.label, style = MaterialTheme.typography.labelMedium, color = colors.onSurfaceVariant)
                 }
-                node.children.forEachIndexed { index, child -> if (!etymology || expanded || index == 0) Node(child, depth + 1) }
+                node.children.forEachIndexed { index, child -> if (!etymology || expanded || index == 0) Node(child, depth + 1, speech) }
             }
         }
         "repeat" -> Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -48,7 +53,7 @@ private fun Node(node: RenderNode, depth: Int = 0) {
                     if (depth == 0) Text((index+1).toString(), color=colors.secondary,
                         style=MaterialTheme.typography.labelMedium,
                         modifier=Modifier.background(colors.secondary.copy(alpha=.12f), RoundedCornerShape(50)).padding(horizontal=7.dp,vertical=3.dp))
-                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(7.dp)) { children.forEach { Node(it, depth + 1) } }
+                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(7.dp)) { children.forEach { Node(it, depth + 1, speech) } }
                 }
             }
         }
@@ -64,7 +69,7 @@ private fun Node(node: RenderNode, depth: Int = 0) {
         "text" -> {
             val value = (node.label?.let { "$it  " } ?: "") + node.value.orEmpty()
             when(node.style) {
-                "headline" -> Text(value,style=MaterialTheme.typography.headlineLarge,fontFamily=FontFamily.Serif)
+                "headline" -> Column { Text(value,style=MaterialTheme.typography.headlineLarge,fontFamily=FontFamily.Serif);speech?.invoke() }
                 "ipa" -> Text(value,style=MaterialTheme.typography.labelMedium,color=colors.onSurfaceVariant,
                     modifier=Modifier.background(colors.surfaceContainerHighest,RoundedCornerShape(50)).padding(horizontal=10.dp,vertical=6.dp))
                 "grammar" -> Text(value,style=MaterialTheme.typography.labelMedium,color=colors.tertiary)

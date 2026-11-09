@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET" />
+    <queries><intent><action android:name="android.intent.action.TTS_SERVICE" /></intent></queries>
     <application android:usesCleartextTraffic="false" android:name=".platform.DictaApplication" android:allowBackup="false" android:dataExtractionRules="@xml/data_extraction_rules"
         android:label="Dicta" android:icon="@drawable/ic_dicta" android:theme="@style/Theme.Dicta"
         android:supportsRtl="true">

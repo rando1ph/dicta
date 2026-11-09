@@ -86,9 +86,9 @@ class LargeFontPopupTest {
         compose.setContent {
             val density = LocalDensity.current
             CompositionLocalProvider(LocalDensity provides Density(density.density, 2f)) {
-                DictaTheme {
+                DictaTheme { dev.dicta.prototype.ui.WithSpeech {
                     if (visible.value) Popup(model, dismiss = { visible.value = false; model.cancel() }, details = {})
-                }
+                } }
             }
         }
         compose.runOnIdle { model.lookup("ephemeral") }

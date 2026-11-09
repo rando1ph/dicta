@@ -1,0 +1,326 @@
+{
+  "engine": "com.google.android.tts",
+  "voices": [
+    {
+      "name": "en-gb-x-gba-local",
+      "country": "GB",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-gb-x-gbb-network",
+      "country": "GB",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-tpf-local",
+      "country": "US",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-sfg-network",
+      "country": "US",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-gb-x-rjs-local",
+      "country": "GB",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-sfg-local",
+      "country": "US",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-gb-x-gbg-local",
+      "country": "GB",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-iob-local",
+      "country": "US",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-gb-x-gbd-local",
+      "country": "GB",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-gb-x-gbd-network",
+      "country": "GB",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-tpd-network",
+      "country": "US",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-tpc-network",
+      "country": "US",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-gb-x-gbb-local",
+      "country": "GB",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-gb-x-gbc-local",
+      "country": "GB",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-iob-network",
+      "country": "US",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-iol-network",
+      "country": "US",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-iom-network",
+      "country": "US",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-GB-language",
+      "country": "GB",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-gb-x-gba-network",
+      "country": "GB",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-iom-local",
+      "country": "US",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-US-language",
+      "country": "US",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-gb-x-gbc-network",
+      "country": "GB",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-tpd-local",
+      "country": "US",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-iog-network",
+      "country": "US",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-tpf-network",
+      "country": "US",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-gb-x-rjs-network",
+      "country": "GB",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-iog-local",
+      "country": "US",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-tpc-local",
+      "country": "US",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-gb-x-gbg-network",
+      "country": "GB",
+      "network": true,
+      "installed": true,
+      "quality": 400
+    },
+    {
+      "name": "en-us-x-iol-local",
+      "country": "US",
+      "network": false,
+      "installed": true,
+      "quality": 400
+    }
+  ],
+  "selected": {
+    "GB": "en-GB-language",
+    "US": "en-US-language"
+  },
+  "languageSupport": {
+    "GB": 1,
+    "US": 1
+  },
+  "speaker": {
+    "routedDeviceType": 2,
+    "completed": true,
+    "muted": false,
+    "volume": 5
+  },
+  "events": [
+    {
+      "event": "init",
+      "id": "",
+      "code": 0
+    },
+    {
+      "event": "synthesizeReturn",
+      "id": "0d983666-d38b-4ec7-a55d-222d7001eacb",
+      "code": 0
+    },
+    {
+      "event": "start",
+      "id": "0d983666-d38b-4ec7-a55d-222d7001eacb"
+    },
+    {
+      "event": "done",
+      "id": "0d983666-d38b-4ec7-a55d-222d7001eacb"
+    },
+    {
+      "event": "speakReturn",
+      "id": "29cda320-7fae-4f7d-905c-9acc2c0a2d76",
+      "code": 0
+    },
+    {
+      "event": "start",
+      "id": "29cda320-7fae-4f7d-905c-9acc2c0a2d76"
+    },
+    {
+      "event": "done",
+      "id": "29cda320-7fae-4f7d-905c-9acc2c0a2d76"
+    },
+    {
+      "event": "synthesizeReturn",
+      "id": "14a92dba-a948-4b33-9bba-72fb044301c5",
+      "code": 0
+    },
+    {
+      "event": "start",
+      "id": "14a92dba-a948-4b33-9bba-72fb044301c5"
+    },
+    {
+      "event": "done",
+      "id": "14a92dba-a948-4b33-9bba-72fb044301c5"
+    },
+    {
+      "event": "speakReturn",
+      "id": "276bb0da-988c-4e82-9b1e-fc5e8ef18b77",
+      "code": 0
+    },
+    {
+      "event": "start",
+      "id": "276bb0da-988c-4e82-9b1e-fc5e8ef18b77"
+    },
+    {
+      "event": "done",
+      "id": "276bb0da-988c-4e82-9b1e-fc5e8ef18b77"
+    },
+    {
+      "event": "speakReturn",
+      "id": "b4048f93-ece7-41e2-a50d-ceb68b9e5de3",
+      "code": 0
+    },
+    {
+      "event": "start",
+      "id": "b4048f93-ece7-41e2-a50d-ceb68b9e5de3"
+    },
+    {
+      "event": "stop",
+      "id": "b4048f93-ece7-41e2-a50d-ceb68b9e5de3",
+      "code": 1
+    },
+    {
+      "event": "speakReturn",
+      "id": "1dc6ba6b-5751-4839-b9c3-77b25410956f",
+      "code": 0
+    },
+    {
+      "event": "speakReturn",
+      "id": "5ebe5fe9-85d7-4380-8a2b-d2d95a097631",
+      "code": 0
+    },
+    {
+      "event": "stop",
+      "id": "1dc6ba6b-5751-4839-b9c3-77b25410956f",
+      "code": 1
+    },
+    {
+      "event": "start",
+      "id": "5ebe5fe9-85d7-4380-8a2b-d2d95a097631"
+    },
+    {
+      "event": "done",
+      "id": "5ebe5fe9-85d7-4380-8a2b-d2d95a097631"
+    }
+  ],
+  "userListeningApproval": "pending"
+}

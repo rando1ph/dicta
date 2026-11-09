@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
                 else -> Unit
             }
         }
-        setContent { DictaTheme { MainScreen(model) } }
+        setContent { DictaTheme { WithSpeech { MainScreen(model) } } }
     }
     override fun onSaveInstanceState(outState: Bundle) {
         saveQueryState(outState, model.state.value)
@@ -72,10 +72,10 @@ class ProcessTextActivity : ComponentActivity() {
                 if (id != null) model.openSnapshot(id) else model.restoredWithoutRequest(savedInstanceState.getString("query").orEmpty())
             } else model.lookup(selectedText(intent), "popup")
         }
-        setContent { DictaTheme { Popup(model, ::dismiss) { id ->
+        setContent { DictaTheme { WithSpeech { Popup(model, ::dismiss) { id ->
             startActivity(Intent(this, MainActivity::class.java).putExtra("snapshotId",id))
             dismiss()
-        } } }
+        } } } }
     }
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)

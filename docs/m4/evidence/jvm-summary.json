@@ -1,0 +1,57 @@
+{
+  "tests": 49,
+  "failures": 0,
+  "errors": 0,
+  "suites": [
+    {
+      "name": "dev.dicta.prototype.speech.VoicePolicyTest",
+      "tests": "6",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-09T20:07:50.242Z",
+      "hostname": "randolph-XiaoXinPro-16-IPH11",
+      "time": "0.002"
+    },
+    {
+      "name": "dev.dicta.prototype.profile.ProfileEngineTest",
+      "tests": "25",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-09T20:07:49.921Z",
+      "hostname": "randolph-XiaoXinPro-16-IPH11",
+      "time": "0.194"
+    },
+    {
+      "name": "dev.dicta.prototype.query.LookupSessionTest",
+      "tests": "6",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-09T20:07:50.223Z",
+      "hostname": "randolph-XiaoXinPro-16-IPH11",
+      "time": "0.017"
+    },
+    {
+      "name": "dev.dicta.prototype.profile.ProfilePackageTest",
+      "tests": "6",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-09T20:07:50.117Z",
+      "hostname": "randolph-XiaoXinPro-16-IPH11",
+      "time": "0.036"
+    },
+    {
+      "name": "dev.dicta.prototype.query.FakeProviderTest",
+      "tests": "6",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-09T20:07:50.154Z",
+      "hostname": "randolph-XiaoXinPro-16-IPH11",
+      "time": "0.068"
+    }
+  ]
+}

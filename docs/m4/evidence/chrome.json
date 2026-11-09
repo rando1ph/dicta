@@ -1,0 +1,33 @@
+{
+  "bbc": {
+    "url": "https://www.bbc.com/news/science-environment-68500649",
+    "query": "fossilised",
+    "actualLongPress": true,
+    "actualSystemMenu": true,
+    "popup": true,
+    "usSpeechButtonEnabled": true,
+    "openedSnapshot": true,
+    "returnedToChrome": true,
+    "viewportVisuallyUnchanged": true,
+    "before": "artifacts/m4/inspect-bbc-clean.png",
+    "after": "artifacts/m4/M4-07-bbc-return.png"
+  },
+  "guardian": {
+    "url": "https://www.theguardian.com/environment/article/2024/may/22/lake-district-borrowdale-rainforest-declared-national-nature-reserve",
+    "query": "rainforest",
+    "actualLongPress": true,
+    "actualSystemMenu": true,
+    "popup": true,
+    "bookmarkPersisted": true,
+    "returnCheck": "verified by foreground and final full-screen before/after comparison",
+    "headlineBefore": {
+      "bounds": "[25,1724][1054,2000]",
+      "source": "first populated Chrome accessibility hierarchy; subsequent transient WebView-only trees"
+    },
+    "returnedToChrome": true,
+    "viewportVisuallyUnchanged": true,
+    "before": "artifacts/m4/inspect-guardian-stable.png",
+    "after": "artifacts/m4/M4-03-guardian-return.png",
+    "pronunciationControlEnabled": true
+  }
+}

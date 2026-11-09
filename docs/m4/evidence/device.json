@@ -1,0 +1,18 @@
+{
+  "timeUtc": "2026-11-09T19:54:51.939145+00:00",
+  "connectedDevices": 1,
+  "identity": {
+    "ro.product.manufacturer": "OnePlus",
+    "ro.product.model": "ONEPLUS A6013",
+    "ro.product.device": "OnePlus6T",
+    "ro.lineage.device": "fajita"
+  },
+  "androidRelease": "15",
+  "apiLevel": 35,
+  "chromeVersion": "157.0.8103.46",
+  "chromeViewHandler": "com.android.chrome/com.google.android.apps.chrome.IntentDispatcher",
+  "displaySize": "Physical size: 1080x2340",
+  "density": "Physical density: 450",
+  "operations": "Identity, package and display queries only; no launch/install/data changes.",
+  "popupEndToEnd": "Deferred to M1: no native app exists in M0."
+}

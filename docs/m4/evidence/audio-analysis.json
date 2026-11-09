@@ -1,0 +1,24 @@
+[
+  {
+    "country": "GB",
+    "bytes": 177392,
+    "sampleRate": 24000,
+    "channels": 1,
+    "durationSeconds": 3.695,
+    "peak16bit": 22039,
+    "rms16bit": 3254.25,
+    "nonZeroFraction": 0.9408,
+    "sha256": "4865c2482eb3d7112f24b0763ea3fe96d9c1b59aaccdb8c9fa6424d60629a091"
+  },
+  {
+    "country": "US",
+    "bytes": 161992,
+    "sampleRate": 24000,
+    "channels": 1,
+    "durationSeconds": 3.374,
+    "peak16bit": 19852,
+    "rms16bit": 3731.11,
+    "nonZeroFraction": 0.9268,
+    "sha256": "17f23805868850da44fe9953095b6eac1864e6ec766e5e2ef4c34f4712bb7f0f"
+  }
+]

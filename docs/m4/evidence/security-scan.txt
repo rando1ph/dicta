@@ -1,0 +1,24 @@
+{
+  "originalCredentialCiphertextUnchanged": true,
+  "apks": [
+    {
+      "apk": "app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "fd10c9de0f99e56836d062130b46ffea4cec259912f985f679de68a9111f1011",
+      "bytes": 12561861,
+      "credentialAbsent": true
+    },
+    {
+      "apk": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "sha256": "e17b9ef3e079f24a6345a879f62071e32383b91d04d98c3fbb356305cff74af7",
+      "bytes": 1231880,
+      "credentialAbsent": true
+    }
+  ],
+  "canonicalProfileEqual": true,
+  "testCodeAbsentFromApp": true,
+  "encryptedDeviceCredential": true,
+  "credentialAbsentFromAppLogs": true,
+  "appLogBytesScanned": 57599,
+  "internetPermission": true,
+  "forbiddenPermissionsAbsent": true
+}
