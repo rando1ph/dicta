@@ -4,13 +4,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.withTimeout
 import java.util.Locale
 
-/** M1 fixture source. No endpoint, credentials, network, or invented entries. */
-fun interface Provider {
-    suspend fun generate(query: String): String
-}
-
-class ProviderFailure(val userMessage: String) : Exception(userMessage)
-
 class FakeProvider(private val readFixture: (String) -> String) : Provider {
     override suspend fun generate(query: String): String {
         val normalized = query.lowercase(Locale.ROOT)

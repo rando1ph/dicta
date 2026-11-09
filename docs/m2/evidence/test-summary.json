@@ -1,0 +1,41 @@
+{
+  "jvm": [
+    {
+      "suite": "dev.dicta.prototype.profile.ProfileEngineTest",
+      "tests": 25,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "dev.dicta.prototype.query.LookupSessionTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "dev.dicta.prototype.provider.DeepSeekProviderTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "dev.dicta.prototype.query.FakeProviderTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "device": {
+    "tests": 16,
+    "failures": 0,
+    "durationSeconds": 55.289
+  },
+  "m0": {
+    "tests": 30,
+    "failures": 0
+  },
+  "lint": {
+    "Error": 0,
+    "Warning": 11
+  }
+}

@@ -1,0 +1,35 @@
+test_bad_envelope (test_verify.ContractTests.test_bad_envelope) ... ok
+test_binding_type (test_verify.ContractTests.test_binding_type) ... ok
+test_binding_typo (test_verify.ContractTests.test_binding_typo) ... ok
+test_blank (test_verify.ContractTests.test_blank) ... ok
+test_custom_field_without_code_change (test_verify.ContractTests.test_custom_field_without_code_change) ... ok
+test_default (test_verify.ContractTests.test_default) ... ok
+test_duplicate (test_verify.ContractTests.test_duplicate) ... ok
+test_empty_senses (test_verify.ContractTests.test_empty_senses) ... ok
+test_extra_field (test_verify.ContractTests.test_extra_field) ... ok
+test_input_limits (test_verify.ContractTests.test_input_limits) ... ok
+test_invalid_json (test_verify.ContractTests.test_invalid_json) ... ok
+test_missing_required (test_verify.ContractTests.test_missing_required) ... ok
+test_nan (test_verify.ContractTests.test_nan) ... ok
+test_nullable (test_verify.ContractTests.test_nullable) ... ok
+test_optional_binding_rejected (test_verify.ContractTests.test_optional_binding_rejected) ... ok
+test_prompt_envelope (test_verify.ContractTests.test_prompt_envelope) ... ok
+test_remote_reference (test_verify.ContractTests.test_remote_reference) ... ok
+test_script_is_plain_text (test_verify.ContractTests.test_script_is_plain_text) ... ok
+test_size (test_verify.ContractTests.test_size) ... ok
+test_truncation (test_verify.ContractTests.test_truncation) ... ok
+test_unbounded_index_rejected (test_verify.ContractTests.test_unbounded_index_rejected) ... ok
+test_unknown_action (test_verify.ContractTests.test_unknown_action) ... ok
+test_unknown_component (test_verify.ContractTests.test_unknown_component) ... ok
+test_unsupported_union (test_verify.ContractTests.test_unsupported_union) ... ok
+test_wrong_type (test_verify.ContractTests.test_wrong_type) ... ok
+test_cancellation_propagates (test_verify.NetworkTests.test_cancellation_propagates) ... ok
+test_http_errors (test_verify.NetworkTests.test_http_errors) ... ok
+test_network_error (test_verify.NetworkTests.test_network_error) ... ok
+test_real_loopback_timeout (test_verify.NetworkTests.test_real_loopback_timeout) ... ok
+test_response_cap (test_verify.NetworkTests.test_response_cap) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.323s
+
+OK

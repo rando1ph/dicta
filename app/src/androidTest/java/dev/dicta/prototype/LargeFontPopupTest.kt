@@ -32,9 +32,9 @@ class LargeFontPopupTest {
             DictaTheme { if (visible.value) Popup(model, dismiss = { visible.value = false }, details = {}) }
         }
         compose.runOnIdle { model.lookup("ephemeral") }
-        compose.waitUntil(8_000) { model.state.value is LookupState.Success }
+        compose.waitUntil(65_000) { model.state.value is LookupState.Success }
         // A normal text tap within the card must not invoke the outside handler.
-        compose.onNodeWithText("演示数据 · M0 已验证样例").performTouchInput { click() }
+        compose.onNodeWithText("ephemeral").performTouchInput { click() }
         compose.onNodeWithTag("dictaPopup").assertIsDisplayed()
         compose.onNodeWithTag("popupTouchBounds").performTouchInput { click(Offset(1f, height / 2f)) }
         compose.onNodeWithTag("dictaPopup").assertDoesNotExist()
@@ -57,7 +57,7 @@ class LargeFontPopupTest {
             }
         }
         compose.runOnIdle { model.lookup("ephemeral") }
-        compose.waitUntil(8_000) { model.state.value is LookupState.Success }
+        compose.waitUntil(65_000) { model.state.value is LookupState.Success }
         compose.onNodeWithTag("popupDetails").assertIsDisplayed()
         compose.onNodeWithTag("closePopup").assertIsDisplayed()
         compose.onNodeWithTag("popupScroll").performTouchInput { swipeUp() }

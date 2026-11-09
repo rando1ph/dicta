@@ -1,7 +1,8 @@
 # Dicta
 
-Android 原生 BYOK AI 词典。已批准五屏设计位于 `design/`；M1 已实现 Kotlin / Jetpack Compose 原型，使用 M0 默认 Profile 与 Fake Provider。真实 BYOK 尚未开放。
+Android 原生 BYOK AI 词典。已批准五屏设计位于 `design/`；M2 已接入 DeepSeek 真实 BYOK，Home 与 Chrome 划词 Popup 共用默认 Profile、实时查询与 Schema 校验。
 
+- [M2 真实查询、凭据安全与真机验收](docs/m2/REPORT.md)
 - [M1 原生工程、真机测试与截图审阅](docs/m1/REPORT.md)
 - [M0 报告与验收证据](docs/m0/REPORT.md)
 - [五屏字段、交互与状态](docs/m0/VISUAL-CONTRACT.md)
@@ -14,7 +15,7 @@ Android 原生 BYOK AI 词典。已批准五屏设计位于 `design/`；M1 已�
 # APK: app/build/outputs/apk/debug/app-debug.apk
 ```
 
-M1 使用临时包名 `dev.dicta.prototype`，无网络权限；支持 luminous、ephemeral、qzxvplmnonce 演示样例。历史仅在本次进程内保留，收藏/每日词/配置编辑/TTS 留待后续阶段。截图已上传指定 Drive，视觉仍待用户人工审阅。
+使用临时包名 `dev.dicta.prototype`。在 Settings 保存 HTTPS Endpoint / Model / API Key，再从首页查词或 Chrome 选词菜单调用 Dicta。默认 DeepSeek / deepseek-flash；Key 用 Android Keystore 加密存储。历史仅在本次进程内保留；完整持久化/收藏/每日词/Profile 编辑器留 M3，TTS 留 M4。M2 截图已上传指定 Drive，待用户人工审阅。
 
 ```bash
 python3 -m venv .venv

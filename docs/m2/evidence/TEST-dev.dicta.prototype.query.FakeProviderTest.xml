@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.dicta.prototype.query.FakeProviderTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-09T18:14:23.004Z" hostname="randolph-XiaoXinPro-16-IPH11" time="0.066">
+  <properties/>
+  <testcase name="timeoutIsBoundedAndDoesNotReadFixture" classname="dev.dicta.prototype.query.FakeProviderTest" time="0.051"/>
+  <testcase name="knownSampleMatchesOnlyItsOwnFixture" classname="dev.dicta.prototype.query.FakeProviderTest" time="0.004"/>
+  <testcase name="unsupportedQueryNeverReadsAReplacementFixture" classname="dev.dicta.prototype.query.FakeProviderTest" time="0.003"/>
+  <testcase name="normalizationAndUnicodeLimit" classname="dev.dicta.prototype.query.FakeProviderTest" time="0.002"/>
+  <testcase name="cancelledSlowQueryCannotReadOrReturnFixture" classname="dev.dicta.prototype.query.FakeProviderTest" time="0.004"/>
+  <testcase name="deliberateFailureHasSafeMessage" classname="dev.dicta.prototype.query.FakeProviderTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

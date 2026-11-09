@@ -3,7 +3,8 @@ package dev.dicta.prototype.data
 import android.content.Context
 import dev.dicta.prototype.profile.ProfileEngine
 import dev.dicta.prototype.profile.RenderedEntry
-import dev.dicta.prototype.provider.FakeProvider
+import dev.dicta.prototype.provider.DeepSeekProvider
+import dev.dicta.prototype.security.CredentialStore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
@@ -46,7 +47,10 @@ class DictaRepository private constructor(context: Context) {
         engine.decodeAndRender(example)
         DefaultProfile(schema, template, prompt, manifest, example, engine)
     }
-    private val provider = FakeProvider { asset("examples/$it") }
+    val credentials = CredentialStore(context.applicationContext)
+    private val provider = DeepSeekProvider(credentials::load, {
+        profile.prompt.replace("{{schema_json}}", profile.schema).replace("{{example_json}}", profile.example)
+    })
     private val mutableHistory = MutableStateFlow<List<EntrySnapshot>>(emptyList())
     val history: StateFlow<List<EntrySnapshot>> = mutableHistory.asStateFlow()
 

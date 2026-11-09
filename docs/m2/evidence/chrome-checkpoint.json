@@ -1,0 +1,29 @@
+{
+  "word": "petrichor",
+  "beforeBounds": "[75,681][1004,796]",
+  "selection": "actual long press",
+  "menu": "Chrome floating selection overflow → Dicta, tapped from actual screenshot",
+  "liveWord": "petrichor",
+  "renderedTexts": [
+    "Dicta · Popup",
+    "关闭 Dicta",
+    "petrichor",
+    "noun",
+    "UK  /ˈpɛtrɪkɔː/",
+    "US  /ˈpɛtrɪkɔːr/",
+    "1",
+    "noun",
+    "雨后泥土散发的清新气味，常带一点泥土和植物的香味；有时指这种气味的成因或现象",
+    "The distinctive, earthy scent that rises from dry soil when rain falls after a dry spell, often associated with the smell of damp earth and plants.",
+    "After the storm, the scent of petrichor hung in the cool air.",
+    "暴风雨过后，凉爽的空气中弥漫着雨后泥土的清香。",
+    "The first drops of rain released the petrichor from the dry garden.",
+    "收藏",
+    "详细释义"
+  ],
+  "timeToObservedSuccessSeconds": 12.037,
+  "debugLabelsAbsent": true,
+  "afterBounds": "[75,681][1004,796]",
+  "returnedToChrome": true,
+  "samePosition": true
+}

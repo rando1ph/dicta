@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.dicta.prototype.query.LookupSessionTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-09T18:14:23.073Z" hostname="randolph-XiaoXinPro-16-IPH11" time="0.03">
+  <properties/>
+  <testcase name="restoreDoesNotAutomaticallyReissueRequest" classname="dev.dicta.prototype.query.LookupSessionTest" time="0.01"/>
+  <testcase name="latestWinsEvenWhenOldSourceIgnoresCancellation" classname="dev.dicta.prototype.query.LookupSessionTest" time="0.005"/>
+  <testcase name="malformedInputIsRejectedBeforeProvider" classname="dev.dicta.prototype.query.LookupSessionTest" time="0.003"/>
+  <testcase name="openSnapshotDoesNotQueryOrAddHistory" classname="dev.dicta.prototype.query.LookupSessionTest" time="0.003"/>
+  <testcase name="timeoutBecomesVisibleErrorAndExplicitRetryStartsOneRequest" classname="dev.dicta.prototype.query.LookupSessionTest" time="0.006"/>
+  <testcase name="cancellationDoesNotSaveOrPublishLateResult" classname="dev.dicta.prototype.query.LookupSessionTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

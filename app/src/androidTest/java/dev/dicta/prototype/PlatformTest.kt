@@ -29,7 +29,7 @@ class PlatformTest {
             .putExtra(Intent.EXTRA_PROCESS_TEXT_READONLY, readOnly)
 
     private fun await(message: String, condition: () -> Boolean) {
-        val deadline = System.currentTimeMillis() + 8_000
+        val deadline = System.currentTimeMillis() + 65_000
         while (System.currentTimeMillis() < deadline) {
             if (condition()) return
             Thread.sleep(60)

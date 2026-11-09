@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
             when {
                 entryId != null && model.openSnapshot(entryId) -> Unit
                 entryId != null || savedInstanceState != null -> model.restoredWithoutRequest(savedInstanceState?.getString("query").orEmpty())
-                else -> model.lookup("luminous")
+                else -> Unit
             }
         }
         setContent { DictaTheme { MainScreen(model) } }
@@ -88,6 +88,10 @@ class ProcessTextActivity : ComponentActivity() {
         intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)?.toString().orEmpty()
     } catch (_: RuntimeException) { "" }
     fun dismiss() { model.cancel();setResult(RESULT_CANCELED);finish() }
+    override fun onDestroy() {
+        if (isFinishing) model.cancel()
+        super.onDestroy()
+    }
     override fun onSaveInstanceState(outState: Bundle) {
         saveQueryState(outState,model.state.value)
         super.onSaveInstanceState(outState)
@@ -153,16 +157,16 @@ internal fun Popup(model:LookupViewModel, dismiss:()->Unit, details:(String)->Un
                     IconButton(onClick=dismiss,modifier=Modifier.testTag("closePopup").semantics { contentDescription="关闭 Dicta" }) {Glyph("close")}
                 }
                 Column(Modifier.weight(1f,fill=false).verticalScroll(rememberScrollState()).testTag("popupScroll"),verticalArrangement=Arrangement.spacedBy(16.dp)) {
-                    LookupContent(state,model::retry,dismiss,showPrototypeActions=false)
+                    LookupContent(state,model::retry,dismiss)
                     Spacer(Modifier.height(8.dp))
                 }
                 if(state is LookupState.Success) {
                     HorizontalDivider(color=MaterialTheme.colorScheme.outlineVariant.copy(alpha=.5f))
                     FlowRow(Modifier.fillMaxWidth().padding(top=8.dp),horizontalArrangement=Arrangement.SpaceBetween,verticalArrangement=Arrangement.spacedBy(0.dp)) {
-                        if("save" in actions) TextButton(onClick={},enabled=false) {Text("收藏 · M3")}
+                        if("save" in actions) TextButton(onClick={},enabled=false) {Text("收藏")}
                         if("details" in actions) Button(onClick={details((state as LookupState.Success).entry.id)},modifier=Modifier.testTag("popupDetails")) {Text("详细释义")}
                     }
-                    if("speak" in actions) Text("TTS 发音待 M4",style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant,modifier=Modifier.padding(bottom=4.dp))
+
                 }
             }
         }

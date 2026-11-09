@@ -50,7 +50,7 @@ class LookupSession(
                     mutableState.value = LookupState.Success(entry)
                 }
             } catch (_: TimeoutCancellationException) {
-                if (generation == current) mutableState.value = LookupState.Error("演示查询超时，请重试。", query)
+                if (generation == current) mutableState.value = LookupState.Error("查询超时，请重试。", query)
             } catch (cancelled: CancellationException) {
                 throw cancelled
             } catch (failure: ProviderFailure) {
@@ -58,7 +58,7 @@ class LookupSession(
             } catch (_: ProfileFailure) {
                 if (generation == current) mutableState.value = LookupState.Error("词条或展示配置格式不符，无法显示。", query)
             } catch (_: Exception) {
-                if (generation == current) mutableState.value = LookupState.Error("演示数据暂不可用，请重试。", query)
+                if (generation == current) mutableState.value = LookupState.Error("查询暂不可用，请重试。", query)
             }
         }
     }

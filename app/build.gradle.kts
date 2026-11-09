@@ -10,10 +10,6 @@ val profileAssets = tasks.register<Sync>("syncProfileAssets") {
         into("default")
         include("*.json", "prompt.md")
     }
-    from(rootProject.file("docs/m0/examples")) {
-        into("examples")
-        include("*.json")
-    }
     into(layout.buildDirectory.dir("generated/profileAssets"))
 }
 
@@ -25,8 +21,8 @@ android {
         applicationId = "dev.dicta.prototype"
         minSdk = 26
         targetSdk = 36
-        versionCode = 1
-        versionName = "0.1.0-m1"
+        versionCode = 2
+        versionName = "0.2.0-m2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures { compose = true }
@@ -59,9 +55,14 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.savedstate)
     implementation(libs.serialization.json)
     implementation(libs.coroutines.android)
+    implementation(libs.okhttp)
     debugImplementation(libs.compose.tooling)
     debugImplementation(libs.compose.test.manifest)
     testImplementation(libs.junit)
+    testImplementation(libs.mockwebserver)
+    testImplementation(libs.okhttp.tls)
+    androidTestImplementation(libs.mockwebserver)
+    androidTestImplementation(libs.okhttp.tls)
     testImplementation(libs.coroutines.test)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.compose.test)

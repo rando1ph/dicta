@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.dicta.prototype.provider.DeepSeekProviderTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-11-09T18:14:19.160Z" hostname="randolph-XiaoXinPro-16-IPH11" time="3.699">
+  <properties/>
+  <testcase name="cancellationCancelsActualHttpCall" classname="dev.dicta.prototype.provider.DeepSeekProviderTest" time="0.661"/>
+  <testcase name="missingKeySendsNoRequest" classname="dev.dicta.prototype.provider.DeepSeekProviderTest" time="0.027"/>
+  <testcase name="malformedBlankDuplicateTruncatedAndOversizedResponsesFail" classname="dev.dicta.prototype.provider.DeepSeekProviderTest" time="0.218"/>
+  <testcase name="networkFailureIsSafeAndTerminal" classname="dev.dicta.prototype.provider.DeepSeekProviderTest" time="0.018"/>
+  <testcase name="httpErrorsAreCategorizedAndNeverRetriedOrEchoed" classname="dev.dicta.prototype.provider.DeepSeekProviderTest" time="0.091"/>
+  <testcase name="serviceUnavailableWithRetryAfterZeroMustNotRepeatPaidRequest" classname="dev.dicta.prototype.provider.DeepSeekProviderTest" time="0.109"/>
+  <testcase name="sendsJsonEnvelopeAndValidatesRealProfile" classname="dev.dicta.prototype.provider.DeepSeekProviderTest" time="0.13"/>
+  <testcase name="redirectsNeverForwardCredentials" classname="dev.dicta.prototype.provider.DeepSeekProviderTest" time="0.075"/>
+  <testcase name="stalledResponseBodyIsClassifiedAsTimeout" classname="dev.dicta.prototype.provider.DeepSeekProviderTest" time="2.097"/>
+  <testcase name="timeoutTerminatesWithoutAutomaticRetry" classname="dev.dicta.prototype.provider.DeepSeekProviderTest" time="0.267"/>
+  <testcase name="endpointAndModelAreStrictAndSecretsAreRedacted" classname="dev.dicta.prototype.provider.DeepSeekProviderTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Nov 10, 2026 2:14:22 AM okhttp3.internal.platform.Platform log
+INFO: Http2Connection.Listener failure for MockWebServer localhost
+java.io.IOException: closed
+	at okhttp3.internal.http2.Http2Writer.flush(Http2Writer.kt:119)
+	at okhttp3.internal.http2.Http2Connection.flush(Http2Connection.kt:408)
+	at okhttp3.internal.http2.Http2Stream$FramingSink.close(Http2Stream.kt:624)
+	at okio.RealBufferedSink.close(RealBufferedSink.kt:287)
+	at kotlin.io.CloseableKt.closeFinally(Closeable.kt:46)
+	at okhttp3.mockwebserver.MockWebServer$Http2SocketHandler.writeResponse(MockWebServer.kt:1096)
+	at okhttp3.mockwebserver.MockWebServer$Http2SocketHandler.onStream(MockWebServer.kt:977)
+	at okhttp3.internal.http2.Http2Connection$ReaderRunnable$headers$lambda$2$$inlined$execute$default$1.runOnce(TaskQueue.kt:220)
+	at okhttp3.internal.concurrent.TaskRunner.runTask(TaskRunner.kt:116)
+	at okhttp3.internal.concurrent.TaskRunner.access$runTask(TaskRunner.kt:42)
+	at okhttp3.internal.concurrent.TaskRunner$runnable$1.run(TaskRunner.kt:65)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+]]></system-err>
+</testsuite>

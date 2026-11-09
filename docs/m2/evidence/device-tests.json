@@ -1,0 +1,47 @@
+[
+  {
+    "case": "actual Chrome selection live lookup close and same reading position",
+    "passed": true,
+    "word": "petrichor",
+    "bounds": "[75,681][1004,796]"
+  },
+  {
+    "case": "Chrome selection popup immediate Back returns without late popup",
+    "passed": true
+  },
+  {
+    "case": "cold restart without re-entry of credentials gives real Home result",
+    "passed": true,
+    "word": "resilience",
+    "renderedTexts": [
+      "Dicta",
+      "DICTA AI LEXICON",
+      "Less is More",
+      "resilience",
+      "查询",
+      "resilience",
+      "noun",
+      "UK  /rɪˈzɪliəns/",
+      "US  /rɪˈzɪliəns/",
+      "1",
+      "noun",
+      "韧性；适应力；从困境中恢复的能力",
+      "The capacity to recover quickly from difficulties or adversity.",
+      "Her resilience helped her rebuild her life after the flood.",
+      "她的韧性帮助她在洪水之后重建了生活。",
+      "emotional resilience",
+      "build resilience",
+      "show resilience",
+      "2",
+      "noun",
+      "（材料）回弹性；弹性恢复能力",
+      "The ability of a material to spring back into shape after being bent or compressed.",
+      "The rubber's resilience makes it ideal for shock absorbers.",
+      "橡胶的回弹性使其非常适合用作减震器。",
+      "Search",
+      "Vocabulary",
+      "History",
+      "Settings"
+    ]
+  }
+]

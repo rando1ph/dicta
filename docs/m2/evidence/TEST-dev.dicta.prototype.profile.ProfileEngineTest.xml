@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.dicta.prototype.profile.ProfileEngineTest" tests="25" skipped="0" failures="0" errors="0" timestamp="2026-11-09T18:14:22.866Z" hostname="randolph-XiaoXinPro-16-IPH11" time="0.136">
+  <properties/>
+  <testcase name="templateUnicodeLengthsUseCodePoints" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.013"/>
+  <testcase name="nullRequiredNonnullableRejected" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.006"/>
+  <testcase name="numericAndBooleanSubsetWorks" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.01"/>
+  <testcase name="expandedTreeBudgetPreventsMultiplicativeRendering" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.021"/>
+  <testcase name="bytesAndDepthBounded" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.011"/>
+  <testcase name="nullableEnumStillRejectsNullWhenNotListed" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.006"/>
+  <testcase name="enumRejected" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.004"/>
+  <testcase name="numericEnumUsesMathematicalEquality" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.004"/>
+  <testcase name="invalidJsonRejected" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.002"/>
+  <testcase name="jsonPointerEscapingAndFailures" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.004"/>
+  <testcase name="componentsAndActionsWhitelisted" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.005"/>
+  <testcase name="arraysAndStringsBoundedBySchema" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.003"/>
+  <testcase name="nullCollapsesEmptyContainer" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.002"/>
+  <testcase name="requiredTypeExtraAndBoundsRejected" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.003"/>
+  <testcase name="optionalBindingRejected" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.004"/>
+  <testcase name="duplicateKeysIncludingEscapesRejected" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.001"/>
+  <testcase name="customFieldReorderAndVisibilityRequireNoCodeChange" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.003"/>
+  <testcase name="numericEnumWithEquivalentMembersIsLegalDraft7Schema" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.002"/>
+  <testcase name="templateShapeRejected" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.008"/>
+  <testcase name="unsupportedSchemaRejected" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.005"/>
+  <testcase name="unicodeLengthUsesCodePoints" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.003"/>
+  <testcase name="typoAndBindingTypeRejected" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.003"/>
+  <testcase name="allM0FixturesRender" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.006"/>
+  <testcase name="blankAndNonfiniteRejected" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.001"/>
+  <testcase name="plainTextNotExecuted" classname="dev.dicta.prototype.profile.ProfileEngineTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

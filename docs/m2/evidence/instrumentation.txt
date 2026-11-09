@@ -1,0 +1,11 @@
+
+dev.dicta.prototype.ByokDeviceTest:.....
+dev.dicta.prototype.LargeFontPopupTest:..
+dev.dicta.prototype.PlatformTest:........
+dev.dicta.prototype.SettingsDeviceTest:.
+
+Time: 55.289
+
+OK (16 tests)
+
+
