@@ -1,0 +1,33 @@
+{
+  "word": "ephemeral",
+  "pronunciation": {
+    "uk": "/ɪˈfemərəl/",
+    "us": "/ɪˈfemərəl/"
+  },
+  "senses": [
+    {
+      "partOfSpeech": "adj.",
+      "definitionZh": "短暂的；转瞬即逝的",
+      "definitionEn": "Lasting for only a short time.",
+      "examples": [
+        {
+          "en": "The garden held an ephemeral beauty after the rain.",
+          "zh": "雨后的花园呈现出短暂的美。"
+        }
+      ],
+      "collocations": [
+        "ephemeral beauty",
+        "ephemeral blooms"
+      ]
+    }
+  ],
+  "synonyms": [
+    "fleeting",
+    "transient"
+  ],
+  "etymology": {
+    "summary": "源自希腊语 ephēmeros",
+    "detail": "希腊语 ephēmeros 意为“只持续一天的”，后来用于表示短暂存在的事物。",
+    "certainty": "established"
+  }
+}

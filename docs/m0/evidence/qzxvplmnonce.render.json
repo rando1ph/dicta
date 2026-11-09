@@ -1,0 +1,67 @@
+{
+  "summary": {
+    "title": "qzxvplmnonce",
+    "subtitle": "无法识别该词；没有已知的可靠释义。",
+    "secondary": "No reliable entry is known for this word; it appears to be a nonce string rather than an established English word.",
+    "badge": "unknown"
+  },
+  "nodes": [
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "text",
+          "style": "headline",
+          "value": "qzxvplmnonce"
+        },
+        {
+          "type": "badge",
+          "style": "grammar",
+          "value": "unknown"
+        }
+      ]
+    },
+    {
+      "type": "row",
+      "children": []
+    },
+    {
+      "type": "repeat",
+      "items": [
+        [
+          {
+            "type": "text",
+            "style": "grammar",
+            "value": "unknown"
+          },
+          {
+            "type": "text",
+            "style": "definition",
+            "value": "无法识别该词；没有已知的可靠释义。"
+          },
+          {
+            "type": "text",
+            "style": "body",
+            "value": "No reliable entry is known for this word; it appears to be a nonce string rather than an established English word."
+          },
+          {
+            "type": "repeat",
+            "items": []
+          }
+        ]
+      ]
+    },
+    {
+      "type": "column",
+      "label": "词源释义 · AI 生成，未经外部检索核验",
+      "children": [
+        {
+          "type": "text",
+          "style": "muted",
+          "value": "unknown"
+        }
+      ]
+    }
+  ],
+  "speech": "qzxvplmnonce"
+}

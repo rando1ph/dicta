@@ -1,0 +1,211 @@
+{
+  "summary": {
+    "title": "ephemeral",
+    "subtitle": "短暂的；转瞬即逝的",
+    "secondary": "Lasting for only a very short time.",
+    "badge": "adj."
+  },
+  "nodes": [
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "text",
+          "style": "headline",
+          "value": "ephemeral"
+        },
+        {
+          "type": "badge",
+          "style": "grammar",
+          "value": "adj."
+        }
+      ]
+    },
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "text",
+          "style": "ipa",
+          "label": "UK",
+          "value": "/ɪˈfemərəl/"
+        },
+        {
+          "type": "text",
+          "style": "ipa",
+          "label": "US",
+          "value": "/ɪˈfemərəl/"
+        }
+      ]
+    },
+    {
+      "type": "repeat",
+      "items": [
+        [
+          {
+            "type": "text",
+            "style": "grammar",
+            "value": "adj."
+          },
+          {
+            "type": "text",
+            "style": "definition",
+            "value": "短暂的；转瞬即逝的"
+          },
+          {
+            "type": "text",
+            "style": "body",
+            "value": "Lasting for only a very short time."
+          },
+          {
+            "type": "repeat",
+            "items": [
+              [
+                {
+                  "type": "text",
+                  "style": "quote",
+                  "value": "The beauty of the cherry blossoms is ephemeral."
+                },
+                {
+                  "type": "text",
+                  "style": "muted",
+                  "value": "樱花的美是短暂的。"
+                }
+              ],
+              [
+                {
+                  "type": "text",
+                  "style": "quote",
+                  "value": "Fame in the digital age can be strikingly ephemeral."
+                },
+                {
+                  "type": "text",
+                  "style": "muted",
+                  "value": "数字时代的名声可能转瞬即逝。"
+                }
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "style": "muted",
+            "value": [
+              "ephemeral beauty",
+              "ephemeral nature",
+              "ephemeral pleasure"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "style": "grammar",
+            "value": "adj."
+          },
+          {
+            "type": "text",
+            "style": "definition",
+            "value": "（生物）短命的；寿命极短的"
+          },
+          {
+            "type": "text",
+            "style": "body",
+            "value": "Of a plant or animal: living or lasting for only a very short period."
+          },
+          {
+            "type": "repeat",
+            "items": [
+              [
+                {
+                  "type": "text",
+                  "style": "quote",
+                  "value": "Desert rains revive a layer of ephemeral plants."
+                },
+                {
+                  "type": "text",
+                  "style": "muted",
+                  "value": "沙漠的降雨使一层短命植物复苏。"
+                }
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "style": "muted",
+            "value": [
+              "ephemeral plants",
+              "ephemeral species"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "style": "grammar",
+            "value": "n."
+          },
+          {
+            "type": "text",
+            "style": "definition",
+            "value": "短命的事物；蜉蝣等寿命极短的生物"
+          },
+          {
+            "type": "text",
+            "style": "body",
+            "value": "Something that lasts only briefly, or a short-lived organism such as a mayfly."
+          },
+          {
+            "type": "repeat",
+            "items": [
+              [
+                {
+                  "type": "text",
+                  "style": "quote",
+                  "value": "The pond swarmed with ephemerals in early summer."
+                },
+                {
+                  "type": "text",
+                  "style": "muted",
+                  "value": "初夏时池塘里满是蜉蝣。"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "type": "chips",
+      "label": "同义",
+      "style": "muted",
+      "value": [
+        "fleeting",
+        "transient",
+        "momentary",
+        "short-lived"
+      ]
+    },
+    {
+      "type": "column",
+      "label": "词源释义 · AI 生成，未经外部检索核验",
+      "children": [
+        {
+          "type": "text",
+          "style": "etymology",
+          "value": "源自希腊语 ephēmeros，“只持续一天的”"
+        },
+        {
+          "type": "text",
+          "style": "body",
+          "value": "来自希腊语 ephēmeros（epi- “在……期间” + hēmera “一天”），经拉丁语 ephemerus 进入英语，原指只活一天的生物，后泛指短暂存在的事物。"
+        },
+        {
+          "type": "text",
+          "style": "muted",
+          "value": "established"
+        }
+      ]
+    }
+  ],
+  "speech": "ephemeral"
+}

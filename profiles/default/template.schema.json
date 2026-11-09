@@ -1,0 +1,270 @@
+{
+  "type": "object",
+  "properties": {
+    "formatVersion": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "pattern": "^/"
+        },
+        "subtitle": {
+          "type": "string",
+          "pattern": "^/"
+        },
+        "secondary": {
+          "type": "string",
+          "pattern": "^/"
+        },
+        "badge": {
+          "type": "string",
+          "pattern": "^/"
+        }
+      },
+      "required": [
+        "title",
+        "subtitle",
+        "secondary",
+        "badge"
+      ],
+      "additionalProperties": false
+    },
+    "containers": {
+      "type": "object",
+      "properties": {
+        "popup": {
+          "type": "object",
+          "properties": {
+            "maxWidthDp": {
+              "type": "integer",
+              "minimum": 240,
+              "maximum": 800
+            },
+            "marginDp": {
+              "type": "integer",
+              "minimum": 8,
+              "maximum": 48
+            },
+            "cornerDp": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 48
+            },
+            "scroll": {
+              "const": true
+            }
+          },
+          "required": [
+            "maxWidthDp",
+            "marginDp",
+            "cornerDp",
+            "scroll"
+          ],
+          "additionalProperties": false
+        },
+        "home": {
+          "type": "object",
+          "properties": {
+            "cornerDp": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 48
+            },
+            "scroll": {
+              "const": true
+            }
+          },
+          "required": [
+            "cornerDp",
+            "scroll"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "popup",
+        "home"
+      ],
+      "additionalProperties": false
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/node"
+      },
+      "minItems": 1,
+      "maxItems": 30
+    },
+    "actions": {
+      "type": "object",
+      "properties": {
+        "popup": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "speak",
+              "save",
+              "details",
+              "close"
+            ]
+          }
+        },
+        "home": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "speak",
+              "save",
+              "shuffle"
+            ]
+          }
+        }
+      },
+      "required": [
+        "popup",
+        "home"
+      ],
+      "additionalProperties": false
+    },
+    "speech": {
+      "type": "string",
+      "pattern": "^/"
+    }
+  },
+  "required": [
+    "formatVersion",
+    "id",
+    "summary",
+    "containers",
+    "nodes",
+    "actions",
+    "speech"
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "node": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "row",
+            "column",
+            "repeat",
+            "text",
+            "badge",
+            "chips"
+          ]
+        },
+        "bind": {
+          "type": "string",
+          "pattern": "^/"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "style": {
+          "enum": [
+            "body",
+            "headline",
+            "grammar",
+            "ipa",
+            "definition",
+            "quote",
+            "muted",
+            "etymology"
+          ]
+        },
+        "hideIfEmpty": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/node"
+          },
+          "minItems": 1,
+          "maxItems": 30
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "row",
+                  "column"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "children"
+            ],
+            "not": {
+              "required": [
+                "bind"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "repeat"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "bind",
+              "children"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "text",
+                  "badge",
+                  "chips"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "bind"
+            ],
+            "not": {
+              "required": [
+                "children"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

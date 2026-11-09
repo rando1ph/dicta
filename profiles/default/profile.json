@@ -1,0 +1,27 @@
+{
+  "formatVersion": 1,
+  "id": "dicta.standard-literary",
+  "revision": 1,
+  "name": "Standard Literary · 文学精读",
+  "prompt": "prompt.md",
+  "schema": "entry.schema.json",
+  "template": "popup.template.json",
+  "example": "example.json",
+  "provider": {
+    "adapter": "deepseek-chat-completions",
+    "baseUrl": "https://api.deepseek.com",
+    "model": "deepseek-flash",
+    "responseFormat": "json_object",
+    "thinking": "disabled",
+    "maxTokens": 2200
+  },
+  "limits": {
+    "inputCharacters": 100,
+    "connectSeconds": 10,
+    "readSeconds": 40,
+    "totalSeconds": 60,
+    "maxResponseBytes": 131072,
+    "automaticRetries": 0
+  },
+  "credentialRef": null
+}

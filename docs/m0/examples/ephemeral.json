@@ -1,0 +1,67 @@
+{
+  "word": "ephemeral",
+  "pronunciation": {
+    "uk": "/ɪˈfemərəl/",
+    "us": "/ɪˈfemərəl/"
+  },
+  "senses": [
+    {
+      "partOfSpeech": "adj.",
+      "definitionZh": "短暂的；转瞬即逝的",
+      "definitionEn": "Lasting for only a very short time.",
+      "examples": [
+        {
+          "en": "The beauty of the cherry blossoms is ephemeral.",
+          "zh": "樱花的美是短暂的。"
+        },
+        {
+          "en": "Fame in the digital age can be strikingly ephemeral.",
+          "zh": "数字时代的名声可能转瞬即逝。"
+        }
+      ],
+      "collocations": [
+        "ephemeral beauty",
+        "ephemeral nature",
+        "ephemeral pleasure"
+      ]
+    },
+    {
+      "partOfSpeech": "adj.",
+      "definitionZh": "（生物）短命的；寿命极短的",
+      "definitionEn": "Of a plant or animal: living or lasting for only a very short period.",
+      "examples": [
+        {
+          "en": "Desert rains revive a layer of ephemeral plants.",
+          "zh": "沙漠的降雨使一层短命植物复苏。"
+        }
+      ],
+      "collocations": [
+        "ephemeral plants",
+        "ephemeral species"
+      ]
+    },
+    {
+      "partOfSpeech": "n.",
+      "definitionZh": "短命的事物；蜉蝣等寿命极短的生物",
+      "definitionEn": "Something that lasts only briefly, or a short-lived organism such as a mayfly.",
+      "examples": [
+        {
+          "en": "The pond swarmed with ephemerals in early summer.",
+          "zh": "初夏时池塘里满是蜉蝣。"
+        }
+      ],
+      "collocations": []
+    }
+  ],
+  "synonyms": [
+    "fleeting",
+    "transient",
+    "momentary",
+    "short-lived"
+  ],
+  "etymology": {
+    "summary": "源自希腊语 ephēmeros，“只持续一天的”",
+    "detail": "来自希腊语 ephēmeros（epi- “在……期间” + hēmera “一天”），经拉丁语 ephemerus 进入英语，原指只活一天的生物，后泛指短暂存在的事物。",
+    "certainty": "established"
+  }
+}

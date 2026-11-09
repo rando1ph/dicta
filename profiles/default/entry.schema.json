@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Dicta default lexical entry v1",
+  "type": "object",
+  "properties": {
+    "word": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "pronunciation": {
+      "type": "object",
+      "properties": {
+        "uk": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "us": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 100
+        }
+      },
+      "required": [
+        "uk",
+        "us"
+      ],
+      "additionalProperties": false
+    },
+    "senses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "partOfSpeech": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "definitionZh": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "definitionEn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "zh": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                }
+              },
+              "required": [
+                "en",
+                "zh"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "maxItems": 2
+          },
+          "collocations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "minItems": 0,
+            "maxItems": 4
+          }
+        },
+        "required": [
+          "partOfSpeech",
+          "definitionZh",
+          "definitionEn",
+          "examples",
+          "collocations"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 4
+    },
+    "synonyms": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80
+      },
+      "minItems": 0,
+      "maxItems": 6
+    },
+    "etymology": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "detail": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 700
+        },
+        "certainty": {
+          "type": "string",
+          "enum": [
+            "established",
+            "uncertain",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "summary",
+        "detail",
+        "certainty"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "word",
+    "pronunciation",
+    "senses",
+    "synonyms",
+    "etymology"
+  ],
+  "additionalProperties": false
+}

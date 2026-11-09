@@ -1,0 +1,80 @@
+{
+  "word": "luminous",
+  "pronunciation": {
+    "uk": "/ˈluːmɪnəs/",
+    "us": "/ˈluːmɪnəs/"
+  },
+  "senses": [
+    {
+      "partOfSpeech": "adj.",
+      "definitionZh": "发光的；明亮的",
+      "definitionEn": "Giving off light; shining in the dark.",
+      "examples": [
+        {
+          "en": "The luminous dial of the clock glowed in the dark room.",
+          "zh": "时钟的发光表盘在暗室里幽幽发亮。"
+        }
+      ],
+      "collocations": [
+        "luminous paint",
+        "luminous dial"
+      ]
+    },
+    {
+      "partOfSpeech": "adj.",
+      "definitionZh": "（颜色）鲜亮醒目的",
+      "definitionEn": "Bright and vivid in color; often seeming to glow.",
+      "examples": [
+        {
+          "en": "She wore a luminous green scarf against the grey sky.",
+          "zh": "在灰蒙蒙的天空下，她戴着一条鲜亮的绿色围巾。"
+        }
+      ],
+      "collocations": [
+        "luminous color",
+        "luminous green"
+      ]
+    },
+    {
+      "partOfSpeech": "adj.",
+      "definitionZh": "（文字、描述等）明晰而富有感染力的",
+      "definitionEn": "Clear, glowing, and inspiring in expression or style.",
+      "examples": [
+        {
+          "en": "Her essay gives a luminous account of city life.",
+          "zh": "她的散文对城市生活作了生动明晰的描述。"
+        }
+      ],
+      "collocations": [
+        "luminous prose",
+        "luminous account"
+      ]
+    },
+    {
+      "partOfSpeech": "adj.",
+      "definitionZh": "（人、面容）容光焕发的",
+      "definitionEn": "Radiating a warm, bright quality, as of a person's face or expression.",
+      "examples": [
+        {
+          "en": "His face was luminous with quiet joy.",
+          "zh": "他的脸上因内心的喜悦而容光焕发。"
+        }
+      ],
+      "collocations": [
+        "luminous face",
+        "luminous smile"
+      ]
+    }
+  ],
+  "synonyms": [
+    "glowing",
+    "radiant",
+    "shining",
+    "bright"
+  ],
+  "etymology": {
+    "summary": "源自拉丁语 luminosus（充满光的）",
+    "detail": "经拉丁语 luminosus 进入英语，词根 lumen 意为“光”，与 light 有远源关联。",
+    "certainty": "established"
+  }
+}

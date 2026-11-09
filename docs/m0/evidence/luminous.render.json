@@ -1,0 +1,248 @@
+{
+  "summary": {
+    "title": "luminous",
+    "subtitle": "发光的；明亮的",
+    "secondary": "Giving off light; shining in the dark.",
+    "badge": "adj."
+  },
+  "nodes": [
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "text",
+          "style": "headline",
+          "value": "luminous"
+        },
+        {
+          "type": "badge",
+          "style": "grammar",
+          "value": "adj."
+        }
+      ]
+    },
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "text",
+          "style": "ipa",
+          "label": "UK",
+          "value": "/ˈluːmɪnəs/"
+        },
+        {
+          "type": "text",
+          "style": "ipa",
+          "label": "US",
+          "value": "/ˈluːmɪnəs/"
+        }
+      ]
+    },
+    {
+      "type": "repeat",
+      "items": [
+        [
+          {
+            "type": "text",
+            "style": "grammar",
+            "value": "adj."
+          },
+          {
+            "type": "text",
+            "style": "definition",
+            "value": "发光的；明亮的"
+          },
+          {
+            "type": "text",
+            "style": "body",
+            "value": "Giving off light; shining in the dark."
+          },
+          {
+            "type": "repeat",
+            "items": [
+              [
+                {
+                  "type": "text",
+                  "style": "quote",
+                  "value": "The luminous dial of the clock glowed in the dark room."
+                },
+                {
+                  "type": "text",
+                  "style": "muted",
+                  "value": "时钟的发光表盘在暗室里幽幽发亮。"
+                }
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "style": "muted",
+            "value": [
+              "luminous paint",
+              "luminous dial"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "style": "grammar",
+            "value": "adj."
+          },
+          {
+            "type": "text",
+            "style": "definition",
+            "value": "（颜色）鲜亮醒目的"
+          },
+          {
+            "type": "text",
+            "style": "body",
+            "value": "Bright and vivid in color; often seeming to glow."
+          },
+          {
+            "type": "repeat",
+            "items": [
+              [
+                {
+                  "type": "text",
+                  "style": "quote",
+                  "value": "She wore a luminous green scarf against the grey sky."
+                },
+                {
+                  "type": "text",
+                  "style": "muted",
+                  "value": "在灰蒙蒙的天空下，她戴着一条鲜亮的绿色围巾。"
+                }
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "style": "muted",
+            "value": [
+              "luminous color",
+              "luminous green"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "style": "grammar",
+            "value": "adj."
+          },
+          {
+            "type": "text",
+            "style": "definition",
+            "value": "（文字、描述等）明晰而富有感染力的"
+          },
+          {
+            "type": "text",
+            "style": "body",
+            "value": "Clear, glowing, and inspiring in expression or style."
+          },
+          {
+            "type": "repeat",
+            "items": [
+              [
+                {
+                  "type": "text",
+                  "style": "quote",
+                  "value": "Her essay gives a luminous account of city life."
+                },
+                {
+                  "type": "text",
+                  "style": "muted",
+                  "value": "她的散文对城市生活作了生动明晰的描述。"
+                }
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "style": "muted",
+            "value": [
+              "luminous prose",
+              "luminous account"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "style": "grammar",
+            "value": "adj."
+          },
+          {
+            "type": "text",
+            "style": "definition",
+            "value": "（人、面容）容光焕发的"
+          },
+          {
+            "type": "text",
+            "style": "body",
+            "value": "Radiating a warm, bright quality, as of a person's face or expression."
+          },
+          {
+            "type": "repeat",
+            "items": [
+              [
+                {
+                  "type": "text",
+                  "style": "quote",
+                  "value": "His face was luminous with quiet joy."
+                },
+                {
+                  "type": "text",
+                  "style": "muted",
+                  "value": "他的脸上因内心的喜悦而容光焕发。"
+                }
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "style": "muted",
+            "value": [
+              "luminous face",
+              "luminous smile"
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "type": "chips",
+      "label": "同义",
+      "style": "muted",
+      "value": [
+        "glowing",
+        "radiant",
+        "shining",
+        "bright"
+      ]
+    },
+    {
+      "type": "column",
+      "label": "词源释义 · AI 生成，未经外部检索核验",
+      "children": [
+        {
+          "type": "text",
+          "style": "etymology",
+          "value": "源自拉丁语 luminosus（充满光的）"
+        },
+        {
+          "type": "text",
+          "style": "body",
+          "value": "经拉丁语 luminosus 进入英语，词根 lumen 意为“光”，与 light 有远源关联。"
+        },
+        {
+          "type": "text",
+          "style": "muted",
+          "value": "established"
+        }
+      ]
+    }
+  ],
+  "speech": "luminous"
+}

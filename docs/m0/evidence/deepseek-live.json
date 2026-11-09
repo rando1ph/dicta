@@ -1,0 +1,72 @@
+{
+  "timeUtc": "2026-11-09T16:59:52.823361+00:00",
+  "provider": {
+    "adapter": "deepseek-chat-completions",
+    "baseUrl": "https://api.deepseek.com",
+    "model": "deepseek-flash",
+    "responseFormat": "json_object",
+    "thinking": "disabled",
+    "maxTokens": 2200
+  },
+  "tests": [
+    {
+      "case": "luminous",
+      "outcome": "valid_and_mapped",
+      "finishReason": "stop",
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 1192,
+        "completion_tokens": 434,
+        "total_tokens": 1626,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1192
+      },
+      "seconds": 3.364
+    },
+    {
+      "case": "ephemeral",
+      "outcome": "valid_and_mapped",
+      "finishReason": "stop",
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 1193,
+        "completion_tokens": 399,
+        "total_tokens": 1592,
+        "prompt_tokens_details": {
+          "cached_tokens": 1024
+        },
+        "prompt_cache_hit_tokens": 1024,
+        "prompt_cache_miss_tokens": 169
+      },
+      "seconds": 2.965
+    },
+    {
+      "case": "qzxvplmnonce",
+      "outcome": "valid_and_mapped",
+      "finishReason": "stop",
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 1197,
+        "completion_tokens": 124,
+        "total_tokens": 1321,
+        "prompt_tokens_details": {
+          "cached_tokens": 1024
+        },
+        "prompt_cache_hit_tokens": 1024,
+        "prompt_cache_miss_tokens": 173
+      },
+      "seconds": 1.136
+    },
+    {
+      "case": "json_schema_capability",
+      "outcome": "http_400"
+    },
+    {
+      "case": "invalid_auth",
+      "outcome": "http_401"
+    }
+  ]
+}
