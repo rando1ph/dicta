@@ -164,7 +164,7 @@ internal fun Popup(model:LookupViewModel, dismiss:()->Unit, details:(String)->Un
                     HorizontalDivider(color=MaterialTheme.colorScheme.outlineVariant.copy(alpha=.5f))
                     FlowRow(Modifier.fillMaxWidth().padding(top=8.dp),horizontalArrangement=Arrangement.SpaceBetween,verticalArrangement=Arrangement.spacedBy(0.dp)) {
                         if("save" in actions) TextButton(onClick={},enabled=false) {Text("收藏")}
-                        if("details" in actions) Button(onClick={details((state as LookupState.Success).entry.id)},modifier=Modifier.testTag("popupDetails")) {Text("详细释义")}
+                        if("details" in actions) Button(onClick={details((state as LookupState.Success).entry.id)},modifier=Modifier.testTag("popupDetails")) {Text("打开")}
                     }
 
                 }
