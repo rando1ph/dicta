@@ -1,0 +1,49 @@
+{
+  "releaseUrl": "https://github.com/rando1ph/dicta/releases/tag/v1.1.0",
+  "tag": "v1.1.0",
+  "tagCommit": "ac9bd885fbc40ad9a5c7d7d034d53d66454dd3da",
+  "draft": false,
+  "prerelease": false,
+  "publishedAt": "2026-11-11T12:55:19Z",
+  "verifiedAt": "2026-11-11T12:56:17.750499+00:00",
+  "latestReleaseUrlResolvesTo": "https://github.com/rando1ph/dicta/releases/tag/v1.1.0",
+  "assets": [
+    {
+      "name": "Dicta-v1.1.0.apk",
+      "url": "https://github.com/rando1ph/dicta/releases/download/v1.1.0/Dicta-v1.1.0.apk",
+      "bytes": 8518281,
+      "sha256": "24417b983e384683fcaf4c1e38eb2424ca8de8a3b72179b5963c808709440258",
+      "unauthenticatedHttpStatus": 200,
+      "matchesLocalArtifactAndGitHubDigest": true
+    },
+    {
+      "name": "Release-Notes.en.md",
+      "url": "https://github.com/rando1ph/dicta/releases/download/v1.1.0/Release-Notes.en.md",
+      "bytes": 3634,
+      "sha256": "1ada286237e082f2c32cadd016f89077dd4dff80275b828902b2220247014070",
+      "unauthenticatedHttpStatus": 200,
+      "matchesLocalArtifactAndGitHubDigest": true
+    },
+    {
+      "name": "Release-Notes.zh-CN.md",
+      "url": "https://github.com/rando1ph/dicta/releases/download/v1.1.0/Release-Notes.zh-CN.md",
+      "bytes": 3220,
+      "sha256": "bdd33421ab2430ec7f1b0e41a6bc4aff1666f02dafcb9a88c8bd482f4f0424cc",
+      "unauthenticatedHttpStatus": 200,
+      "matchesLocalArtifactAndGitHubDigest": true
+    },
+    {
+      "name": "SHA256SUMS",
+      "url": "https://github.com/rando1ph/dicta/releases/download/v1.1.0/SHA256SUMS",
+      "bytes": 83,
+      "sha256": "868a306819e81ae59cd374026c7b6cdcb556ac3953aa0dc63c9b1c22542ed128",
+      "unauthenticatedHttpStatus": 200,
+      "matchesLocalArtifactAndGitHubDigest": true
+    }
+  ],
+  "downloadedApkSignatureVerified": true,
+  "downloadedApkZipalignVerified": true,
+  "downloadedApkZipCrcVerified": true,
+  "downloadedApkCertificateSha256": "6c7e7a2bb39749ef9d7cf6a0c534d6e7b39e3fdc5ab9b9558aafc7cdab6bceb8",
+  "remoteAnnotatedTagCommitVerified": true
+}

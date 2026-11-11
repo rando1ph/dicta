@@ -73,3 +73,16 @@ Release assets are the signed APK, [SHA256SUMS](SHA256SUMS),
 [English notes](Release-Notes.en.md) and [Chinese notes](Release-Notes.zh-CN.md).
 The tag identifies the release source; subsequent documentation-only commits
 may record public download verification without changing that source.
+
+## Published asset verification
+
+[Publication evidence](publication.json) records the formal, non-prerelease
+GitHub Release published at `2026-11-11T12:55:19Z`. The annotated tag points to
+`ac9bd885fbc40ad9a5c7d7d034d53d66454dd3da`, verified against the remote tag.
+`releases/latest` resolves to `v1.1.0`.
+
+All four assets returned HTTP 200 when downloaded without authentication. Each
+download matched the local file, byte count, SHA-256 and GitHub asset digest.
+The downloaded APK passed official signature/certificate and alignment checks,
+ZIP CRC verification, and `sha256sum -c SHA256SUMS`. No release assets or tags
+were replaced during verification.
