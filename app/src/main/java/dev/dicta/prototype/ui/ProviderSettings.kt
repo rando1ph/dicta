@@ -43,9 +43,11 @@ internal fun Settings(model: LookupViewModel, onProfiles:()->Unit) {
     var modelName by rememberSaveable(saved.model) { mutableStateOf(saved.model) }
     var protocol by rememberSaveable(saved.protocol) { mutableStateOf(saved.protocol) }
     var output by rememberSaveable(saved.output) { mutableStateOf(saved.output) }
+    val service=credentialService(endpoint)
+    val retainedKeyAvailable=saved.hasKey && sameCredentialService(endpoint,saved.endpoint)
     // Only newly typed text is held here. Stored plaintext never enters Compose or saved state.
-    var key by remember { mutableStateOf("") }
-    var editingKey by remember { mutableStateOf(false) }
+    var key by remember(service) { mutableStateOf("") }
+    var editingKey by remember(service) { mutableStateOf(false) }
     var showModels by rememberSaveable { mutableStateOf(false) }
     var showClear by remember { mutableStateOf(false) }
     var more by remember { mutableStateOf(false) }
@@ -77,11 +79,11 @@ internal fun Settings(model: LookupViewModel, onProfiles:()->Unit) {
                 TextButton(onClick={protocol=ProviderProtocol.COMPATIBLE},modifier=Modifier.testTag("compatiblePreset")) {Text("Compatible")}
             }
             OutlinedTextField(endpoint,{endpoint=it},label={Text("Endpoint / Base URL")},supportingText={Text("HTTPS 基础地址；也可填写完整 chat/completions 路径。")},singleLine=true,modifier=Modifier.fillMaxWidth().testTag("endpointInput"))
-            OutlinedTextField(if(saved.hasKey && !editingKey) "••••••••" else key,{key=it},readOnly=saved.hasKey && !editingKey,
+            OutlinedTextField(if(retainedKeyAvailable && !editingKey) "••••••••" else key,{key=it},readOnly=retainedKeyAvailable && !editingKey,
                 label={Text("API Key")},placeholder={Text("输入密钥")},singleLine=true,visualTransformation=PasswordVisualTransformation(),
-                trailingIcon={if(saved.hasKey) TextButton(onClick={key="";editingKey=!editingKey},modifier=Modifier.testTag("replaceKey")) {Text(if(editingKey) "保留" else "更换")}},
+                trailingIcon={if(retainedKeyAvailable) TextButton(onClick={key="";editingKey=!editingKey},modifier=Modifier.testTag("replaceKey")) {Text(if(editingKey) "保留" else "更换")}},
                 keyboardOptions=KeyboardOptions(autoCorrectEnabled=false,keyboardType=KeyboardType.Password),modifier=Modifier.fillMaxWidth().testTag("keyInput"))
-            Text(if(saved.hasKey) "●●●●●●●● · 已保存" else "尚未配置密钥",style=MaterialTheme.typography.labelMedium,color=MaterialTheme.colorScheme.secondary,modifier=Modifier.testTag("keyStatus"))
+            Text(if(retainedKeyAvailable) "●●●●●●●● · 已保存" else if(saved.hasKey) "新服务需要 API Key；原密钥仅用于原服务。" else "尚未配置密钥",style=MaterialTheme.typography.labelMedium,color=MaterialTheme.colorScheme.secondary,modifier=Modifier.testTag("keyStatus"))
             Box {
                 OutlinedButton(onClick={protocolMenu=true},modifier=Modifier.testTag("protocolSelect")) {Text("请求协议 · ${protocol.label()}")}
                 DropdownMenu(expanded=protocolMenu,onDismissRequest={protocolMenu=false}) {

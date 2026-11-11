@@ -30,15 +30,17 @@ for item in manifest["images"]:
         png.verify()
     assert int(remote[item["file"]]["size"]) == len(data), item["file"]
     assert manifest["folder"].endswith(remote[item["file"]]["parent_ids"][0]), item["file"]
-    large = 13 <= number <= 16
+    historical = number <= len(scenarios)
+    large = 13 <= number <= 16 if historical else item["font_scale"] == 2.0
     assert (width, height) == ((840, 1920) if large else (1080, 2400))
-    theme = "Light / Accent 3" if number == 12 else "Browser / light page" if number in (17, 20) else "Dark / Accent 1"
+    theme = ("Light / Accent 3" if number == 12 else "Browser / light page" if number in (17, 20) else "Dark / Accent 1") if historical else item["theme"]
     mode = f"{'320dp · 200%' if large else '411dp · 100%'} · {theme}"
-    item.update(scenario=scenarios[number - 1], api=36, width_px=width, height_px=height,
+    item.update(scenario=scenarios[number - 1] if historical else item["scenario"], api=36, width_px=width, height_px=height,
                 width_dp=320 if large else 411, density_dpi=420, font_scale=2.0 if large else 1.0,
                 theme=theme, bytes=len(data), sha256=hashlib.sha256(data).hexdigest(),
-                drive_metadata_verified=True, review="待用户审阅")
-    rows.append(f"| [{item['file']}]({item['url']}) | {item['scenario']} | {mode} | 待审 |")
+                drive_metadata_verified=True, revision="first-candidate" if historical else "2026-11-11-final-revisions",
+                review="首轮候选历史" if historical else "待用户审阅")
+    rows.append((historical, f"| [{item['file']}]({item['url']}) | {item['scenario']} | {mode} | {'首轮历史' if historical else '待审'} |"))
 manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
 text = """# T07 · v1.1.0 截图审阅索引
 
@@ -46,12 +48,14 @@ text = """# T07 · v1.1.0 截图审阅索引
 
 全部为实际运行的原始 PNG，由 Google 官方 Android CLI 捕获，逐张视觉检查；未裁剪、重编码或拼接。设备为 codex_api36_aosp / **emulator-5554**，Android 16 / API36、420dpi。所有模型请求和模型列表均来自本地 TLS Mock，使用固定词条夹具与测试凭据，没有真实 API Key 或付费查询。
 
-13–16 为 840×1920 / 320dp / 系统字体 200%；其余为 1080×2400 / 411dp / 字体 100%。AOSP 没有安装 TTS 引擎，截图中的发音禁用与回退提示为真实状态。17–20 使用 AOSP WebView Browser Tester 和仓库内的受控阅读页，未将其表述为 Chrome 或真实新闻网站。
+01–20 为首轮候选历史，不能代表收尾修订后的行为；21 起为最新修订截图。13–16 以及标记 320dp / 200% 的修订图为 840×1920，其余为 1080×2400 / 411dp / 字体 100%。AOSP 没有安装 TTS 引擎，截图中的发音禁用与回退提示为真实状态。17–20 使用 AOSP WebView Browser Tester 和仓库内的受控阅读页，未将其表述为 Chrome 或真实新闻网站。
 
 **人工视觉与候选版本验收均待用户审阅。** 每张图的大小、SHA-256 和 Drive 元数据核验见 [机器索引](https://github.com/rando1ph/dicta/blob/main/docs/t07/evidence/screenshots.json)。
 
+## 最新收尾修订 · 2026-11-11
+
 | 文件 | 场景 | 屏宽 / 字体 / 主题 | 审阅 |
 | --- | --- | --- | --- |
-""" + "\n".join(rows) + "\n"
+""" + "\n".join(row for historical,row in rows if not historical) + "\n\n## 首轮候选历史\n\n| 文件 | 场景 | 屏宽 / 字体 / 主题 | 审阅 |\n| --- | --- | --- | --- |\n" + "\n".join(row for historical,row in rows if historical) + "\n"
 (root / "docs/t07/SCREENSHOTS.md").write_text(text)
 print(f"Verified and indexed {len(rows)} original PNG files.")

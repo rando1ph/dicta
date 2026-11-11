@@ -20,7 +20,8 @@
       "bytes": 214508,
       "sha256": "ca37ef983ee12afd7d6df5d8d1cc424277e63ae50df050822545c62d567a1f1c",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-02-daily-actions.png",
@@ -37,7 +38,8 @@
       "bytes": 204018,
       "sha256": "a1190cce4590ffa5c2a578fba0ce99bb8cd83b6eb8efefddaf0c246f3e425e18",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-03-search-detail.png",
@@ -54,7 +56,8 @@
       "bytes": 174453,
       "sha256": "93fe9a8a8f77c12aaa1ad14dc2eb22b0ee43edca25ca5e839bd5ba462a87d499",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-04-history-filter.png",
@@ -71,7 +74,8 @@
       "bytes": 189863,
       "sha256": "d24798e437f7fa5d3100b51bd11fc0798c7cb515078959e062358f9b0723b141",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-05-history-detail.png",
@@ -88,7 +92,8 @@
       "bytes": 174354,
       "sha256": "dd2c5896b4c7d00aa38144b8d9d9c8bca29c37cca8f721ee7b38554e2dfabc45",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-06-history-gesture-return.png",
@@ -105,7 +110,8 @@
       "bytes": 191288,
       "sha256": "d2b07bd7543d2170b43570a408fc34941a6800efca0edad8ac211f4f1fec93ce",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-07-vocabulary.png",
@@ -122,7 +128,8 @@
       "bytes": 180231,
       "sha256": "45979117c0e31ce9f0e567b3877413d56e92b610e78c6638af4b3948264997ec",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-08-vocabulary-detail.png",
@@ -139,7 +146,8 @@
       "bytes": 174951,
       "sha256": "2307c1107b2686e5d4c4da6971e245ed6fbe47ef3e9587b57d0e561b87a3023d",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-09-provider-key-saved.png",
@@ -156,7 +164,8 @@
       "bytes": 208466,
       "sha256": "96803d1b6aae57f7b615c680b9aeffdb2e9aba722a108d904d14131fbb3e131a",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-10-model-discovery-picker.png",
@@ -173,7 +182,8 @@
       "bytes": 150403,
       "sha256": "a6d8c123a8c7748f21a30531de989edd54a65fb2b900c284b52ffe35e0aeee30",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-11-provider-actions.png",
@@ -190,7 +200,8 @@
       "bytes": 241891,
       "sha256": "010b002c066996a9a69c5cd77609c1b081e196062875b144243638d55ef005fe",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-12-home-light-accent.png",
@@ -207,7 +218,8 @@
       "bytes": 212977,
       "sha256": "58c902cff91a6b719f28f24b4f967f47b65fb3f3792999823411b6f6c72a8a35",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-13-narrow-large-home.png",
@@ -224,7 +236,8 @@
       "bytes": 152737,
       "sha256": "42190ad64e55af7405da52e87e448d29f83721009c1a2280e1b4fe051a24e404",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-14-narrow-large-actions.png",
@@ -241,7 +254,8 @@
       "bytes": 136740,
       "sha256": "1a4dbcb70628f8637005ea2195acc76f35455872d2a0ae84aa6030a8c4130ac4",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-15-narrow-large-settings.png",
@@ -258,7 +272,8 @@
       "bytes": 176465,
       "sha256": "f00c017149989880be4786677199e554f8843f3b023336db9e36c90838bab197",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-16-narrow-large-detail.png",
@@ -275,7 +290,8 @@
       "bytes": 210960,
       "sha256": "8c7e3506d49a54a656338332305e584dca11aceccfe0bc0a544df4f4ba0c21be",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-17-browser-selection.png",
@@ -292,7 +308,8 @@
       "bytes": 227114,
       "sha256": "53a701183d261d86de815c4f7c27616c092c716ee4f3005d3160d70bf37c5823",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-18-browser-popup.png",
@@ -309,7 +326,8 @@
       "bytes": 226003,
       "sha256": "f14de50317eee1acbb8beb16fe578c99a0c50ed5aa99d27a1c3eef3ec83ec987",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-19-popup-full-detail.png",
@@ -326,7 +344,8 @@
       "bytes": 175726,
       "sha256": "c59687fac151bb33df82b8946df969718358be778293da958ee5a9ef3e0b1c84",
       "drive_metadata_verified": true,
-      "review": "待用户审阅"
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
     },
     {
       "file": "T07-20-return-to-browser.png",
@@ -343,6 +362,151 @@
       "bytes": 226649,
       "sha256": "fd37cccdde120f4114050a4dbb58c5fe82074d3b6e940d48177225b59c7a8f03",
       "drive_metadata_verified": true,
+      "review": "首轮候选历史",
+      "revision": "first-candidate"
+    },
+    {
+      "file": "T07-21-home-auto-dark.png",
+      "id": "1gliYh6GwoZTWlvqLPjvdLWeQlGOAl7JH",
+      "url": "https://drive.google.com/file/d/1gliYh6GwoZTWlvqLPjvdLWeQlGOAl7JH/view?usp=drivesdk",
+      "scenario": "首次进入 Search 自动生成当天每日词；默认词源收起",
+      "font_scale": 1.0,
+      "theme": "Dark / Accent 1",
+      "api": 36,
+      "width_px": 1080,
+      "height_px": 2400,
+      "width_dp": 411,
+      "density_dpi": 420,
+      "bytes": 205784,
+      "sha256": "70a02f7e101ff3c9985a9a5c2db59f89f02330f57447992f810e3675d9159624",
+      "drive_metadata_verified": true,
+      "revision": "2026-11-11-final-revisions",
+      "review": "待用户审阅"
+    },
+    {
+      "file": "T07-22-daily-etymology.png",
+      "id": "1Jn5CjbcZUju32kaYkbZCS6EaWxjNvuJF",
+      "url": "https://drive.google.com/file/d/1Jn5CjbcZUju32kaYkbZCS6EaWxjNvuJF/view?usp=drivesdk",
+      "scenario": "每日词展开词源，仅保留摘要/详情；收藏与换一换同排",
+      "font_scale": 1.0,
+      "theme": "Dark / Accent 1",
+      "api": 36,
+      "width_px": 1080,
+      "height_px": 2400,
+      "width_dp": 411,
+      "density_dpi": 420,
+      "bytes": 219310,
+      "sha256": "f1fbddf98243bc23b402ce4ac13ed40cf20c1345f76f8025f7470718a253e7ad",
+      "drive_metadata_verified": true,
+      "revision": "2026-11-11-final-revisions",
+      "review": "待用户审阅"
+    },
+    {
+      "file": "T07-23-history-v100-etymology.png",
+      "id": "1j7gm4y6-5FqBK8SuT5cU1plA3J1pZrh2",
+      "url": "https://drive.google.com/file/d/1j7gm4y6-5FqBK8SuT5cU1plA3J1pZrh2/view?usp=drivesdk",
+      "scenario": "History 打开实际 v1.0.0 Template 快照；词源无旧免责声明或自评",
+      "font_scale": 1.0,
+      "theme": "Dark / Accent 1",
+      "api": 36,
+      "width_px": 1080,
+      "height_px": 2400,
+      "width_dp": 411,
+      "density_dpi": 420,
+      "bytes": 190938,
+      "sha256": "e9d43ebb08071d6affd20200b5a3ec62a9cbeaf090d7e1160e8a8bd0a287c5c8",
+      "drive_metadata_verified": true,
+      "revision": "2026-11-11-final-revisions",
+      "review": "待用户审阅"
+    },
+    {
+      "file": "T07-24-new-provider-key-required.png",
+      "id": "1LgZI6M1vETD_QHx2-nTxZJ8j8LiljRBI",
+      "url": "https://drive.google.com/file/d/1LgZI6M1vETD_QHx2-nTxZJ8j8LiljRBI/view?usp=drivesdk",
+      "scenario": "切换 OpenAI 后 API Key 空白，新服务要求新密钥；原配置尚未覆盖",
+      "font_scale": 1.0,
+      "theme": "Dark / Accent 1",
+      "api": 36,
+      "width_px": 1080,
+      "height_px": 2400,
+      "width_dp": 411,
+      "density_dpi": 420,
+      "bytes": 203899,
+      "sha256": "8ba41d317d38ae6ebdb8af8c75ed441053d63a195502aad8609b09d2505124c6",
+      "drive_metadata_verified": true,
+      "revision": "2026-11-11-final-revisions",
+      "review": "待用户审阅"
+    },
+    {
+      "file": "T07-25-detail-etymology.png",
+      "id": "1jyWjpyyrXu0wnogWPe1PcQV0jze_04Mu",
+      "url": "https://drive.google.com/file/d/1jyWjpyyrXu0wnogWPe1PcQV0jze_04Mu/view?usp=drivesdk",
+      "scenario": "Search 新查询详情；默认词源仅显示摘要和详情",
+      "font_scale": 1.0,
+      "theme": "Dark / Accent 1",
+      "api": 36,
+      "width_px": 1080,
+      "height_px": 2400,
+      "width_dp": 411,
+      "density_dpi": 420,
+      "bytes": 190868,
+      "sha256": "5463f1f459539557579d07811e2314c6e0b7b9df1de437cb3d207fa2fa604c15",
+      "drive_metadata_verified": true,
+      "revision": "2026-11-11-final-revisions",
+      "review": "待用户审阅"
+    },
+    {
+      "file": "T07-26-popup-etymology.png",
+      "id": "1nFCrcNpuhltiYhx4z8LKtHakA06U0Ocb",
+      "url": "https://drive.google.com/file/d/1nFCrcNpuhltiYhx4z8LKtHakA06U0Ocb/view?usp=drivesdk",
+      "scenario": "PROCESS_TEXT 测试 Intent → Popup，词源展开与固定页脚",
+      "font_scale": 1.0,
+      "theme": "Dark / Accent 1",
+      "api": 36,
+      "width_px": 1080,
+      "height_px": 2400,
+      "width_dp": 411,
+      "density_dpi": 420,
+      "bytes": 227354,
+      "sha256": "3b82ddee963a33437fdb884ff1fe95cb8561350d128ccdfe18159dcb5622fa5a",
+      "drive_metadata_verified": true,
+      "revision": "2026-11-11-final-revisions",
+      "review": "待用户审阅"
+    },
+    {
+      "file": "T07-27-narrow-large-etymology.png",
+      "id": "1J34aKyLocTI28-Ox12HJuLxcp7HP2a56",
+      "url": "https://drive.google.com/file/d/1J34aKyLocTI28-Ox12HJuLxcp7HP2a56/view?usp=drivesdk",
+      "scenario": "320dp / 200% 字体：词源展开换行与每日词按钮可达",
+      "font_scale": 2.0,
+      "theme": "Dark / Accent 1",
+      "api": 36,
+      "width_px": 840,
+      "height_px": 1920,
+      "width_dp": 320,
+      "density_dpi": 420,
+      "bytes": 137012,
+      "sha256": "f92867475c4be4cff6ee5065ad84cb986ee64b2135cbee5d852ed1d459133565",
+      "drive_metadata_verified": true,
+      "revision": "2026-11-11-final-revisions",
+      "review": "待用户审阅"
+    },
+    {
+      "file": "T07-28-light-etymology.png",
+      "id": "1ccMylPQUWHQ79ZDshThkXtOG8mDXyvrL",
+      "url": "https://drive.google.com/file/d/1ccMylPQUWHQ79ZDshThkXtOG8mDXyvrL/view?usp=drivesdk",
+      "scenario": "Light / Accent 3：每日词词源展开与同排操作",
+      "font_scale": 1.0,
+      "theme": "Light / Accent 3",
+      "api": 36,
+      "width_px": 1080,
+      "height_px": 2400,
+      "width_dp": 411,
+      "density_dpi": 420,
+      "bytes": 216103,
+      "sha256": "dce3c503601bc82cde7bf8a489e79b96ce34a8932f9b12daf4706ae9b4832c0b",
+      "drive_metadata_verified": true,
+      "revision": "2026-11-11-final-revisions",
       "review": "待用户审阅"
     }
   ]

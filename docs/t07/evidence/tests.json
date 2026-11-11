@@ -2,45 +2,66 @@
   "jvm": [
     {
       "name": "dev.dicta.prototype.data.DailyPolicyTest",
-      "tests": "3",
-      "failures": "0",
-      "errors": "0"
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "dev.dicta.prototype.profile.EtymologyCompatibilityTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
     },
     {
       "name": "dev.dicta.prototype.profile.ProfileEngineTest",
-      "tests": "25",
-      "failures": "0",
-      "errors": "0"
+      "tests": 25,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
     },
     {
       "name": "dev.dicta.prototype.profile.ProfilePackageTest",
-      "tests": "6",
-      "failures": "0",
-      "errors": "0"
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "dev.dicta.prototype.provider.CredentialBoundaryTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
     },
     {
       "name": "dev.dicta.prototype.provider.OpenAiCompatibleProviderTest",
-      "tests": "20",
-      "failures": "0",
-      "errors": "0"
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
     },
     {
       "name": "dev.dicta.prototype.query.FakeProviderTest",
-      "tests": "6",
-      "failures": "0",
-      "errors": "0"
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
     },
     {
       "name": "dev.dicta.prototype.query.LookupSessionTest",
-      "tests": "8",
-      "failures": "0",
-      "errors": "0"
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
     },
     {
       "name": "dev.dicta.prototype.speech.VoicePolicyTest",
-      "tests": "6",
-      "failures": "0",
-      "errors": "0"
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
     }
   ],
   "lint": {
@@ -50,17 +71,29 @@
   "instrumentation": [
     {
       "environment": "411dp / 100% font",
-      "tests": 22,
+      "tests": 30,
       "failures": 0,
-      "evidence": "instrumentation-normal.txt"
+      "evidence": "revision/regression-normal.txt"
     },
     {
       "environment": "320dp / 200% font",
-      "tests": 3,
+      "tests": 4,
       "failures": 0,
-      "evidence": "instrumentation-large.txt"
+      "evidence": "revision/regression-large.txt"
     }
   ],
   "real_model_api_calls": 0,
-  "human_visual_acceptance": "pending"
+  "human_visual_acceptance": "pending",
+  "revision": "2026-11-11-final-revisions",
+  "baseline_commit": "8ab0c28d6af56dd4f26fa1b9a79a9bcf576e2f5a",
+  "profile_contract": {
+    "tests": 30,
+    "failures": 0,
+    "evidence": "revision/profile-contract.txt"
+  },
+  "revision_coverage": [
+    "automatic daily generation; persisted date/zone/configuration cache; concurrent request coalescing; no duplicate after return/recreation/resume; explicit shuffle/retry; retain card on failure",
+    "provider preset/host/port boundaries; blank replacement rejects cross-service save; same-service model/output edits preserve key; new host models/completions receive only explicit new key",
+    "default and v1.0.0 history/vocabulary/daily/popup templates display no disclaimer or certainty; original snapshots unchanged; custom labels preserved"
+  ]
 }

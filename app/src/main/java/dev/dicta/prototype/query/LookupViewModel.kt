@@ -53,7 +53,8 @@ class LookupViewModel(application: Application) : AndroidViewModel(application) 
     }
     fun saveConfig(endpoint: String, model: String, replacement: String,protocol:ProviderProtocol=configuration.value.protocol,output:JsonOutput=configuration.value.output) = configAction {
         val old = try { repository.credentials.load() } catch (_: ProviderFailure) { ProviderConfig() }
-        val next = ProviderConfig(endpoint, model, replacement.ifBlank { old.apiKey },protocol,output).validated(requireModel=false)
+        val next = ProviderConfig(endpoint, model, replacement,protocol,output).retainingKeyFrom(old)
+        cancelDiscovery()
         repository.credentials.save(next)
         configuration.value = ConfigSummary(next.endpoint, next.model, next.apiKey.isNotBlank(),next.protocol,next.output,configuration.value.revision+1)
         configMessage.value = "配置已安全保存。"

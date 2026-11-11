@@ -33,15 +33,20 @@
     "task_adb_reverse_removed": true
   },
   "data_preservation": {
-    "device": "emulator-5554",
+    "serial": "emulator-5554",
     "original_files": 4,
-    "all_original_file_sha256_preserved": true,
-    "only_task_created_files_removed": [
-      "shared_prefs/appearance.xml",
-      "no_backup/provider.enc"
+    "all_original_files_sha256_preserved_before_cold_launch": true,
+    "task_created_files_removed": [
+      "shared_prefs/appearance.xml"
     ],
     "pm_clear_performed": false,
-    "main_app_uninstalled": false
+    "main_app_uninstalled": false,
+    "file_sha256": {
+      "databases/dicta.db": "bfaef8fac18709034d1b023086575733ab2f5ba0628478989b5e704180ca2513",
+      "databases/dicta.db-wal": "0f7db6f996fe4a924b05952e9cc34f4101a837021fdc0320aed8e9597a4020fe",
+      "databases/dicta.db-shm": "21cc874e085e1fe8978e490fdbe065c3f5f3793cfbce5ed6435167339bbb0f47",
+      "files/profileInstalled": "8a7c0d2aaa60a156b87bf1570f2c5ce9507b469ac4ce0a75a24cab7df774473e"
+    }
   },
   "baseline_user_table_counts": {
     "bookmarks": 0,
@@ -52,23 +57,22 @@
     "profiles": 0
   },
   "after_restore_cold_start_user_table_counts": {
-    "bookmarks": 0,
-    "daily": 0,
     "entries": 0,
     "history": 0,
-    "preferences": 0,
-    "profiles": 0
+    "bookmarks": 0,
+    "daily": 0,
+    "profiles": 0,
+    "preferences": 0
   },
   "baseline_had_key": false,
   "test_credential_removed": true,
   "test_instrumentation_apk_removed": true,
   "candidate_still_installed": true,
-  "installed_apk_sha256": "c7f2503f4eeb80841f8e8f6bf65ac61c2d54c64ad12fe8217259e91ff1679ce5",
+  "installed_apk_sha256": "265ac7934f796ea968843458d1920eabab3744d4ce1c0e8a851745910f61fd15",
   "cold_launch": {
     "result": "ok",
-    "launch_state": "COLD",
-    "total_ms": 1002,
-    "home_visual_check": "empty original history; no Mock entries"
+    "tool": "official Android CLI run + layout",
+    "home": "original empty database, unconfigured credentials; automatic daily state asks for API Key; no real network request"
   },
   "crash_buffer": {
     "app_process_crash_found": false,
@@ -76,5 +80,7 @@
   },
   "browser": "AOSP WebView Browser Tester 133 / controlled page; Chrome/news not tested",
   "tts": "No engine in AOSP; disabled control/fallback checked; real audio quality not retested",
-  "upgrade_limit": "Empty v1.0.0 Debug baseline restored byte-for-byte before launch; populated Room and legacy credential compatibility tested separately. Formal signed physical-device retained-data overinstall pending approved signing stage."
+  "upgrade_limit": "T07 verifies populated Room, unchanged v1.0.0 snapshot bytes, legacy AES-GCM credentials and emulator data restoration. Original release-certificate retained-data overinstall is reserved for user-approved T08 in an emulator/test environment; physical phone use occurs after publication by the user.",
+  "revision": "2026-11-11-final-revisions",
+  "screenshot_popup": "Revision screenshot uses an explicit PROCESS_TEXT test Intent with Dicta behind it; first-round browser gesture evidence remains historical."
 }

@@ -55,6 +55,9 @@ class DictaRepository private constructor(context:Context) {
     val activeProfile=MutableStateFlow<ProfileChoice?>(null)
     val daily=MutableStateFlow(DailyState())
     private val dailyMutex=Mutex()
+    // A failed automatic attempt must not repeat on recomposition, navigation or resume.
+    // A new date/zone/profile/provider/key or an explicit retry permits another attempt.
+    private var dailyAttempt:String?=null
     init {
         scope.launch {
             try { dao.history().collect { rows-> mutableHistory.value=rows.map {row->decode(row.entry).copy(historyEventId=row.eventId,queriedAt=row.queriedAt)} } }
@@ -145,8 +148,9 @@ class DictaRepository private constructor(context:Context) {
             val latest=if(entry==null && daily.value.entry==null) dao.daily().first().firstOrNull() else null
             val oldEntry=entry ?: daily.value.entry ?: latest?.let {find(it.entryId)}
             val oldDate=if(entry!=null) date.toString() else daily.value.localDate.ifBlank {latest?.localDate.orEmpty()}
-            // Opening a screen/settings or returning from Detail must never incur usage.
-            if(!refresh) {daily.value=DailyState(oldEntry,localDate=oldDate);return@withContext}
+            val attempt=slot+"|"+ProfileDraft.digest(config.apiKey)
+            if(!refresh && dailyAttempt==attempt) return@withContext
+            dailyAttempt=attempt
             daily.value=DailyState(oldEntry,true,localDate=oldDate)
             try {
                 val recent=dao.preference("recentDaily")?.value?.let {raw->try {kotlinx.serialization.json.Json.parseToJsonElement(raw).let {it as kotlinx.serialization.json.JsonArray}.map { (it as kotlinx.serialization.json.JsonPrimitive).content }} catch(_:Exception) {emptyList()} } ?: dao.dailyWords()
@@ -165,7 +169,7 @@ class DictaRepository private constructor(context:Context) {
                 daily.value=DailyState(snapshot,localDate=date.toString())
             } catch(cancelled:CancellationException) {throw cancelled}
             catch(error:Exception) {daily.value=daily.value.copy(busy=false,message=(error as? ProviderFailure)?.userMessage ?: "每日词暂不可用，已保留原卡片。")}
-        } } catch(cancelled:CancellationException) {daily.value=daily.value.copy(busy=false);throw cancelled}
+        } } catch(cancelled:CancellationException) {daily.value=daily.value.copy(busy=false,message="每日词生成已中断，请重试。");throw cancelled}
         catch(_:Exception) {daily.value=daily.value.copy(busy=false,message="无法读取每日词配置；请检查设置。")}
         finally {dailyMutex.unlock()}
     }

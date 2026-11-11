@@ -17,10 +17,14 @@ class T07PopupTest:T07MockFixture() {
     private fun popup()=Intent(context,ProcessTextActivity::class.java).setAction(Intent.ACTION_PROCESS_TEXT).setType("text/plain")
         .putExtra(Intent.EXTRA_PROCESS_TEXT,"ephemeral").putExtra(Intent.EXTRA_PROCESS_TEXT_READONLY,true)
     @Test fun popupOpenUsesSnapshotHidesBottomNavigationAndBackFinishesDetail() {
-        seed()
+        seed(legacy=true)
         val before=posts()
         ActivityScenario.launch<ProcessTextActivity>(popup()).use {scenario->
             compose.waitUntil(10000) {compose.onAllNodesWithTag("popupDetails").fetchSemanticsNodes().isNotEmpty()}
+            compose.onNodeWithText("词源  +").performScrollTo().performClick()
+            compose.onAllNodesWithText("AI 生成",substring=true).assertCountEquals(0)
+            compose.onAllNodesWithText("核验",substring=true).assertCountEquals(0)
+            compose.onAllNodesWithText("established").assertCountEquals(0)
             compose.onNodeWithTag("popupDetails").assertIsDisplayed().performClick()
             compose.waitUntil(10000) {compose.onAllNodesWithTag("wordDetail").fetchSemanticsNodes().isNotEmpty()}
             compose.onNodeWithTag("bottomNavigation").assertDoesNotExist()

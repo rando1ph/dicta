@@ -52,3 +52,11 @@ For T07's local TLS mock acceptance suite, run
 script refuses physical devices, preserves application data and excludes the
 historical live-API / installed-TTS-engine tests. See [T07's report](t07/REPORT.md)
 for the responsive matrix, test evidence and screenshot review index.
+
+The 2026-11-11 product decisions govern the v1.1.0 release process: finish T07's
+daily-word automation, provider credential boundary and etymology display fixes,
+then complete emulator regression and screenshot review. Wait for the user's
+explicit release approval before starting T08 or signing, tagging and publishing.
+T08 verifies retained-data upgrades with the existing release identity in an
+emulator/test environment. The user will try the public release on their Ace 6T
+after publication; a physical phone is not a pre-release acceptance gate.

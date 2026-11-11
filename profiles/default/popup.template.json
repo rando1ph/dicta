@@ -113,7 +113,7 @@
     },
     {
       "type": "column",
-      "label": "词源释义 · AI 生成，未经外部检索核验",
+      "label": "词源",
       "children": [
         {
           "type": "text",
@@ -125,12 +125,6 @@
           "type": "text",
           "bind": "/etymology/detail",
           "style": "body",
-          "hideIfEmpty": true
-        },
-        {
-          "type": "text",
-          "bind": "/etymology/certainty",
-          "style": "muted",
           "hideIfEmpty": true
         }
       ]

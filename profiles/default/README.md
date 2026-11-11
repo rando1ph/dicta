@@ -6,7 +6,7 @@
 
 采用 JSON Schema Draft-07 的受控子集，兼容当前 Kotlin 候选验证器和 Python 实证工具。允许 `type`、`properties`、`required`、`additionalProperties:false`、`items`、`enum`、字符串长度、数组数量、数值上下界与描述元数据。类型限 object/array/string/number/integer/boolean/null，以及 `["string","null"]`。不接受用户 `$ref`、远程引用、递归、正则、组合逻辑或其他未支持关键字，不能静默忽略。内置模板元 Schema 自身可使用本地 `$ref`/条件约束，不等于用户词条 Schema 开放这些功能。
 
-默认对象字段全为 required；未知可空内容用 null，可空列表用 []。字段均有字符串/数组上限，最多四义项。校验只证明结构，不保证释义、音标和词源真实性。`etymology.certainty=established` 只是模型自评，UI 不得显示为“已核实”。不编造频率、来源链接、音频 URL。模型输出按纯文本显示。
+默认对象字段全为 required；未知可空内容用 null，可空列表用 []。字段均有字符串/数组上限，最多四义项。校验只证明结构，不保证释义、音标和词源真实性。`etymology.certainty` 保留为内部数据以兼容旧词条，不在界面显示。词源仅显示「词源」标题、摘要和详情。不编造频率、来源链接、音频 URL。模型输出按纯文本显示。
 
 ## Prompt 与 Provider
 
@@ -40,3 +40,5 @@ Python `render()` 输出映射后的纯数据树，用于验证字段、作用�
 未来 App：内置版本不可变；编辑先复制为 user profile 草稿，依次做 JSON 语法→Schema 子集→模板元 Schema→绑定存在/类型→示例渲染校验，再原子激活新 revision。失败不覆盖 active revision。预览默认用本地样例，不自动付费调用。恢复默认只是重新选择内置 Profile，保留用户副本和旧记录。导出一个 versioned JSON 包，内嵌 Prompt/Schema/Template/Example 和非敏感模型参数，不导出密钥；导入做同样校验并选择本地凭据，不自动发请求。未知 formatVersion 拒绝并提示升级。
 
 `profile.revision` 随三份配置或模型策略变更递增；历史保存该 revision 的内容哈希及 Schema/Template 快照。升级不能用新模板强行解析旧词条。凭据与 Profile 的关联在设备内独立保存，不进入分享文件。
+
+v1.1.0 展示兼容：共享渲染引擎只将 v1.0.0 默认词源长标题映射为「词源」，并隐藏 `/etymology/certainty` 展示节点；数据库中的原始词条、旧模板与用户 Profile 均不重写，自定义标签、字段及展示顺序继续生效。

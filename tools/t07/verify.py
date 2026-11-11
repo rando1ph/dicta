@@ -8,8 +8,8 @@ import zipfile
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[2]
-apk = root / "artifacts/t07/Dicta-v1.1.0-candidate-debug.apk"
 metadata = json.loads((root / "docs/t07/evidence/apk.json").read_text())
+apk = root / metadata["path"]
 assert hashlib.sha256(apk.read_bytes()).hexdigest() == metadata["sha256"]
 assert subprocess.check_output(["git", "branch", "--show-current"], cwd=root, text=True).strip() == "main"
 key_file = Path.home() / ".config/dicta/deepseek_api_key"
@@ -17,6 +17,7 @@ real_key = key_file.read_bytes().strip() if key_file.exists() else b""
 private_files = subprocess.check_output(["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"], cwd=root).split(b"\0")
 files = [root / item.decode() for item in private_files if item and (root / item.decode()).is_file()]
 files += list((root / "artifacts/t07/logs").glob("*"))
+files += list((root / "artifacts/t07-revision/logs").glob("*"))
 for path in files:
     if not path.is_file():
         continue

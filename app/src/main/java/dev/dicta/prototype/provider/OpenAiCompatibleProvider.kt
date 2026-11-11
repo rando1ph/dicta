@@ -19,6 +19,15 @@ enum class JsonOutput { JSON_OBJECT, PROMPT_ONLY }
 /** A Profile model overrides the global default, including for daily words and tests. */
 fun effectiveModel(global: String, profile: String) = profile.trim().ifBlank { global.trim() }
 
+/** Credentials belong to an HTTPS origin, independent of model or API resource path. */
+fun credentialService(endpoint: String): String? {
+    val url=endpoint.trim().trimEnd('/').toHttpUrlOrNullSafe() ?: return null
+    if(url.scheme!="https" || url.username.isNotEmpty() || url.password.isNotEmpty() || url.query!=null || url.fragment!=null) return null
+    return "${url.scheme}://${url.host}:${url.port}"
+}
+fun sameCredentialService(first: String, second: String): Boolean =
+    credentialService(first)?.let {it==credentialService(second)} ?: false
+
 /** Never stringify this object: it contains a transient plaintext credential. */
 class ProviderConfig(
     val endpoint: String = "https://api.deepseek.com", val model: String = "deepseek-flash", val apiKey: String = "",
@@ -33,6 +42,13 @@ class ProviderConfig(
         return ProviderConfig(url.toString().trimEnd('/'), model.trim(), apiKey.trim(), protocol, output)
     }
     fun withModel(model: String) = ProviderConfig(endpoint, model, apiKey, protocol, output)
+    fun retainingKeyFrom(previous: ProviderConfig): ProviderConfig {
+        val next=validated(requireModel=false)
+        if(next.apiKey.isNotBlank()) return next
+        if(!sameCredentialService(next.endpoint,previous.endpoint))
+            throw ProviderFailure("服务地址已切换，请为新服务输入 API Key。",FailureKind.CONFIGURATION)
+        return ProviderConfig(next.endpoint,next.model,previous.apiKey,next.protocol,next.output).validated(requireModel=false)
+    }
     fun resolvedProtocol(): ProviderProtocol = if (protocol != ProviderProtocol.AUTO) protocol else when (endpoint.toHttpUrl().host) {
         "api.deepseek.com" -> ProviderProtocol.DEEPSEEK
         "api.openai.com" -> ProviderProtocol.OPENAI

@@ -1,0 +1,153 @@
+{
+  "formatVersion": 1,
+  "id": "dicta.editorial.v1",
+  "summary": {
+    "title": "/word",
+    "subtitle": "/senses/0/definitionZh",
+    "secondary": "/senses/0/definitionEn",
+    "badge": "/senses/0/partOfSpeech"
+  },
+  "containers": {
+    "popup": {
+      "maxWidthDp": 480,
+      "marginDp": 16,
+      "cornerDp": 28,
+      "scroll": true
+    },
+    "home": {
+      "cornerDp": 28,
+      "scroll": true
+    }
+  },
+  "nodes": [
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "text",
+          "bind": "/word",
+          "style": "headline",
+          "hideIfEmpty": true
+        },
+        {
+          "type": "badge",
+          "bind": "/senses/0/partOfSpeech",
+          "style": "grammar",
+          "hideIfEmpty": true
+        }
+      ]
+    },
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "text",
+          "bind": "/pronunciation/uk",
+          "style": "ipa",
+          "hideIfEmpty": true,
+          "label": "UK"
+        },
+        {
+          "type": "text",
+          "bind": "/pronunciation/us",
+          "style": "ipa",
+          "hideIfEmpty": true,
+          "label": "US"
+        }
+      ]
+    },
+    {
+      "type": "repeat",
+      "bind": "/senses",
+      "children": [
+        {
+          "type": "text",
+          "bind": "/partOfSpeech",
+          "style": "grammar",
+          "hideIfEmpty": true
+        },
+        {
+          "type": "text",
+          "bind": "/definitionZh",
+          "style": "definition",
+          "hideIfEmpty": true
+        },
+        {
+          "type": "text",
+          "bind": "/definitionEn",
+          "style": "body",
+          "hideIfEmpty": true
+        },
+        {
+          "type": "repeat",
+          "bind": "/examples",
+          "children": [
+            {
+              "type": "text",
+              "bind": "/en",
+              "style": "quote",
+              "hideIfEmpty": true
+            },
+            {
+              "type": "text",
+              "bind": "/zh",
+              "style": "muted",
+              "hideIfEmpty": true
+            }
+          ]
+        },
+        {
+          "type": "chips",
+          "bind": "/collocations",
+          "style": "muted",
+          "hideIfEmpty": true
+        }
+      ]
+    },
+    {
+      "type": "chips",
+      "bind": "/synonyms",
+      "label": "同义",
+      "style": "muted",
+      "hideIfEmpty": true
+    },
+    {
+      "type": "column",
+      "label": "词源释义 · AI 生成，未经外部检索核验",
+      "children": [
+        {
+          "type": "text",
+          "bind": "/etymology/summary",
+          "style": "etymology",
+          "hideIfEmpty": true
+        },
+        {
+          "type": "text",
+          "bind": "/etymology/detail",
+          "style": "body",
+          "hideIfEmpty": true
+        },
+        {
+          "type": "text",
+          "bind": "/etymology/certainty",
+          "style": "muted",
+          "hideIfEmpty": true
+        }
+      ]
+    }
+  ],
+  "actions": {
+    "popup": [
+      "speak",
+      "save",
+      "details",
+      "close"
+    ],
+    "home": [
+      "speak",
+      "save",
+      "shuffle"
+    ]
+  },
+  "speech": "/word"
+}

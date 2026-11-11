@@ -121,9 +121,12 @@ class ProfileEngine(schemaRaw: String, templateRaw: String) {
             ensure(++expanded <= 500, "render_too_large")
             val node = element.jsonObject
             val type = node.text("type")
+            // Display-only compatibility for v1.0.0 snapshots and imported default copies.
+            // Keep their raw JSON, schema and template intact; self-ratings are not entry content.
+            if(node["bind"]==JsonPrimitive("/etymology/certainty")) return@mapNotNull null
             val value = node["bind"]?.let { resolve(scope, it.str()) }
             val style = node["style"]?.str() ?: "body"
-            val label = node["label"]?.str()
+            val label = node["label"]?.str()?.let {if(it=="词源释义 · AI 生成，未经外部检索核验") "词源" else it}
             if (node["hideIfEmpty"] == JsonPrimitive(true) && (value == JsonNull || value == JsonPrimitive("") || value == JsonArray(emptyList()))) null
             else when (type) {
                 "row", "column" -> {

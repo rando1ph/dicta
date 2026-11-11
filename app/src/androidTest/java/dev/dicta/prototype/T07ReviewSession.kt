@@ -11,14 +11,16 @@ import java.io.File
 
 /** Explicit opt-in fixture for real CLI/ADB interaction and original PNG capture. */
 class T07ReviewSession:T07MockFixture() {
+    override val prepareDaily=false
     @Test fun reviewWithLocalTlsProvider() {
         assumeTrue(InstrumentationRegistry.getArguments().getString("review")=="true")
         val stop=File(context.filesDir,"t07-review-stop")
         stop.delete()
-        val seed=seed()
+        val seed=seed(legacy=true)
         // Keep a local history snapshot, while the first active lookup exercises the network path.
         repo.database.openHelper.writableDatabase.execSQL("UPDATE entries SET cacheKey = '' WHERE id = ?",arrayOf(seed.id))
-        compose.runOnUiThread {Appearance.mode.value=ThemeMode.Dark;Appearance.accent.value=0;compose.activity.model.daily(true)}
+        compose.runOnUiThread {Appearance.mode.value=ThemeMode.Dark;Appearance.accent.value=0}
+        compose.onNodeWithTag("navSearch").performClick()
         compose.waitUntil(10000) {!repo.daily.value.busy && repo.daily.value.entry!=null}
         val ready=File(context.filesDir,"t07-review-ready")
         val action=File(context.filesDir,"t07-review-action")
@@ -51,6 +53,26 @@ class T07ReviewSession:T07MockFixture() {
         when(command) {
             "home" -> {page("Search");compose.onNodeWithTag("queryInput").performScrollTo()}
             "daily" -> {page("Search");compose.onNodeWithTag("dailyShuffle").performScrollTo()}
+            "daily_etymology" -> {page("Search");etymology()}
+            "detail_etymology" -> {reviewAction("query");etymology()}
+            "history_etymology" -> {reviewAction("history_detail");etymology()}
+            "vocabulary_etymology" -> {reviewAction("vocabulary_detail");etymology()}
+            "new_provider" -> {
+                reviewAction("settings")
+                compose.onNodeWithText("OpenAI",useUnmergedTree=true).performClick()
+                compose.onNodeWithTag("keyStatus").performScrollTo()
+            }
+            "popup_etymology" -> {
+                back()
+                val intent=android.content.Intent(context,dev.dicta.prototype.platform.ProcessTextActivity::class.java)
+                    .setAction(android.content.Intent.ACTION_PROCESS_TEXT).setType("text/plain")
+                    .putExtra(android.content.Intent.EXTRA_PROCESS_TEXT,"ephemeral")
+                    .putExtra(android.content.Intent.EXTRA_PROCESS_TEXT_READONLY,true)
+                compose.runOnUiThread {compose.activity.startActivity(intent)}
+                compose.waitUntil(10000) {compose.onAllNodesWithTag("popupDetails").fetchSemanticsNodes().isNotEmpty()}
+                etymology()
+            }
+            "close_popup" -> {compose.onNodeWithTag("closePopup").performClick()}
             "query" -> {
                 page("Search");compose.onNodeWithTag("queryInput").performScrollTo().performTextReplacement("ephemeral")
                 compose.onNodeWithContentDescription("查询").performClick();awaitSuccess()
@@ -90,5 +112,14 @@ class T07ReviewSession:T07MockFixture() {
             }
             else -> error("Unknown review action")
         }
+    }
+    private fun etymology() {
+        val collapsed=compose.onAllNodesWithText("词源  +").fetchSemanticsNodes()
+        if(collapsed.isNotEmpty()) compose.onNodeWithText("词源  +").performScrollTo().performClick()
+        compose.onNodeWithText("词源  −").performScrollTo()
+        compose.onNodeWithText("希腊语 ephēmeros 意为“只持续一天的”，后来用于表示短暂存在的事物。").performScrollTo()
+        compose.onAllNodesWithText("AI 生成",substring=true).assertCountEquals(0)
+        compose.onAllNodesWithText("核验",substring=true).assertCountEquals(0)
+        compose.onAllNodesWithText("established").assertCountEquals(0)
     }
 }

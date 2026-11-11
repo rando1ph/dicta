@@ -106,8 +106,9 @@ private fun Home(history: List<EntrySnapshot>, model: LookupViewModel, onHistory
     val submit = { keyboard?.hide();model.lookup(query) }
     val daily by model.daily.collectAsState()
     val active by model.activeProfile.collectAsState()
+    val configuration by model.configuration.collectAsState()
     val lifecycle=androidx.lifecycle.compose.LocalLifecycleOwner.current
-    DisposableEffect(lifecycle,active?.revision?.id) {
+    DisposableEffect(lifecycle,active?.revision?.id,configuration) {
         val observer=androidx.lifecycle.LifecycleEventObserver {_,event->if(event==androidx.lifecycle.Lifecycle.Event.ON_RESUME) model.daily()}
         lifecycle.lifecycle.addObserver(observer)
         if(lifecycle.lifecycle.currentState.isAtLeast(androidx.lifecycle.Lifecycle.State.RESUMED)) model.daily()
@@ -133,9 +134,8 @@ private fun Home(history: List<EntrySnapshot>, model: LookupViewModel, onHistory
             if(daily.entry==null && !daily.busy && daily.message.isBlank()) Text("每日一个值得发现的英文词。")
             FlowRow(Modifier.fillMaxWidth().testTag("dailyActions"),horizontalArrangement=Arrangement.spacedBy(12.dp),verticalArrangement=Arrangement.spacedBy(4.dp)) {
                 daily.entry?.let {BookmarkButton(it,model,"dailySave")}
-                OutlinedButton(onClick={model.daily(true)},enabled=!daily.busy,modifier=Modifier.testTag("dailyShuffle")) {Text(if(daily.entry==null) "获取每日词" else "换一换")}
+                OutlinedButton(onClick={model.daily(true)},enabled=!daily.busy,modifier=Modifier.testTag("dailyShuffle")) {Text(if(daily.message.isNotBlank()) "重试" else if(daily.entry==null) "获取每日词" else "换一换")}
             }
-            if(daily.entry==null) Text("点击获取会使用已保存模型，可能产生 API 用量。",style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
         }
         TextButton(onClick={onSettings()}) { Text("模型设置") }
         Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,verticalAlignment=Alignment.CenterVertically) {

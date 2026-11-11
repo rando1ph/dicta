@@ -27,10 +27,11 @@ class T07UiTest:T07MockFixture() {
         compose.onNodeWithTag("navHistory").assertIsSelected()
         assertEquals(before,posts())
     }
-    @Test fun dailyActionsShareARowAtNormalWidthAndRefreshIsExplicit() {
+    @Test fun dailyActionsShareARowAtNormalWidthAndManualRefreshRemainsAvailable() {
         assertEquals(0,posts())
+        val before=repo.daily.value.entry?.id
         compose.runOnUiThread {compose.activity.model.daily(true)}
-        compose.waitUntil(10000) {!repo.daily.value.busy && repo.daily.value.entry!=null}
+        compose.waitUntil(10000) {!repo.daily.value.busy && repo.daily.value.entry?.id!=before}
         compose.onNodeWithTag("dailyActions").performScrollTo()
         val saved=compose.onNodeWithTag("dailySave").assertIsDisplayed().fetchSemanticsNode().boundsInRoot
         val shuffle=compose.onNodeWithTag("dailyShuffle").assertIsDisplayed().fetchSemanticsNode().boundsInRoot
