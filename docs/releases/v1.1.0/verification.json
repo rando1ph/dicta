@@ -1,0 +1,21 @@
+{
+  "buildCommand": "bash tools/m1/build.sh :app:assembleRelease",
+  "buildSucceeded": true,
+  "reviewedMainCommit": "a3a5ab7add2eeb74f362a6b5ce6e3664f169c0a8",
+  "applicationId": "dev.randolf.dicta",
+  "versionName": "1.1.0",
+  "versionCode": 6,
+  "debuggable": false,
+  "apksignerVerified": true,
+  "v2Verified": true,
+  "v3Verified": true,
+  "matchesV100Certificate": true,
+  "zipalignVerified": true,
+  "zipCrcVerified": true,
+  "sha256": "24417b983e384683fcaf4c1e38eb2424ca8de8a3b72179b5963c808709440258",
+  "bytes": 8518281,
+  "emulatorTestsRepeated": false,
+  "upgradeInstallationTested": false,
+  "physicalDeviceTested": false,
+  "scope": "Production artifact checks only; T07 tests and user approval accepted."
+}

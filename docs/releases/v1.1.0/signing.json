@@ -1,0 +1,18 @@
+{
+  "output": "/home/randolph/Projects/Dicta/artifacts/release/v1.1.0/Dicta-v1.1.0.apk",
+  "inputSha256": "6107e21f7fcefd3f2e1a8d5f48d54f85e232346b2687a63319d342012c85ad92",
+  "certificateSha256": "6c7e7a2bb39749ef9d7cf6a0c534d6e7b39e3fdc5ab9b9558aafc7cdab6bceb8",
+  "applicationId": "dev.randolf.dicta",
+  "versionCode": "6",
+  "versionName": "1.1.0",
+  "payloadEntries": 132,
+  "sha256": "24417b983e384683fcaf4c1e38eb2424ca8de8a3b72179b5963c808709440258",
+  "bytes": 8518281,
+  "signatureVerified": true,
+  "zipCrcVerified": true,
+  "alignmentVerified": true,
+  "payloadUnchanged": true,
+  "inputUnchanged": true,
+  "signingMaterialAbsent": true,
+  "credentialFilesUnchanged": true
+}
