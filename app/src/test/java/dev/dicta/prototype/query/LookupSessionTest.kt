@@ -90,4 +90,21 @@ class LookupSessionTest {
         advanceUntilIdle()
         assertEquals(1, calls)
     }
+    @Test fun detailBackPreventsLateResponseAndSnapshotOpenDoesNotRepeatAQuery() = runTest {
+        var calls=0;var saves=0
+        val session=LookupSession(this,{calls++;withContext(NonCancellable) {delay(1000)};entry(it)},{saves++})
+        session.lookup("luminous");runCurrent();session.close();advanceUntilIdle()
+        assertEquals(LookupState.Idle,session.state.value);assertEquals(0,saves)
+        session.loadingSnapshot();session.open(entry("saved"));advanceUntilIdle()
+        assertEquals("saved",(session.state.value as LookupState.Success).entry.query)
+        assertEquals(1,calls);assertEquals(0,saves)
+        session.close();assertEquals(LookupState.Idle,session.state.value)
+    }
+    @Test fun cancelledDetailCanRetryOnlyOnExplicitAction() = runTest {
+        var calls=0
+        val session=LookupSession(this,{calls++;entry(it)},{})
+        session.lookup("luminous");runCurrent();session.cancel();advanceUntilIdle()
+        assertEquals(1,calls);assertEquals(LookupState.Cancelled,session.state.value)
+        session.retry();advanceUntilIdle();assertEquals(2,calls)
+    }
 }

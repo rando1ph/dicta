@@ -40,8 +40,8 @@ private fun Node(node: RenderNode, depth: Int = 0, speech: (@Composable () -> Un
             var expanded by remember(node) { mutableStateOf(false) }
             Column(Modifier.fillMaxWidth().background(colors.surfaceContainerHighest.copy(alpha = .45f), RoundedCornerShape(16.dp)).padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (node.label != null) {
-                    if (etymology) TextButton(onClick = { expanded = !expanded }, contentPadding = PaddingValues(0.dp)) {
-                        Text(node.label + if (expanded) "  −" else "  +", color = colors.secondary, style = MaterialTheme.typography.labelMedium)
+                    if (etymology) TextButton(onClick = { expanded = !expanded }, shape=RoundedCornerShape(8.dp), contentPadding = PaddingValues(8.dp), modifier=Modifier.fillMaxWidth()) {
+                        Text(node.label + if (expanded) "  −" else "  +", modifier=Modifier.fillMaxWidth(), color = colors.secondary, style = MaterialTheme.typography.labelMedium)
                     } else Text(node.label, style = MaterialTheme.typography.labelMedium, color = colors.onSurfaceVariant)
                 }
                 node.children.forEachIndexed { index, child -> if (!etymology || expanded || index == 0) Node(child, depth + 1, speech) }

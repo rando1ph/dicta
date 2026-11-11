@@ -1,0 +1,11 @@
+{
+  "applicationId": "dev.randolf.dicta",
+  "versionName": "1.1.0-candidate",
+  "versionCode": 6,
+  "path": "artifacts/t07/Dicta-v1.1.0-candidate-debug.apk",
+  "bytes": 12645897,
+  "sha256": "c7f2503f4eeb80841f8e8f6bf65ac61c2d54c64ad12fe8217259e91ff1679ce5",
+  "signature": "Android Debug",
+  "certificate_sha256": "e4bb888b2c73da57e9484e5a9e2a792e733902cdf102c847228c044d93b1b1fb",
+  "public_v100_overinstall": "not supported by debug signature; requires approved release-signing stage"
+}

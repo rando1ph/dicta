@@ -14,7 +14,7 @@ import org.junit.Test
 import java.io.File
 import java.util.concurrent.TimeUnit
 
-class DeepSeekProviderTest {
+class OpenAiCompatibleProviderTest {
     private fun fixture() = File(System.getProperty("dicta.root"), "profiles/default/example.json").readText()
     private fun envelope(content: String = fixture(), finish: String = "stop") = buildJsonObject {
         put("choices", buildJsonArray { add(buildJsonObject {
@@ -28,12 +28,12 @@ class DeepSeekProviderTest {
         return MockWebServer().use { server ->
             server.useHttps(serverCert.sslSocketFactory(), false)
             server.start()
-            val client = DeepSeekProvider.defaultClient().newBuilder().sslSocketFactory(trusted.sslSocketFactory(), trusted.trustManager).build()
+            val client = OpenAiCompatibleProvider.defaultClient().newBuilder().sslSocketFactory(trusted.sslSocketFactory(), trusted.trustManager).build()
             block(server, client)
         }
     }
     private fun provider(server: MockWebServer, client: OkHttpClient, key: String = "test-only") =
-        DeepSeekProvider({ ProviderConfig(server.url("/").toString(), "test-model", key) }, {"Return JSON"}, client)
+        OpenAiCompatibleProvider({ ProviderConfig(server.url("/").toString(), "test-model", key) }, {"Return JSON"}, client)
     @Test fun sendsJsonEnvelopeAndValidatesRealProfile() = server { server, client -> runBlocking {
         server.enqueue(MockResponse().setBody(envelope()))
         val content = provider(server, client).generate("luminous")
@@ -44,7 +44,7 @@ class DeepSeekProviderTest {
         assertEquals("Bearer test-only", request.getHeader("Authorization"))
         val body = Json.parseToJsonElement(request.body.readUtf8()).jsonObject
         assertEquals("json_object", body["response_format"]!!.jsonObject["type"]!!.jsonPrimitive.content)
-        assertEquals("disabled", body["thinking"]!!.jsonObject["type"]!!.jsonPrimitive.content)
+        assertNull(body["thinking"])
         assertEquals("luminous", Json.parseToJsonElement(body["messages"]!!.jsonArray[1].jsonObject["content"]!!.jsonPrimitive.content).jsonObject["query"]!!.jsonPrimitive.content)
     } }
     @Test fun dailyUsesSameEndpointSchemaProtocolAndOneRequestWithExcludes() = server {server,client->runBlocking {
@@ -121,5 +121,79 @@ class DeepSeekProviderTest {
         }
         assertEquals("https://api.deepseek.com/v1",ProviderConfig(" https://api.deepseek.com/v1/ ").validated().endpoint)
         assertFalse(ProviderConfig(apiKey="transient-secret").toString().contains("transient-secret"))
+    }
+    @Test fun baseAndCompleteApiPathsNormalizeWithoutDuplicateVersionOrResource() {
+        for((base,chat,models) in listOf(
+            Triple("https://api.openai.com","https://api.openai.com/v1/chat/completions","https://api.openai.com/v1/models"),
+            Triple("https://api.deepseek.com/v1/","https://api.deepseek.com/v1/chat/completions","https://api.deepseek.com/v1/models"),
+            Triple("https://example.com/proxy/v1/chat/completions","https://example.com/proxy/v1/chat/completions","https://example.com/proxy/v1/models"),
+            Triple("https://example.com/v1/models","https://example.com/v1/chat/completions","https://example.com/v1/models")
+        )) {
+            val config=ProviderConfig(base).validated()
+            assertEquals(chat,config.apiUrl("chat/completions").toString())
+            assertEquals(models,config.apiUrl("models").toString())
+        }
+    }
+    @Test fun protocolsSendOnlySupportedVendorParameters() = server {server,client->runBlocking {
+        for(protocol in listOf(ProviderProtocol.DEEPSEEK,ProviderProtocol.OPENAI,ProviderProtocol.COMPATIBLE)) {
+            server.enqueue(MockResponse().setBody(envelope()))
+            OpenAiCompatibleProvider({ProviderConfig(server.url("/v1").toString(),"chosen-model","test-only",protocol)},{"JSON"},client).generate("word")
+            val request=server.takeRequest(2,TimeUnit.SECONDS)!!
+            assertEquals("/v1/chat/completions",request.path)
+            val body=Json.parseToJsonElement(request.body.readUtf8()).jsonObject
+            assertEquals("chosen-model",body["model"]?.jsonPrimitive?.content)
+            assertEquals(protocol==ProviderProtocol.DEEPSEEK,body.containsKey("thinking"))
+            assertEquals(protocol==ProviderProtocol.OPENAI,body.containsKey("max_completion_tokens"))
+            assertEquals(protocol!=ProviderProtocol.OPENAI,body.containsKey("max_tokens"))
+        }
+    } }
+    @Test fun endpointAutoDetectionNeverLeaksDeepSeekParametersToAnotherHost() {
+        assertEquals(ProviderProtocol.DEEPSEEK,ProviderConfig().resolvedProtocol())
+        assertEquals(ProviderProtocol.OPENAI,ProviderConfig("https://api.openai.com/v1").resolvedProtocol())
+        assertEquals(ProviderProtocol.COMPATIBLE,ProviderConfig("https://api.deepseek.com.example.org").resolvedProtocol())
+    }
+    @Test fun unsupportedJsonModeRequiresExplicitFallbackAndNeverReissuesPaidQuery() = server {server,client->runBlocking {
+        server.enqueue(MockResponse().setResponseCode(400).setBody("sensitive rejected parameter"))
+        try {provider(server,client).generate("word");fail()} catch(e:ProviderFailure) {assertEquals(FailureKind.REQUEST,e.kind);assertTrue(e.userMessage.contains("仅提示词"))}
+        assertEquals(1,server.requestCount)
+        server.takeRequest()
+        server.enqueue(MockResponse().setBody(envelope()))
+        val p=OpenAiCompatibleProvider({ProviderConfig(server.url("/").toString(),"test-model","test-only",output=JsonOutput.PROMPT_ONLY)},{"Return JSON"},client)
+        assertEquals(fixture(),p.generate("word"))
+        assertFalse(Json.parseToJsonElement(server.takeRequest().body.readUtf8()).jsonObject.containsKey("response_format"))
+        assertEquals(2,server.requestCount)
+    } }
+    @Test fun discoveryIsGetWithSavedCredentialsAndWorksBeforeModelSelection() = server {server,client->runBlocking {
+        server.enqueue(MockResponse().setBody("""{"data":[{"id":"z-model"},{"id":"a-model"},{"id":"a-model"},{"id":123},{"id":""}]}"""))
+        val p=OpenAiCompatibleProvider({ProviderConfig(server.url("/v1/chat/completions").toString(),"","test-only")},{error("No prompt or generation")},client)
+        assertEquals(listOf("a-model","z-model"),p.models())
+        val request=server.takeRequest(2,TimeUnit.SECONDS)!!
+        assertEquals("GET",request.method);assertEquals("/v1/models",request.path)
+        assertEquals("Bearer test-only",request.getHeader("Authorization"));assertEquals(0,request.bodySize)
+        assertEquals(1,server.requestCount)
+    } }
+    @Test fun discoveryAuthUnsupportedAndMalformedResponsesOfferManualFallback() = server {server,client->runBlocking {
+        for((status,kind) in listOf(401 to FailureKind.AUTH,403 to FailureKind.AUTH,404 to FailureKind.DISCOVERY_UNSUPPORTED,405 to FailureKind.DISCOVERY_UNSUPPORTED,503 to FailureKind.SERVER)) {
+            server.enqueue(MockResponse().setResponseCode(status).setBody("private diagnostic"))
+            try {provider(server,client).models();fail()} catch(e:ProviderFailure) {assertEquals(kind,e.kind);assertFalse(e.userMessage.contains("private"))}
+        }
+        for(raw in listOf("not-json","{}","{\"data\":[]}","{\"data\":[{\"id\":true}]}")) {
+            server.enqueue(MockResponse().setBody(raw))
+            try {provider(server,client).models();fail()} catch(e:ProviderFailure) {assertEquals(FailureKind.RESPONSE,e.kind)}
+        }
+        assertEquals(9,server.requestCount)
+    } }
+    @Test fun discoveryCancellationTerminatesHttpWithoutGenerating() = server {server,client->runBlocking {
+        server.enqueue(MockResponse().setSocketPolicy(SocketPolicy.NO_RESPONSE))
+        val job=launch {provider(server,client).models()}
+        withContext(Dispatchers.IO) {assertEquals("GET",server.takeRequest(3,TimeUnit.SECONDS)!!.method)}
+        job.cancelAndJoin()
+        withTimeout(3000) {while(client.dispatcher.runningCallsCount()>0) delay(20)}
+        assertEquals(1,server.requestCount)
+    } }
+    @Test fun profileModelPriorityIsSharedAndWhitespaceDoesNotHideTheGlobalDefault() {
+        assertEquals("global",effectiveModel(" global ","   "))
+        assertEquals("profile",effectiveModel("global"," profile "))
+        assertEquals("profile",ProviderConfig(model="global").withModel(effectiveModel("global","profile")).model)
     }
 }

@@ -7,6 +7,8 @@ import android.util.AtomicFile
 import dev.dicta.prototype.provider.ProviderConfig
 import dev.dicta.prototype.provider.ProviderFailure
 import dev.dicta.prototype.provider.FailureKind
+import dev.dicta.prototype.provider.ProviderProtocol
+import dev.dicta.prototype.provider.JsonOutput
 import kotlinx.serialization.json.*
 import java.io.File
 import java.security.KeyStore
@@ -35,13 +37,18 @@ class CredentialStore(context: Context) {
             val cipher = Cipher.getInstance("AES/GCM/NoPadding")
             cipher.init(Cipher.DECRYPT_MODE, key(), GCMParameterSpec(128, bytes.copyOfRange(0, 12)))
             val json = Json.parseToJsonElement(cipher.doFinal(bytes.copyOfRange(12, bytes.size)).toString(Charsets.UTF_8)).jsonObject
-            return ProviderConfig(json.getValue("endpoint").jsonPrimitive.content, json.getValue("model").jsonPrimitive.content, json.getValue("key").jsonPrimitive.content).validated()
+            return ProviderConfig(json.getValue("endpoint").jsonPrimitive.content, json.getValue("model").jsonPrimitive.content, json.getValue("key").jsonPrimitive.content,
+                json["protocol"]?.jsonPrimitive?.content?.let(ProviderProtocol::valueOf) ?: ProviderProtocol.AUTO,
+                json["output"]?.jsonPrimitive?.content?.let(JsonOutput::valueOf) ?: JsonOutput.JSON_OBJECT).validated(requireModel=false)
         } catch (_: Exception) { throw ProviderFailure("无法读取安全配置，请在设置中重新保存密钥。", FailureKind.CONFIGURATION) }
     }
     @Synchronized fun save(config: ProviderConfig) {
-        val active = config.validated()
+        val active = config.validated(requireModel=false)
         try {
-            val raw = buildJsonObject { put("endpoint", active.endpoint); put("model", active.model); put("key", active.apiKey) }.toString().toByteArray()
+            val raw = buildJsonObject {
+                put("endpoint", active.endpoint); put("model", active.model); put("key", active.apiKey)
+                put("protocol", active.protocol.name); put("output", active.output.name)
+            }.toString().toByteArray()
             val cipher = Cipher.getInstance("AES/GCM/NoPadding").apply { init(Cipher.ENCRYPT_MODE, key()) }
             val stream = file.startWrite()
             try { stream.write(cipher.iv + cipher.doFinal(raw)); file.finishWrite(stream) }

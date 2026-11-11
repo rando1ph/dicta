@@ -94,7 +94,7 @@ fun ProfileScreen(model:LookupViewModel,onBack:()->Unit) {
         }
         if(readOnly) Text("预置默认为只读。复制后即可编辑；恢复默认不会删除用户方案或旧词条。",color=MaterialTheme.colorScheme.onSurfaceVariant)
         OutlinedTextField(draft.name,{draft=draft.copy(name=it)},readOnly=readOnly,label={Text("Profile 名称")},singleLine=true,modifier=Modifier.fillMaxWidth().testTag("profileName"))
-        OutlinedTextField(draft.model,{draft=draft.copy(model=it)},readOnly=readOnly,label={Text("Model（留空沿用 BYOK 设置）")},singleLine=true,modifier=Modifier.fillMaxWidth().testTag("profileModel"))
+        OutlinedTextField(draft.model,{draft=draft.copy(model=it)},readOnly=readOnly,label={Text("Profile Model ID（可选）")},supportingText={Text("填写后优先于全局模型；留空使用模型服务中的选择。")},singleLine=true,modifier=Modifier.fillMaxWidth().testTag("profileModel"))
         Text("使用设备当前 BYOK 端点和密钥；导入不改变端点或关联凭据。",style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
         FlowRow(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
             listOf("Prompt","Schema","Template","Example").forEach {name->FilterChip(selected=tab==name,onClick={tab=name},label={Text(name)},modifier=Modifier.testTag("edit$name"))}

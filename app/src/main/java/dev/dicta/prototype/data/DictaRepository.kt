@@ -37,6 +37,8 @@ class DictaRepository private constructor(context:Context) {
     private val dao=database.dao()
     private val scope=CoroutineScope(SupervisorJob()+Dispatchers.IO)
     val credentials=CredentialStore(context.applicationContext)
+    // Injectable transport keeps device acceptance tests on local TLS mocks.
+    internal var providerClient = OpenAiCompatibleProvider.defaultClient()
     private val assets=context.applicationContext.assets
     private fun asset(path:String)=assets.open("default/$path").bufferedReader().use {it.readText()}
     val builtin:ProfileChoice by lazy {
@@ -91,10 +93,14 @@ class DictaRepository private constructor(context:Context) {
         val choice=if(id==null || id=="builtin") builtin else dao.profile(id)?.let {ProfileChoice(it)} ?: builtin
         try {choice.draft.preview();choice} catch(_:Exception) {warning.value="Profile 校验失败，已使用预置默认，原配置已保留。";builtin}
     }
-    private fun provider(choice:ProfileChoice,config:ProviderConfig)=DeepSeekProvider({ProviderConfig(config.endpoint,choice.draft.model.ifBlank {config.model},config.apiKey)},choice.draft::systemPrompt)
-    private fun identity(choice:ProfileChoice,config:ProviderConfig)=ProfileDraft.digest(choice.revision.contentHash+"|"+config.endpoint+"|"+choice.draft.model.ifBlank {config.model})
+    private fun provider(choice:ProfileChoice,config:ProviderConfig)=OpenAiCompatibleProvider({config.withModel(effectiveModel(config.model,choice.draft.model))},choice.draft::systemPrompt,providerClient)
+    private fun identity(choice:ProfileChoice,config:ProviderConfig)=ProfileDraft.digest(choice.revision.contentHash+"|"+config.endpoint+"|"+effectiveModel(config.model,choice.draft.model)+
+        if(config.protocol==ProviderProtocol.AUTO && config.output==JsonOutput.JSON_OBJECT) "" else "|${config.protocol}|${config.output}")
+    suspend fun discoverModels()=withContext(Dispatchers.IO) {
+        OpenAiCompatibleProvider({credentials.load()}, {""}, providerClient).models()
+    }
     suspend fun lookup(query:String,useCache:Boolean=true):EntrySnapshot=withContext(Dispatchers.IO) {
-        val choice=currentProfile();val config=credentials.load().validated()
+        val choice=currentProfile();val config=credentials.load().validated(requireModel=false)
         if(config.apiKey.isBlank()) throw ProviderFailure("请先在设置中添加 API Key。",FailureKind.CONFIGURATION)
         val key=ProfileDraft.digest(DailyPolicy.normalized(query)+"|"+identity(choice,config))
         val cached=if(useCache) dao.cached(key) else null
@@ -131,7 +137,7 @@ class DictaRepository private constructor(context:Context) {
     suspend fun ensureDaily(refresh:Boolean=false,date:LocalDate=LocalDate.now(),zone:ZoneId=ZoneId.systemDefault()) {
         if(!dailyMutex.tryLock()) return
         try { withContext(Dispatchers.IO) {
-            val choice=currentProfile();val config=credentials.load().validated()
+            val choice=currentProfile();val config=credentials.load().validated(requireModel=false)
             val slot=DailyPolicy.slot(date,zone,identity(choice,config))
             val previous=dao.daily(slot)
             val entry=previous?.let {find(it.entryId)}
@@ -139,6 +145,8 @@ class DictaRepository private constructor(context:Context) {
             val latest=if(entry==null && daily.value.entry==null) dao.daily().first().firstOrNull() else null
             val oldEntry=entry ?: daily.value.entry ?: latest?.let {find(it.entryId)}
             val oldDate=if(entry!=null) date.toString() else daily.value.localDate.ifBlank {latest?.localDate.orEmpty()}
+            // Opening a screen/settings or returning from Detail must never incur usage.
+            if(!refresh) {daily.value=DailyState(oldEntry,localDate=oldDate);return@withContext}
             daily.value=DailyState(oldEntry,true,localDate=oldDate)
             try {
                 val recent=dao.preference("recentDaily")?.value?.let {raw->try {kotlinx.serialization.json.Json.parseToJsonElement(raw).let {it as kotlinx.serialization.json.JsonArray}.map { (it as kotlinx.serialization.json.JsonPrimitive).content }} catch(_:Exception) {emptyList()} } ?: dao.dailyWords()

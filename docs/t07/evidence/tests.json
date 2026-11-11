@@ -1,0 +1,66 @@
+{
+  "jvm": [
+    {
+      "name": "dev.dicta.prototype.data.DailyPolicyTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "dev.dicta.prototype.profile.ProfileEngineTest",
+      "tests": "25",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "dev.dicta.prototype.profile.ProfilePackageTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "dev.dicta.prototype.provider.OpenAiCompatibleProviderTest",
+      "tests": "20",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "dev.dicta.prototype.query.FakeProviderTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "dev.dicta.prototype.query.LookupSessionTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "dev.dicta.prototype.speech.VoicePolicyTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0"
+    }
+  ],
+  "lint": {
+    "errors": 0,
+    "warnings": 13
+  },
+  "instrumentation": [
+    {
+      "environment": "411dp / 100% font",
+      "tests": 22,
+      "failures": 0,
+      "evidence": "instrumentation-normal.txt"
+    },
+    {
+      "environment": "320dp / 200% font",
+      "tests": 3,
+      "failures": 0,
+      "evidence": "instrumentation-large.txt"
+    }
+  ],
+  "real_model_api_calls": 0,
+  "human_visual_acceptance": "pending"
+}

@@ -31,7 +31,8 @@ class M3ProfileDeviceTest {
             ProfileFiles.write(context,Uri.fromFile(file),draft)
             val imported=ProfileDraft.import(ProfileFiles.read(context,Uri.fromFile(file)))
             assertEquals(draft.hash(),imported.hash())
-            assertFalse(file.readText().contains(repo.credentials.load().apiKey))
+            val storedKey=repo.credentials.load().apiKey
+            if(storedKey.isNotBlank()) assertFalse(file.readText().contains(storedKey))
             val first=repo.saveProfile(imported);testProfileId=first.revision.profileId
             val next=repo.saveProfile(imported.copy(name="Device updated revision"),first.revision.profileId)
             assertEquals(first.revision.revision+1,next.revision.revision)

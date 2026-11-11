@@ -63,8 +63,8 @@ class ByokDeviceTest {
         val trust = HandshakeCertificates.Builder().addTrustedCertificate(certificate.certificate).build()
         MockWebServer().use { server ->
             server.useHttps(serving.sslSocketFactory(),false); server.start(InetAddress.getByName("127.0.0.1"),0)
-            val client = DeepSeekProvider.defaultClient().newBuilder().sslSocketFactory(trust.sslSocketFactory(),trust.trustManager).build()
-            val provider = DeepSeekProvider({ProviderConfig(server.url("/").toString().replace("localhost", "127.0.0.1"),"test-model","test-only")},{"JSON"},client)
+            val client = OpenAiCompatibleProvider.defaultClient().newBuilder().sslSocketFactory(trust.sslSocketFactory(),trust.trustManager).build()
+            val provider = OpenAiCompatibleProvider({ProviderConfig(server.url("/").toString().replace("localhost", "127.0.0.1"),"test-model","test-only")},{"JSON"},client)
             for ((code,kind) in listOf(429 to FailureKind.RATE_LIMIT,503 to FailureKind.SERVER)) {
                 server.enqueue(MockResponse().setResponseCode(code))
                 try { provider.generate("word"); fail() } catch(e:ProviderFailure) { assertEquals(kind,e.kind) }
@@ -82,10 +82,10 @@ class ByokDeviceTest {
             val unavailable=MockWebServer().apply { useHttps(serving.sslSocketFactory(),false); start(InetAddress.getByName("127.0.0.1"),0) }
             val unavailableUrl=unavailable.url("/").toString().replace("localhost","127.0.0.1")
             unavailable.shutdown()
-            val offline=DeepSeekProvider({ProviderConfig(unavailableUrl,"test","test-only")},{"JSON"},client)
+            val offline=OpenAiCompatibleProvider({ProviderConfig(unavailableUrl,"test","test-only")},{"JSON"},client)
             try { offline.generate("word"); fail() } catch(e:ProviderFailure) { assertEquals(FailureKind.NETWORK,e.kind) }
             server.enqueue(MockResponse().setSocketPolicy(SocketPolicy.NO_RESPONSE))
-            val short=DeepSeekProvider({ProviderConfig(server.url("/").toString().replace("localhost", "127.0.0.1"),"test","test-only")},{"JSON"},client.newBuilder().callTimeout(400,TimeUnit.MILLISECONDS).build())
+            val short=OpenAiCompatibleProvider({ProviderConfig(server.url("/").toString().replace("localhost", "127.0.0.1"),"test","test-only")},{"JSON"},client.newBuilder().callTimeout(400,TimeUnit.MILLISECONDS).build())
             try { short.generate("word"); fail() } catch(e:ProviderFailure) { assertEquals(FailureKind.TIMEOUT,e.kind) }
             server.enqueue(MockResponse().setSocketPolicy(SocketPolicy.NO_RESPONSE))
             val job=launch {provider.generate("word")}

@@ -1,0 +1,35 @@
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T07UiTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+dev.dicta.prototype.T07UiTest:
+INSTRUMENTATION_STATUS: test=keyReplacementClearsTypedStateAndProfileOverrideMatchesActualRequest
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T07UiTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.util.NoSuchElementException: List contains no element matching the predicate.
+	at dev.dicta.prototype.T07UiTest.keyReplacementClearsTypedStateAndProfileOverrideMatchesActualRequest(T07UiTest.kt:173)
+
+INSTRUMENTATION_STATUS: stream=
+Error in keyReplacementClearsTypedStateAndProfileOverrideMatchesActualRequest(dev.dicta.prototype.T07UiTest):
+java.util.NoSuchElementException: List contains no element matching the predicate.
+	at dev.dicta.prototype.T07UiTest.keyReplacementClearsTypedStateAndProfileOverrideMatchesActualRequest(T07UiTest.kt:173)
+
+INSTRUMENTATION_STATUS: test=keyReplacementClearsTypedStateAndProfileOverrideMatchesActualRequest
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 4.578
+There was 1 failure:
+1) keyReplacementClearsTypedStateAndProfileOverrideMatchesActualRequest(dev.dicta.prototype.T07UiTest)
+java.util.NoSuchElementException: List contains no element matching the predicate.
+	at dev.dicta.prototype.T07UiTest.keyReplacementClearsTypedStateAndProfileOverrideMatchesActualRequest(T07UiTest.kt:173)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

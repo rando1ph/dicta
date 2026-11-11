@@ -1,0 +1,8 @@
+{
+  "host": "org.chromium.webview_shell.WebViewBrowserActivity",
+  "selection": "ephemeral",
+  "before": "[63,777][1021,1192]",
+  "after_detail_gesture_back": "[63,777][1021,1192]",
+  "after_popup_close": "[63,777][1021,1192]",
+  "same_reading_position": true
+}

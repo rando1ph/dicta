@@ -1,0 +1,12 @@
+{
+  "branch": "main",
+  "files_scanned": 345,
+  "apk_members_scanned": 140,
+  "real_credential_matches": 0,
+  "key_shaped_matches": 0,
+  "test_fixtures_in_app_apk": false,
+  "zip_crc_valid": true,
+  "apk_sha256_matches_manifest": true,
+  "formal_release_signing_performed": false,
+  "human_acceptance": "pending"
+}

@@ -8,11 +8,15 @@ import dev.dicta.prototype.profile.*
 import dev.dicta.prototype.data.ProfileChoice
 import dev.dicta.prototype.provider.ProviderConfig
 import dev.dicta.prototype.provider.ProviderFailure
+import dev.dicta.prototype.provider.ProviderProtocol
+import dev.dicta.prototype.provider.JsonOutput
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 
 // Deliberately excludes plaintext credentials from observable/UI state.
-data class ConfigSummary(val endpoint: String = "https://api.deepseek.com", val model: String = "deepseek-flash", val hasKey: Boolean = false)
+data class ConfigSummary(val endpoint: String = "https://api.deepseek.com", val model: String = "deepseek-flash", val hasKey: Boolean = false,
+    val protocol:ProviderProtocol=ProviderProtocol.AUTO,val output:JsonOutput=JsonOutput.JSON_OBJECT,val revision:Long=0)
+data class ModelDiscovery(val models:List<String> = emptyList(),val busy:Boolean=false,val message:String="",val failureKind:dev.dicta.prototype.provider.FailureKind?=null)
 
 
 class LookupViewModel(application: Application) : AndroidViewModel(application) {
@@ -35,31 +39,49 @@ class LookupViewModel(application: Application) : AndroidViewModel(application) 
     val configBusy = MutableStateFlow(false)
     private var configJob: Job? = null
     private var configGeneration = 0L
+    val modelDiscovery=MutableStateFlow(ModelDiscovery())
+    private var discoveryJob:Job?=null
+    private var discoveryGeneration=0L
     init { refreshConfig() }
     private fun refreshConfig() {
         viewModelScope.launch {
             try {
                 val config = withContext(Dispatchers.IO) { repository.credentials.load() }
-                configuration.value = ConfigSummary(config.endpoint, config.model, config.apiKey.isNotBlank())
+                configuration.value = ConfigSummary(config.endpoint, config.model, config.apiKey.isNotBlank(),config.protocol,config.output)
             } catch (e: ProviderFailure) { configMessage.value = e.userMessage }
         }
     }
-    fun saveConfig(endpoint: String, model: String, replacement: String) = configAction {
+    fun saveConfig(endpoint: String, model: String, replacement: String,protocol:ProviderProtocol=configuration.value.protocol,output:JsonOutput=configuration.value.output) = configAction {
         val old = try { repository.credentials.load() } catch (_: ProviderFailure) { ProviderConfig() }
-        val next = ProviderConfig(endpoint, model, replacement.ifBlank { old.apiKey }).validated()
+        val next = ProviderConfig(endpoint, model, replacement.ifBlank { old.apiKey },protocol,output).validated(requireModel=false)
         repository.credentials.save(next)
-        configuration.value = ConfigSummary(next.endpoint, next.model, next.apiKey.isNotBlank())
+        configuration.value = ConfigSummary(next.endpoint, next.model, next.apiKey.isNotBlank(),next.protocol,next.output,configuration.value.revision+1)
         configMessage.value = "配置已安全保存。"
     }
     fun clearConfig() = configAction {
+        cancelDiscovery()
         repository.credentials.clear()
-        configuration.value = ConfigSummary()
+        configuration.value = ConfigSummary(revision=configuration.value.revision+1)
         configMessage.value = "配置与密钥已清除。"
     }
     fun testConfig() = configAction {
         repository.lookup("serendipity",useCache=false)
-        configMessage.value = "连接成功，词条格式校验通过。"
+        configMessage.value = "测试查词成功 · 词条格式校验通过（未加入历史）。"
     }
+    fun discoverModels() {
+        discoveryJob?.cancel()
+        val generation=++discoveryGeneration
+        modelDiscovery.value=ModelDiscovery(busy=true,message="正在获取模型列表…")
+        discoveryJob=viewModelScope.launch {
+            try {
+                val models=repository.discoverModels()
+                if(generation==discoveryGeneration) modelDiscovery.value=ModelDiscovery(models,message="模型发现成功 · ${models.size} 个模型。列表可访问；查词能力尚未验证。")
+            } catch(e:CancellationException) {throw e}
+            catch(e:ProviderFailure) {if(generation==discoveryGeneration) modelDiscovery.value=ModelDiscovery(message=(if(e.kind==dev.dicta.prototype.provider.FailureKind.AUTH) "模型列表认证失败。" else "模型发现未完成。")+e.userMessage+" 可手动输入 Model ID。",failureKind=e.kind)}
+            catch(_:Exception) {if(generation==discoveryGeneration) modelDiscovery.value=ModelDiscovery(message="模型发现未完成，请手动输入 Model ID 或刷新。")}
+        }
+    }
+    fun cancelDiscovery() {++discoveryGeneration;discoveryJob?.cancel();modelDiscovery.value=ModelDiscovery()}
     fun cancelConfig() {
         if (!configBusy.value) return
         ++configGeneration
@@ -83,9 +105,10 @@ class LookupViewModel(application: Application) : AndroidViewModel(application) 
     fun lookup(raw:String, origin:String="home") {openJob?.cancel();source=origin;session.lookup(raw)}
     fun retry() {openJob?.cancel();session.retry()}
     fun cancel() {openJob?.cancel();session.cancel()}
+    fun closeDetail() {openJob?.cancel();session.close()}
     fun restoredWithoutRequest(query:String="")=session.restoredWithoutRequest(query)
     fun openSnapshot(id:String) {
-        openJob?.cancel();session.cancel()
+        openJob?.cancel();session.loadingSnapshot()
         openJob=viewModelScope.launch {
             try { val entry=repository.find(id);ensureActive();if(entry!=null) session.open(entry) else session.restoredWithoutRequest() }
             catch(e:CancellationException) {throw e}

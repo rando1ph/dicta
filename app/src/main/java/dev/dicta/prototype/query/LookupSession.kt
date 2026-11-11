@@ -69,6 +69,8 @@ class LookupSession(
         job?.cancel()
         mutableState.value = LookupState.Cancelled
     }
+    fun close() { cancel(); lastQuery=""; mutableState.value=LookupState.Idle }
+    fun loadingSnapshot() { cancel(); lastQuery=""; mutableState.value=LookupState.Loading("读取已保存词条…") }
     fun open(snapshot: EntrySnapshot) {
         cancel()
         lastQuery = snapshot.query

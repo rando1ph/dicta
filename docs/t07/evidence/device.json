@@ -1,0 +1,80 @@
+{
+  "serial": "emulator-5554",
+  "avd": "codex_api36_aosp",
+  "api": 36,
+  "android": "16",
+  "official_cli": "1.1.16717390",
+  "physical_devices_used": false,
+  "scenarios": [
+    {
+      "pixels": [
+        1080,
+        2400
+      ],
+      "dpi": 420,
+      "width_dp": 411,
+      "font_scale": 1.0
+    },
+    {
+      "pixels": [
+        840,
+        1920
+      ],
+      "dpi": 420,
+      "width_dp": 320,
+      "font_scale": 2.0
+    }
+  ],
+  "restored_settings": {
+    "size_override": null,
+    "font_scale": 1.0,
+    "navigation_mode": 0,
+    "gesture_overlay_enabled": false,
+    "task_adb_reverse_removed": true
+  },
+  "data_preservation": {
+    "device": "emulator-5554",
+    "original_files": 4,
+    "all_original_file_sha256_preserved": true,
+    "only_task_created_files_removed": [
+      "shared_prefs/appearance.xml",
+      "no_backup/provider.enc"
+    ],
+    "pm_clear_performed": false,
+    "main_app_uninstalled": false
+  },
+  "baseline_user_table_counts": {
+    "bookmarks": 0,
+    "daily": 0,
+    "entries": 0,
+    "history": 0,
+    "preferences": 0,
+    "profiles": 0
+  },
+  "after_restore_cold_start_user_table_counts": {
+    "bookmarks": 0,
+    "daily": 0,
+    "entries": 0,
+    "history": 0,
+    "preferences": 0,
+    "profiles": 0
+  },
+  "baseline_had_key": false,
+  "test_credential_removed": true,
+  "test_instrumentation_apk_removed": true,
+  "candidate_still_installed": true,
+  "installed_apk_sha256": "c7f2503f4eeb80841f8e8f6bf65ac61c2d54c64ad12fe8217259e91ff1679ce5",
+  "cold_launch": {
+    "result": "ok",
+    "launch_state": "COLD",
+    "total_ms": 1002,
+    "home_visual_check": "empty original history; no Mock entries"
+  },
+  "crash_buffer": {
+    "app_process_crash_found": false,
+    "other_tool_errors": "Earlier overlapping UIAutomation connections made uiautomator dump fail; no product process FATAL entry. Final suites ran sequentially."
+  },
+  "browser": "AOSP WebView Browser Tester 133 / controlled page; Chrome/news not tested",
+  "tts": "No engine in AOSP; disabled control/fallback checked; real audio quality not retested",
+  "upgrade_limit": "Empty v1.0.0 Debug baseline restored byte-for-byte before launch; populated Room and legacy credential compatibility tested separately. Formal signed physical-device retained-data overinstall pending approved signing stage."
+}

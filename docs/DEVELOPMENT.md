@@ -41,3 +41,14 @@ Development and validation records:
 Only work on `main`. Do not create branches or worktrees, rebase, or force push.
 Use targeted tests for the change being made; historical reports describe their
 original test scope and should not be read as fresh release results.
+
+The v1.1.0 T07 candidate uses code 6 / `1.1.0-candidate`. Build it with the
+same debug command above; it uses a debug certificate and cannot update the
+signed public v1.0.0 app. Do not uninstall the public app to test this candidate.
+The existing release signing identity, tag and GitHub Release remain unchanged.
+
+For T07's local TLS mock acceptance suite, run
+`bash tools/t07/test.sh emulator-5554` with the actual emulator serial. The
+script refuses physical devices, preserves application data and excludes the
+historical live-API / installed-TTS-engine tests. See [T07's report](t07/REPORT.md)
+for the responsive matrix, test evidence and screenshot review index.

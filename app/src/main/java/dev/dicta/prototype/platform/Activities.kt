@@ -39,15 +39,15 @@ class MainActivity : ComponentActivity() {
     val model: LookupViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val entryId = intent.getStringExtra("snapshotId") ?: savedInstanceState?.getString("snapshotId")
+        val entryId = if(savedInstanceState!=null) savedInstanceState.getString("snapshotId") else intent.getStringExtra("snapshotId")
         if (model.state.value == LookupState.Idle) {
             when {
                 entryId != null -> model.openSnapshot(entryId)
-                savedInstanceState != null -> model.restoredWithoutRequest(savedInstanceState?.getString("query").orEmpty())
+                savedInstanceState?.getBoolean("detailOpen")==true -> model.restoredWithoutRequest(savedInstanceState.getString("query").orEmpty())
                 else -> Unit
             }
         }
-        setContent { DictaTheme { WithSpeech { MainScreen(model) } } }
+        setContent { DictaTheme { WithSpeech { MainScreen(model,if(intent.getBooleanExtra("fromPopup",false)) ({finish()}) else null) } } }
     }
     override fun onSaveInstanceState(outState: Bundle) {
         saveQueryState(outState, model.state.value)
@@ -73,7 +73,7 @@ class ProcessTextActivity : ComponentActivity() {
             } else model.lookup(selectedText(intent), "popup")
         }
         setContent { DictaTheme { WithSpeech { Popup(model, ::dismiss) { id ->
-            startActivity(Intent(this, MainActivity::class.java).putExtra("snapshotId",id))
+            startActivity(Intent(this, MainActivity::class.java).putExtra("snapshotId",id).putExtra("fromPopup",true))
             dismiss()
         } } } }
     }
@@ -101,6 +101,7 @@ class ProcessTextActivity : ComponentActivity() {
 }
 
 private fun saveQueryState(bundle:Bundle,state:LookupState) {
+    bundle.putBoolean("detailOpen",state!=LookupState.Idle)
     when(state) {
         is LookupState.Success -> { bundle.putString("snapshotId",state.entry.id);bundle.putString("query",state.entry.query) }
         is LookupState.Loading -> bundle.putString("query",state.query)
