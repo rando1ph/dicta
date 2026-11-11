@@ -150,8 +150,9 @@ class T07RevisionTest:T07MockFixture() {
         assertEquals(legacy,dao.entry(snapshot.id)!!.templateJson)
     }
     private fun assertCleanEtymology() {
-        compose.onNodeWithText("词源  +").performScrollTo().performClick()
-        compose.onNodeWithText("词源  −").assertIsDisplayed()
+        compose.onAllNodesWithText("词源").assertCountEquals(0)
+        compose.onAllNodesWithText("词源  +").assertCountEquals(0)
+        compose.onAllNodesWithText("词源  −").assertCountEquals(0)
         compose.onAllNodesWithText("AI 生成",substring=true).assertCountEquals(0)
         compose.onAllNodesWithText("核验",substring=true).assertCountEquals(0)
         compose.onAllNodesWithText("established").assertCountEquals(0)

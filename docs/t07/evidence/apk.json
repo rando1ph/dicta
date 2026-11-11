@@ -2,9 +2,9 @@
   "applicationId": "dev.randolf.dicta",
   "versionName": "1.1.0-candidate",
   "versionCode": 6,
-  "path": "artifacts/t07-revision/Dicta-v1.1.0-candidate-debug.apk",
+  "path": "artifacts/t07-compact/Dicta-v1.1.0-candidate-debug.apk",
   "bytes": 12646013,
-  "sha256": "265ac7934f796ea968843458d1920eabab3744d4ce1c0e8a851745910f61fd15",
+  "sha256": "c2faf65ddd49fb60f66e1b18b13fb3d16de1ff2a63f4314fc24a45812685a90b",
   "signature": "Android Debug",
   "certificate_sha256": "e4bb888b2c73da57e9484e5a9e2a792e733902cdf102c847228c044d93b1b1fb",
   "public_v100_overinstall": "Debug signature differs; retained-data release-certificate upgrade verification belongs to approved T08 on emulator/test environment, not a physical-phone acceptance gate."

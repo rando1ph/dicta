@@ -1,0 +1,31 @@
+{
+  "baseline_commit": "fd5875baef2f17747b754c8178d4d9a5f59e896d",
+  "change": "Remove standalone etymology heading/toggle; render summary and detail directly in the shared card",
+  "device": "emulator-5554 / API36 / 411dp / 100% / Dark Accent 1",
+  "build": "assembleDebug + assembleDebugAndroidTest passed",
+  "targeted_instrumentation": {
+    "tests": 2,
+    "failures": 0,
+    "evidence": "targeted.txt",
+    "coverage": [
+      "v1.0.0 history/vocabulary/daily snapshots unchanged; no standalone heading",
+      "v1.0.0 Popup -> detail; content visible and navigation retained"
+    ]
+  },
+  "screenshots": [
+    "T07-29-compact-daily.png",
+    "T07-30-compact-popup.png"
+  ],
+  "visual_check": "Both originals examined; no heading row, summary/detail readable, actions reachable",
+  "full_regression_repeated": false,
+  "real_model_api_calls": 0,
+  "data_restoration": {
+    "original_files": 4,
+    "exact_bytes_restored": true,
+    "removed_task_files": [],
+    "pm_clear": false,
+    "main_app_uninstalled": false
+  },
+  "release_signing_performed": false,
+  "human_review": "pending"
+}

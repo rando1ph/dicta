@@ -4,11 +4,20 @@
 
 全部为实际运行的原始 PNG，由 Google 官方 Android CLI 捕获，逐张视觉检查；未裁剪、重编码或拼接。设备为 codex_api36_aosp / **emulator-5554**，Android 16 / API36、420dpi。所有模型请求和模型列表均来自本地 TLS Mock，使用固定词条夹具与测试凭据，没有真实 API Key 或付费查询。
 
-01–20 为首轮候选历史，不能代表收尾修订后的行为；21 起为最新修订截图。13–16 以及标记 320dp / 200% 的修订图为 840×1920，其余为 1080×2400 / 411dp / 字体 100%。AOSP 没有安装 TTS 引擎，截图中的发音禁用与回退提示为真实状态。17–20 使用 AOSP WebView Browser Tester 和仓库内的受控阅读页，未将其表述为 Chrome 或真实新闻网站。
+01–20 为首轮候选历史，21–28 为上轮收尾修订历史；本次最新截图为 29–30，词源已彻底去掉独立标题行。13–16 以及标记 320dp / 200% 的修订图为 840×1920，其余为 1080×2400 / 411dp / 字体 100%。AOSP 没有安装 TTS 引擎，截图中的发音禁用与回退提示为真实状态。17–20 使用 AOSP WebView Browser Tester 和仓库内的受控阅读页，未将其表述为 Chrome 或真实新闻网站。
 
 **人工视觉与候选版本验收均待用户审阅。** 每张图的大小、SHA-256 和 Drive 元数据核验见 [机器索引](https://github.com/rando1ph/dicta/blob/main/docs/t07/evidence/screenshots.json)。
 
-## 最新收尾修订 · 2026-11-11
+## 最新最小修正 · 删除独立词源标题
+
+本次仅追加两张原始 PNG；摘要和详情直接显示，无标题及展开/收起按钮。
+
+| 文件 | 场景 | 屏宽 / 字体 / 主题 | 审阅 |
+| --- | --- | --- | --- |
+| [T07-29-compact-daily.png](https://drive.google.com/file/d/13Wki7z9KIfdv4kjeQyeRIiOLznfajFGe/view?usp=drivesdk) | 首页每日词：删除独立词源标题和折叠按钮，摘要与详情直接显示 | 411dp · 100% · Dark / Accent 1 | 待审 |
+| [T07-30-compact-popup.png](https://drive.google.com/file/d/1x-7nOrbq4iFN-IzJ8-WUZZ5_VPW19Z-2/view?usp=drivesdk) | PROCESS_TEXT 测试 Intent → Popup：词源无标题行，内容紧凑且固定页脚可达 | 411dp · 100% · Dark / Accent 1 | 待审 |
+
+## 上轮收尾修订历史 · 21–28
 
 | 文件 | 场景 | 屏宽 / 字体 / 主题 | 审阅 |
 | --- | --- | --- | --- |

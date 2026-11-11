@@ -508,6 +508,43 @@
       "drive_metadata_verified": true,
       "revision": "2026-11-11-final-revisions",
       "review": "待用户审阅"
+    },
+    {
+      "file": "T07-29-compact-daily.png",
+      "id": "13Wki7z9KIfdv4kjeQyeRIiOLznfajFGe",
+      "url": "https://drive.google.com/file/d/13Wki7z9KIfdv4kjeQyeRIiOLznfajFGe/view?usp=drivesdk",
+      "scenario": "首页每日词：删除独立词源标题和折叠按钮，摘要与详情直接显示",
+      "api": 36,
+      "width_px": 1080,
+      "height_px": 2400,
+      "width_dp": 411,
+      "density_dpi": 420,
+      "font_scale": 1.0,
+      "theme": "Dark / Accent 1",
+      "bytes": 232331,
+      "sha256": "849d01d9ce27fd91499aa4c6e60fdc8f56518854b04cb49bc0f369448e8120ab",
+      "drive_metadata_verified": true,
+      "revision": "2026-11-11-compact-etymology",
+      "review": "待用户审阅"
+    },
+    {
+      "file": "T07-30-compact-popup.png",
+      "id": "1x-7nOrbq4iFN-IzJ8-WUZZ5_VPW19Z-2",
+      "url": "https://drive.google.com/file/d/1x-7nOrbq4iFN-IzJ8-WUZZ5_VPW19Z-2/view?usp=drivesdk",
+      "scenario": "PROCESS_TEXT 测试 Intent → Popup：词源无标题行，内容紧凑且固定页脚可达",
+      "api": 36,
+      "width_px": 1080,
+      "height_px": 2400,
+      "width_dp": 411,
+      "density_dpi": 420,
+      "font_scale": 1.0,
+      "theme": "Dark / Accent 1",
+      "bytes": 244194,
+      "sha256": "b3182cc4849213e1b2dde9fcfae30e9a68deef9e5ee9502aa7e023763ee07a63",
+      "drive_metadata_verified": true,
+      "revision": "2026-11-11-compact-etymology",
+      "review": "待用户审阅"
     }
-  ]
+  ],
+  "latest_revision": "2026-11-11-compact-etymology"
 }

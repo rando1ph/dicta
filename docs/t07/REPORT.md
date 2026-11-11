@@ -1,5 +1,15 @@
 # T07 · Dicta v1.1.0 candidate
 
+## 2026-11-11 最小修正 · 删除独立词源标题
+
+用户最新要求覆盖下方关于词源标题及折叠的旧描述。共享渲染器已彻底去掉词源卡片独立占行的标题与展开/收起控件，摘要和详情直接显示；默认词条和旧历史/收藏快照共用此展示，不改存储数据、Profile 或其它卡片标题。
+
+本次仅构建 Debug App/测试 APK，并在 emulator-5554 / API36 / 411dp / 100% 上执行两项现有定向用例，**2/2 通过**（旧快照在 History、Vocabulary、每日词的回看，以及 Popup → 详情）。没有重复完整 JVM、lint 或大范围回归；下方 81/30+4 等为上一轮记录。[简要验收](evidence/compact/acceptance.json) · [定向日志](evidence/compact/targeted.txt)。
+
+本次交付且仅追加 **2 张原始 PNG（29–30）**至原 Drive 目录：首页每日词、Popup。已逐张视觉检查并核对远端父目录/类型/字节大小；词源无标题、正文和操作可达。[最新截图索引](SCREENSHOTS.md)。01–28 保留为历史。模拟器原四个文件已逐字节恢复，测试 APK 已移除，主 App/用户数据保留。
+
+最新 Debug 候选：`artifacts/t07-compact/Dicta-v1.1.0-candidate-debug.apk`；大小与 SHA-256 见 [APK 元数据](evidence/apk.json)。仅 main 修改、提交并推送，T07 等待最终审阅；T08、正式签名及公开发行均未执行。
+
 ## 2026-11-11 收尾修订 · 待最终审阅
 
 四项最新用户决策已实现、验证并交付截图。Notion T07 保持 **In progress**，等待用户最终审阅。仅在 main 修改和提交；T08 未启动，没有正式签名、tag 或公开 Release。

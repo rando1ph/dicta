@@ -114,9 +114,9 @@ class T07ReviewSession:T07MockFixture() {
         }
     }
     private fun etymology() {
-        val collapsed=compose.onAllNodesWithText("词源  +").fetchSemanticsNodes()
-        if(collapsed.isNotEmpty()) compose.onNodeWithText("词源  +").performScrollTo().performClick()
-        compose.onNodeWithText("词源  −").performScrollTo()
+        compose.onAllNodesWithText("词源").assertCountEquals(0)
+        compose.onAllNodesWithText("词源  +").assertCountEquals(0)
+        compose.onAllNodesWithText("词源  −").assertCountEquals(0)
         compose.onNodeWithText("希腊语 ephēmeros 意为“只持续一天的”，后来用于表示短暂存在的事物。").performScrollTo()
         compose.onAllNodesWithText("AI 生成",substring=true).assertCountEquals(0)
         compose.onAllNodesWithText("核验",substring=true).assertCountEquals(0)

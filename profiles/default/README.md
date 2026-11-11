@@ -6,7 +6,7 @@
 
 采用 JSON Schema Draft-07 的受控子集，兼容当前 Kotlin 候选验证器和 Python 实证工具。允许 `type`、`properties`、`required`、`additionalProperties:false`、`items`、`enum`、字符串长度、数组数量、数值上下界与描述元数据。类型限 object/array/string/number/integer/boolean/null，以及 `["string","null"]`。不接受用户 `$ref`、远程引用、递归、正则、组合逻辑或其他未支持关键字，不能静默忽略。内置模板元 Schema 自身可使用本地 `$ref`/条件约束，不等于用户词条 Schema 开放这些功能。
 
-默认对象字段全为 required；未知可空内容用 null，可空列表用 []。字段均有字符串/数组上限，最多四义项。校验只证明结构，不保证释义、音标和词源真实性。`etymology.certainty` 保留为内部数据以兼容旧词条，不在界面显示。词源仅显示「词源」标题、摘要和详情。不编造频率、来源链接、音频 URL。模型输出按纯文本显示。
+默认对象字段全为 required；未知可空内容用 null，可空列表用 []。字段均有字符串/数组上限，最多四义项。校验只证明结构，不保证释义、音标和词源真实性。`etymology.certainty` 保留为内部数据以兼容旧词条，不在界面显示。词源卡片直接显示摘要和详情，不显示独立标题或折叠按钮。不编造频率、来源链接、音频 URL。模型输出按纯文本显示。
 
 ## Prompt 与 Provider
 
