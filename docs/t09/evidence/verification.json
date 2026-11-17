@@ -1,0 +1,96 @@
+{
+  "date": "2026-11-18",
+  "scope": "T09 only; no release build/signing/tag/GitHub Release",
+  "device": {
+    "model": "ONEPLUS A6013",
+    "device_property": "OnePlus6T",
+    "lineage": "22.2-20261103-NIGHTLY-fajita",
+    "android": "15",
+    "api": 35
+  },
+  "jvm": {
+    "tests": 81,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "Error": 0,
+    "Warning": 13
+  },
+  "device_instrumentation": {
+    "passed": 13,
+    "failed": 0,
+    "includes": "11 T09 + 2 existing Popup regressions; real app-scoped rotation"
+  },
+  "manual_mock_session": {
+    "passed": 1,
+    "paid_provider_calls": 0,
+    "local_tls_posts": 6,
+    "queries": [
+      "feminine",
+      "pronunciation",
+      "irritated",
+      "computer",
+      "documentation",
+      "monitoring"
+    ],
+    "details_added_posts": 0,
+    "mock_meanings": "default ephemeral sample; selected word substituted"
+  },
+  "restoration": {
+    "lookup_app": "formal Dicta (initial actual value Default)",
+    "book": "Project Hail Mary, Chapter 1, page 9/761, 1%; The Martian 9%; both retained",
+    "formal_and_readest_apk_metadata_and_hashes": "unchanged",
+    "provider_enc": "absent after graceful fixture teardown",
+    "review_markers": "absent",
+    "test_package": "uninstalled",
+    "debug_package": "retained unconfigured and force-stopped",
+    "screen_off_timeout": 60000,
+    "physical_display": "OFF",
+    "wakefulness": "Dozing",
+    "keyguard_showing": true,
+    "chrome_test_tab": "example.org retained"
+  },
+  "drive": {
+    "screenshots": 15,
+    "private": true,
+    "png_decode": true,
+    "dimensions": [
+      1080,
+      2340
+    ],
+    "raw_byte_readback_matches": 15
+  },
+  "artifacts": [
+    {
+      "path": "artifacts/t09/final/Dicta-T09-debug.apk",
+      "bytes": 12492994,
+      "sha256": "89ee740a81430d25563b995827eb8c49484c787551d9e19586dc0e446bf73076",
+      "zip_crc": "pass"
+    },
+    {
+      "path": "artifacts/t09/final/Dicta-T09-debug-androidTest.apk",
+      "bytes": 1372622,
+      "sha256": "e779d58ab91447341e17596727f7e710d0bf22f92b80795583f6ed3f9df76b98",
+      "zip_crc": "pass"
+    }
+  ],
+  "limitations": [
+    "Only LineageOS Android15/API35 and named phone verified",
+    "ColorOS17/Ace6T and other API versions/readers not tested",
+    "Standard PROCESS_TEXT text/plain only; no private reader protocols",
+    "Private app data not rooted or claimed byte-for-byte verified",
+    "Human visual review pending; T10/T11 not started"
+  ],
+  "code_commit": "6127c1fcdd25119b1b6aa5142b7a3494b69e4862",
+  "debug_apk_identity": {
+    "application_id": "dev.randolf.dicta.debug",
+    "label": "Dicta Debug",
+    "version_name": "1.1.0-debug",
+    "version_code": 6,
+    "debuggable": true,
+    "apksigner_verify": "pass",
+    "certificate_sha256": "e4bb888b2c73da57e9484e5a9e2a792e733902cdf102c847228c044d93b1b1fb"
+  }
+}

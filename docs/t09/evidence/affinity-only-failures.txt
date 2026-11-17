@@ -1,0 +1,192 @@
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+dev.dicta.prototype.T09PopupCompatibilityTest:
+INSTRUMENTATION_STATUS: test=newTaskLookupAfterBackgroundedFullEntryShowsNewPopup
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stack=androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 10000 ms
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.awaitPopup(T09PopupCompatibilityTest.kt:57)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.awaitPopup$default(T09PopupCompatibilityTest.kt:55)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.start(T09PopupCompatibilityTest.kt:71)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.newTaskLookupAfterBackgroundedFullEntryShowsNewPopup(T09PopupCompatibilityTest.kt:175)
+
+INSTRUMENTATION_STATUS: stream=
+Error in newTaskLookupAfterBackgroundedFullEntryShowsNewPopup(dev.dicta.prototype.T09PopupCompatibilityTest):
+androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 10000 ms
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.awaitPopup(T09PopupCompatibilityTest.kt:57)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.awaitPopup$default(T09PopupCompatibilityTest.kt:55)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.start(T09PopupCompatibilityTest.kt:71)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.newTaskLookupAfterBackgroundedFullEntryShowsNewPopup(T09PopupCompatibilityTest.kt:175)
+
+INSTRUMENTATION_STATUS: test=newTaskLookupAfterBackgroundedFullEntryShowsNewPopup
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=repeatedSingleTopIntentUpdatesSamePopupToLatestSelection
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=repeatedSingleTopIntentUpdatesSamePopupToLatestSelection
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=implicitTextProcessingResolvesToClearlyNamedDebugTarget
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=implicitTextProcessingResolvesToClearlyNamedDebugTarget
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=newTaskCallerCannotReuseExistingMainTask
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=newTaskCallerCannotReuseExistingMainTask
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=ordinaryCallerKeepsTaskAndReceivesCancellationWithoutReplacement
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=ordinaryCallerKeepsTaskAndReceivesCancellationWithoutReplacement
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=unsupportedActionOrMimeFinishesWithoutRequest
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=unsupportedActionOrMimeFinishesWithoutRequest
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=malformedExtrasAreSafeAndDoNotSendAnEmptyLookup
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=malformedExtrasAreSafeAndDoNotSendAnEmptyLookup
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=recreationAndCoveredActivityKeepSnapshotWithoutAnotherRequest
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=recreationAndCoveredActivityKeepSnapshotWithoutAnotherRequest
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=openingFullEntryReusesSnapshotAndBackClosesOnlyDetail
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=openingFullEntryReusesSnapshotAndBackClosesOnlyDetail
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=repeatedNewTaskAfterBackgroundShowsLatestSelectionWithoutSingleTopFlag
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.dicta.prototype.T09PopupCompatibilityTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stack=androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 10000 ms
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.repeatedNewTaskAfterBackgroundShowsLatestSelectionWithoutSingleTopFlag(T09PopupCompatibilityTest.kt:159)
+
+INSTRUMENTATION_STATUS: stream=
+Error in repeatedNewTaskAfterBackgroundShowsLatestSelectionWithoutSingleTopFlag(dev.dicta.prototype.T09PopupCompatibilityTest):
+androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 10000 ms
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.repeatedNewTaskAfterBackgroundShowsLatestSelectionWithoutSingleTopFlag(T09PopupCompatibilityTest.kt:159)
+
+INSTRUMENTATION_STATUS: test=repeatedNewTaskAfterBackgroundShowsLatestSelectionWithoutSingleTopFlag
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 52.492
+There were 2 failures:
+1) newTaskLookupAfterBackgroundedFullEntryShowsNewPopup(dev.dicta.prototype.T09PopupCompatibilityTest)
+androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 10000 ms
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.awaitPopup(T09PopupCompatibilityTest.kt:57)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.awaitPopup$default(T09PopupCompatibilityTest.kt:55)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.start(T09PopupCompatibilityTest.kt:71)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.newTaskLookupAfterBackgroundedFullEntryShowsNewPopup(T09PopupCompatibilityTest.kt:175)
+2) repeatedNewTaskAfterBackgroundShowsLatestSelectionWithoutSingleTopFlag(dev.dicta.prototype.T09PopupCompatibilityTest)
+androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 10000 ms
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at dev.dicta.prototype.T09PopupCompatibilityTest.repeatedNewTaskAfterBackgroundShowsLatestSelectionWithoutSingleTopFlag(T09PopupCompatibilityTest.kt:159)
+
+FAILURES!!!
+Tests run: 10,  Failures: 2
+
+
+INSTRUMENTATION_CODE: -1

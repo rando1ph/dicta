@@ -1,0 +1,20 @@
+{
+  "dev.randolf.dicta": {
+    "apk_sha256": "557c8c3c055ad53cf4d6bdb29f450564f31bc4b3ea000163f240000c7897c1f7",
+    "metadata": [
+      "versionCode=5 minSdk=26 targetSdk=36",
+      "versionName=1.0.0",
+      "lastUpdateTime=2026-11-10 06:10:55",
+      "firstInstallTime=2026-11-10 06:10:55"
+    ]
+  },
+  "com.bilingify.readest": {
+    "apk_sha256": "0f8278610ba9fc5e9852b5f5a382a6f928e0c1607e957d8c34a8447f1be6ed1a",
+    "metadata": [
+      "versionCode=12020 minSdk=26 targetSdk=36",
+      "versionName=0.12.20",
+      "lastUpdateTime=2026-11-08 00:09:11",
+      "firstInstallTime=2026-11-08 00:09:11"
+    ]
+  }
+}

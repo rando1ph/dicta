@@ -1,0 +1,264 @@
+{
+  "task": "DICTA-T09",
+  "device": "OnePlus 6T / LineageOS 22.2 / Android 15 / API 35",
+  "date": "2026-11-18",
+  "book": "Project Hail Mary (user-authorized substitute for unavailable Artemis)",
+  "notice": "All PNGs are original device captures for private review. Mock definitions substitute the selected word into the default ephemeral example; IPA, meanings and examples are fixture text, not model-quality evidence. Real reader/browser selections and task/return flows were exercised. No PNG is committed to public Git.",
+  "screenshots": [
+    {
+      "file_name": "T09-01-before-new-task-over-dicta.png",
+      "scenario": "修复前受控NEW_TASK调用，Popup误显示Dicta主界面背景；无API Key降级",
+      "mock": false,
+      "id": "1b8j1SX517ePQR-MhmHRoKYcBMqFVsGa1",
+      "url": "https://drive.google.com/file/d/1b8j1SX517ePQR-MhmHRoKYcBMqFVsGa1/view?usp=drivesdk",
+      "bytes": 150234,
+      "sha256": "a399fb35ca74514b6416911e7feed4ac59175436c53e9ba898545b0e9d7955a8",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/baseline/new-task-before.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-02-library-before.png",
+      "scenario": "入场书库两本，没有Artemis；随后用户授权Project Hail Mary",
+      "mock": false,
+      "id": "1wP_Of9wRkjnh0kGa8ounT-DugmgzfkC7",
+      "url": "https://drive.google.com/file/d/1wP_Of9wRkjnh0kGa8ounT-DugmgzfkC7/view?usp=drivesdk",
+      "bytes": 399771,
+      "sha256": "d0bdcb5d8a364bd4ac6d29c0c62d4da0b7e3ff858a69e2a5f4ab4b980300a620",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/baseline/library.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-03-readest-position-before.png",
+      "scenario": "Readest Project Hail Mary 起始 Chapter 1，第9/761页",
+      "mock": false,
+      "id": "1H-cVFejUmwRDjSp-DD5c4yShPGzfgz64",
+      "url": "https://drive.google.com/file/d/1H-cVFejUmwRDjSp-DD5c4yShPGzfgz64/view?usp=drivesdk",
+      "bytes": 263721,
+      "sha256": "b4811ca31598c5dbba86fbc7cd3b44620e80e90ff31d7e67729ad41542ba39e0",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/final/readest-position-before.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-04-readest-default-chooser.png",
+      "scenario": "Readest Default真实选词→系统选择Dicta Debug",
+      "mock": false,
+      "id": "15rBMXdTTu2vpAdURw_OEKT4FqpajMDcy",
+      "url": "https://drive.google.com/file/d/15rBMXdTTu2vpAdURw_OEKT4FqpajMDcy/view?usp=drivesdk",
+      "bytes": 194466,
+      "sha256": "14bd18d0412823fda8658430fa297c4b7ec899299bbabf1fa900c8a8a3983f7c",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/final/readest-default-chooser.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-05-readest-default-popup.png",
+      "scenario": "Default feminine Popup保留书页背景",
+      "mock": true,
+      "id": "1nHqujyKRHKyJfbFYoEs3Ays7PwqJ2WXS",
+      "url": "https://drive.google.com/file/d/1nHqujyKRHKyJfbFYoEs3Ays7PwqJ2WXS/view?usp=drivesdk",
+      "bytes": 205777,
+      "sha256": "431bf4634e4e257d7f5c006d5f213322759db8960e8d14b3d994d16a8a67191c",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/final/readest-default-popup.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-06-readest-debug-selected.png",
+      "scenario": "Readest Lookup App明确选择Dicta Debug",
+      "mock": false,
+      "id": "12u0TiJq39sBepI1i2fuYslr-B_0h4h64",
+      "url": "https://drive.google.com/file/d/12u0TiJq39sBepI1i2fuYslr-B_0h4h64/view?usp=drivesdk",
+      "bytes": 167193,
+      "sha256": "7b3accca1e9e36118253bbff6010dc876dfe74e95b33cc4ddd89510fa83d6da4",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/final/readest-debug-selected.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-07-readest-explicit-popup.png",
+      "scenario": "指定调用pronunciation Popup，已收藏",
+      "mock": true,
+      "id": "1X4Bati2_5VATTjtYnRcW3n-VIR_3zWrJ",
+      "url": "https://drive.google.com/file/d/1X4Bati2_5VATTjtYnRcW3n-VIR_3zWrJ/view?usp=drivesdk",
+      "bytes": 209208,
+      "sha256": "883b3fd56aeb1e0636555c2cdd0c43ae4f52b5081033b9cb5743e31f916c6097",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/final/readest-explicit-popup.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-08-readest-full-entry.png",
+      "scenario": "完整词条同receiver、无额外请求；系统栏视觉",
+      "mock": true,
+      "id": "1WmlMpc4Hr6UenivklKu1tOZBEp6jXtTb",
+      "url": "https://drive.google.com/file/d/1WmlMpc4Hr6UenivklKu1tOZBEp6jXtTb/view?usp=drivesdk",
+      "bytes": 196022,
+      "sha256": "4021193e51066a2bb1cf5c212ef034014d68c3c8a674f4938b63a96c81ebf2df",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/final/readest-full-entry.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-09-readest-reentry-popup.png",
+      "scenario": "后台完整词条→Readest再次查询irritated",
+      "mock": true,
+      "id": "1nrUInD0kUypPs9UmE8SuSgZagZqM2fxS",
+      "url": "https://drive.google.com/file/d/1nrUInD0kUypPs9UmE8SuSgZagZqM2fxS/view?usp=drivesdk",
+      "bytes": 206284,
+      "sha256": "9eba410cdb239f2c07e56163b768c9379740dd7b339a63c5522b1b463d668fd9",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/final/readest-reentry-popup.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-10-readest-return.png",
+      "scenario": "关闭后同一Chapter 1，第9/761页",
+      "mock": false,
+      "id": "1msLdqw-TQdFwRIuqnTpsB99P3klyVTAl",
+      "url": "https://drive.google.com/file/d/1msLdqw-TQdFwRIuqnTpsB99P3klyVTAl/view?usp=drivesdk",
+      "bytes": 263720,
+      "sha256": "4f6fa74edaccc89814fcb200f381828667c85a746f0ed3dc07ca818051f789a6",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/final/readest-return.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-11-chrome-selection-menu.png",
+      "scenario": "Chrome真实选词系统菜单并存正式/Debug",
+      "mock": false,
+      "id": "1RCXbx0doi4kEGb7VDAAAJ8_1K2Bw7z3T",
+      "url": "https://drive.google.com/file/d/1RCXbx0doi4kEGb7VDAAAJ8_1K2Bw7z3T/view?usp=drivesdk",
+      "bytes": 285972,
+      "sha256": "71ef12783795d29ae09fe1279f6bfed456434ab87804aacdd51aad41c2e29c70",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/final/chrome-selection-menu.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-12-chrome-popup.png",
+      "scenario": "Chrome documentation Popup，原网页可见",
+      "mock": true,
+      "id": "1oCAnTaQGdioVkh2MjdZ5Z3r-9Pooq9vH",
+      "url": "https://drive.google.com/file/d/1oCAnTaQGdioVkh2MjdZ5Z3r-9Pooq9vH/view?usp=drivesdk",
+      "bytes": 232957,
+      "sha256": "afceb6948ccf25b9451d1193ec1168e88ab351af81838a4257c7d7065b909e30",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/final/chrome-popup.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-13-chrome-return.png",
+      "scenario": "Chrome完整词条Back返回原网页位置",
+      "mock": false,
+      "id": "1VNIyzpOI-c69kEmXTBV7wN2DX6TRwYja",
+      "url": "https://drive.google.com/file/d/1VNIyzpOI-c69kEmXTBV7wN2DX6TRwYja/view?usp=drivesdk",
+      "bytes": 268687,
+      "sha256": "07aa6c194af39dbfb856b14700e798e1e88efa340e733e19fe5dac7f74243e7a",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/final/chrome-return.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-14-readest-restored-dicta.png",
+      "scenario": "收尾Lookup App已恢复正式Dicta",
+      "mock": false,
+      "id": "1oX4SDdDHiPLLfGZnTncuH54jzTU_ZuKh",
+      "url": "https://drive.google.com/file/d/1oX4SDdDHiPLLfGZnTncuH54jzTU_ZuKh/view?usp=drivesdk",
+      "bytes": 159143,
+      "sha256": "db5973a162ae4e4795aa1e50fa3eaf0cdc8400809a412cc1837296e9c9806578",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/final/readest-restored-dicta.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    },
+    {
+      "file_name": "T09-15-library-after.png",
+      "scenario": "书库仍两本，Project Hail Mary1% / The Martian9%",
+      "mock": false,
+      "id": "1xsSckYaYZr0Olmmz1LkZCkbwHlSALXs8",
+      "url": "https://drive.google.com/file/d/1xsSckYaYZr0Olmmz1LkZCkbwHlSALXs8/view?usp=drivesdk",
+      "bytes": 399520,
+      "sha256": "e93f5558ef1273bd3b648af077c258b32a4251428ff363fa2a76d6178156567f",
+      "dimensions": [
+        1080,
+        2340
+      ],
+      "local_path": "artifacts/t09/final/library-after.png",
+      "drive_parent": "1z5SKVJyuqLFFs87nC2URwMU6mQ82pPKl",
+      "private": true,
+      "raw_byte_readback_verified": true
+    }
+  ]
+}
