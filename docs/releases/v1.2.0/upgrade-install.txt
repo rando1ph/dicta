@@ -1,0 +1,3 @@
+artifacts/release/v1.2.0/Dicta-v1.2.0.apk: 1 file pushed, 0 skipped. 351.3 MB/s (8518281 bytes in 0.023s)
+Performing Push Install
+Success

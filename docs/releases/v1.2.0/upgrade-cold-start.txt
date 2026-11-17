@@ -1,0 +1,7 @@
+Starting: Intent { cmp=dev.randolf.dicta/dev.dicta.prototype.platform.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: dev.randolf.dicta/dev.dicta.prototype.platform.MainActivity
+TotalTime: 830
+WaitTime: 831
+Complete

@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-18",
+  "reviewedMainCommit": "b419bfc89b434e86b7837dcc138968832c14ec77",
+  "applicationId": "dev.randolf.dicta",
+  "versionName": "1.2.0",
+  "versionCode": 7,
+  "debuggable": false,
+  "minSdk": 26,
+  "targetSdk": 36,
+  "unitTests": {
+    "tests": 81,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "releaseLint": {
+    "Warning": 13
+  },
+  "signerRegressionTests": {
+    "tests": 14,
+    "failures": 0
+  },
+  "apksignerVerified": true,
+  "v2Verified": true,
+  "v3Verified": true,
+  "matchesV110Certificate": true,
+  "zipalignVerified": true,
+  "zipCrcVerified": true,
+  "sha256": "b159e1fd0d9ebf7c9469e506679cbcb298bd59b1d3046ea3616f6c5aea2ea34b",
+  "bytes": 8518281,
+  "debugIdentity": {
+    "package": "dev.randolf.dicta.debug",
+    "version": "1.2.0-debug",
+    "debuggable": true,
+    "certificateSha256": "e4bb888b2c73da57e9484e5a9e2a792e733902cdf102c847228c044d93b1b1fb",
+    "certificateDistinctFromRelease": true
+  },
+  "physicalDevicesOperated": false,
+  "compatibilityEvidence": "T09 accepted by T10; no repeated compatibility matrix or ColorOS17 testing",
+  "initialBuildIssue": "Lint referenced obsolete DeepSeekProviderTest KAPT stub from prior cached analysis. Fresh non-daemon sequential compilation/tests and separate lint passed; no source or lint-rule changes.",
+  "reviewedPopupManifestVerified": true
+}

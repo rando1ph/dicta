@@ -1,0 +1,15 @@
+// Local release-instrumentation fixture only; never changes the production APK.
+gradle.beforeProject { project ->
+    project.plugins.withId('com.android.application') {
+        project.android {
+            testBuildType 'release'
+            sourceSets {
+                androidTest {
+                    manifest.srcFile new File(project.rootDir, 'tools/t11/AndroidManifest.xml')
+                    java.setSrcDirs([new File(project.rootDir, 'tools/t11/src')])
+                    assets.setSrcDirs([])
+                }
+            }
+        }
+    }
+}

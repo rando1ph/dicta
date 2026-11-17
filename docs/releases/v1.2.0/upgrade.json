@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-18",
+  "environment": {
+    "type": "dedicated disposable AOSP Android Emulator",
+    "api": 36,
+    "serial": "emulator-5582",
+    "physicalDevicesOperated": false,
+    "existingAvdDataModified": false
+  },
+  "from": {
+    "source": "anonymous official GitHub Release download; HTTP 200",
+    "package": "dev.randolf.dicta",
+    "version": "1.1.0",
+    "versionCode": 6,
+    "sha256": "24417b983e384683fcaf4c1e38eb2424ca8de8a3b72179b5963c808709440258"
+  },
+  "to": {
+    "package": "dev.randolf.dicta",
+    "version": "1.2.0",
+    "versionCode": 7,
+    "sha256": "b159e1fd0d9ebf7c9469e506679cbcb298bd59b1d3046ea3616f6c5aea2ea34b",
+    "installedBytesMatchReleaseApk": true
+  },
+  "seedTestPassed": 1,
+  "postUpgradeTestPassed": 1,
+  "afterColdStartTestPassed": 1,
+  "updateInstall": "adb -s emulator-5582 install --no-streaming -r; Success; no downgrade/uninstall/data clear",
+  "nonDebuggableProductionApks": true,
+  "originalCertificateOnBothApks": true,
+  "retained": {
+    "uid": true,
+    "firstInstallTime": true,
+    "byokCiphertextByteIdentical": true,
+    "keystoreDecryption": true,
+    "endpoint": true,
+    "model": true,
+    "providerProtocol": true,
+    "jsonOutputMode": true,
+    "history": true,
+    "vocabulary": true,
+    "daily": true,
+    "customProfileAndActiveRevision": true,
+    "allSixTablesLogicalSnapshotIdentical": true,
+    "savedEntryRendering": true,
+    "databaseWritesAndIndependentHistoryRemoval": true
+  },
+  "dataScope": "Synthetic, non-sensitive fixture data only in fresh isolated AVD. No real API key or provider request. No user phone installation or private user data accessed.",
+  "limitations": "Focused API36 upgrade proof; T09/T10 provide accepted OnePlus6T Android15 compatibility evidence. No ColorOS17 test or new broad compatibility matrix."
+}

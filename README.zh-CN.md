@@ -60,13 +60,13 @@
 
 ## 开始使用
 
-1. 前往 [GitHub Releases](https://github.com/rando1ph/dicta/releases/latest) 下载 **Dicta-v1.1.0.apk** 并安装。Android 可能提示允许下载来源应用安装 APK。
+1. 前往 [GitHub Releases](https://github.com/rando1ph/dicta/releases/latest) 下载 **Dicta-v1.2.0.apk** 并安装。Android 可能提示允许下载来源应用安装 APK。
 2. 打开 **Settings / 设置**，保存服务地址、模型和 API Key。
 3. 回到首页查词，或在支持的应用里选中单词，再从选择菜单中点击 **Dicta**（部分应用需先打开「更多」）。
 
-需要 **Android 8.0 及以上版本**。**1.1.0** 新增独立词条详情、更完整的 BYOK 设置，并改善窄屏与大字体布局，详见[发行说明](docs/releases/v1.1.0/Release-Notes.zh-CN.md)。当前界面以简体中文为主，默认词条包含中英双语释义。划词入口和 TTS 口音的可用性取决于宿主应用及设备。
+需要 **Android 8.0 及以上版本**。**1.2.0** 改善 Readest 等采用 Android 标准文字处理入口的应用中的划词弹窗、连续查词及完整词条返回体验。Readest 与 Chrome 已在 OnePlus 6T / Android 15 验证，其他阅读器和系统的表现可能不同，详见[发行说明](docs/releases/v1.2.0/Release-Notes.zh-CN.md)。当前界面以简体中文为主，默认词条包含中英双语释义。划词入口和 TTS 口音的可用性取决于宿主应用及设备。
 
-正式应用包名为 `dev.randolf.dicta`。1.1.0 沿用 1.0.0 正式签名证书，可作为更新安装。此前的原型测试包可独立共存，原数据和 API 配置仍保存在测试包中。
+正式应用包名为 `dev.randolf.dicta`。1.2.0 沿用 1.0.0、1.1.0 的正式签名证书，直接覆盖安装原正式版即可保留设置与已存词条。此前的原型测试包及当前 Debug 包可独立共存，原数据和 API 配置仍保存在各自的测试包中。
 
 ## 开源与许可
 

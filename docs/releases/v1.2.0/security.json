@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-18",
+  "changedTextFilesScanned": 20,
+  "productionApkEntriesScanned": 135,
+  "jksPasswordAndAvailableRealDevelopmentKeyAbsent": true,
+  "credentialContentsAndHashesNotPublished": true,
+  "productionSourceChange": "versionName and versionCode only after reviewed main; app/src, profiles, signing code and dependencies unchanged",
+  "testOnlyFixtureExcludedFromProduction": true,
+  "oldReleaseAssetsProtected": true,
+  "noCloudSigningCredentials": true
+}

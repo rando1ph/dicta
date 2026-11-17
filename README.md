@@ -60,13 +60,13 @@ Your key is encrypted on the device using Android Keystore. Changing the service
 
 ## Get Dicta
 
-1. Download **Dicta-v1.1.0.apk** from [GitHub Releases](https://github.com/rando1ph/dicta/releases/latest) and install it. Android may ask you to allow installation from the app you used to download it.
+1. Download **Dicta-v1.2.0.apk** from [GitHub Releases](https://github.com/rando1ph/dicta/releases/latest) and install it. Android may ask you to allow installation from the app you used to download it.
 2. Open **Settings** and save your provider's endpoint, model, and API key.
 3. Search from Home, or select a word in a supported app and choose **Dicta** from the selection menu (sometimes under **More**).
 
-Requires **Android 8.0 or later**. Version **1.1.0** adds dedicated word details, broader BYOK settings and improved layouts for narrow screens and large fonts. See the [release notes](docs/releases/v1.1.0/Release-Notes.en.md). The current interface is primarily Simplified Chinese, with bilingual English–Chinese entries in the default profile. Selection actions and available TTS voices depend on the host app and device.
+Requires **Android 8.0 or later**. Version **1.2.0** improves selection popups in Readest and other apps using standard Android text processing, including repeated lookups and returning from full entries. Readest and Chrome were verified on OnePlus 6T / Android 15; other readers and device software may behave differently. See the [release notes](docs/releases/v1.2.0/Release-Notes.en.md). The current interface is primarily Simplified Chinese, with bilingual English–Chinese entries in the default profile. Selection actions and available TTS voices depend on the host app and device.
 
-The public app uses `dev.randolf.dicta`. Version 1.1.0 uses the same release signing certificate as 1.0.0 and can be installed as an update. Earlier prototype builds install separately; their data and API settings stay in the prototype app.
+The public app uses `dev.randolf.dicta`. Version 1.2.0 uses the same release signing certificate as 1.0.0 and 1.1.0. Install it over your existing official app to retain settings and saved words. Earlier prototype builds and current Debug builds install separately; their data and API settings stay in those apps.
 
 ## Open source
 
