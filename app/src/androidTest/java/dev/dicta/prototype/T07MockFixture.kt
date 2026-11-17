@@ -1,6 +1,7 @@
 package dev.dicta.prototype
 
 import android.content.Context
+import android.view.WindowManager
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
@@ -30,6 +31,7 @@ open class T07MockFixture {
     protected val requests=CopyOnWriteArrayList<Pair<String,String>>()
     protected val credentialsSent=CopyOnWriteArrayList<Pair<String,String>>()
     protected open val prepareDaily=true
+    protected open val keepScreenOn=false
     @Volatile protected var modelStatus=200
     @Volatile protected var lookupStatus=200
     @Volatile protected var lookupDelay=0L
@@ -41,18 +43,27 @@ open class T07MockFixture {
     private var originalMode=Appearance.mode.value
     private var originalAccent=Appearance.accent.value
     private var originalDaily=DailyState()
+    private var snapshotReady=false
+    private var screenFlagCaptured=false
+    private var originalKeepScreenOn=false
     private val dailySequence=java.util.concurrent.atomic.AtomicInteger()
     private val credentialFile get()=File(context.noBackupFilesDir,"provider.enc")
 
     private fun ids(table:String):Set<String> = repo.database.openHelper.readableDatabase.query("SELECT id FROM $table").use {c->buildSet {while(c.moveToNext()) add(c.getString(0))}}
     @Before fun setUpMock() {
         sourceModel=compose.activity.model
+        if(keepScreenOn) compose.runOnUiThread {
+            originalKeepScreenOn=compose.activity.window.attributes.flags and WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON != 0
+            screenFlagCaptured=true
+            compose.activity.window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
         originalCredential=credentialFile.takeIf {it.exists()}?.readBytes()
         originalClient=repo.providerClient
         initialEntries=ids("entries");initialProfiles=ids("profiles")
         originalPreferences=runBlocking {repo.database.dao().preferences().first()}
         originalMode=Appearance.mode.value;originalAccent=Appearance.accent.value
         originalDaily=repo.daily.value
+        snapshotReady=true
         compose.onNodeWithTag("navSettings").performClick()
         val cert=HeldCertificate.Builder().addSubjectAlternativeName("127.0.0.1").addSubjectAlternativeName("localhost").build()
         val serving=HandshakeCertificates.Builder().heldCertificate(cert).build()
@@ -112,27 +123,41 @@ open class T07MockFixture {
     }
     protected fun posts()=requests.count {it.first.endsWith("chat/completions")}
     @After fun tearDownMock() {
-        InstrumentationRegistry.getInstrumentation().runOnMainSync {sourceModel.closeDetail();sourceModel.cancelConfig();sourceModel.cancelDiscovery()}
-        repo.providerClient=originalClient ?: OpenAiCompatibleProvider.defaultClient()
-        originalCredential?.let {credentialFile.writeBytes(it)} ?: credentialFile.delete()
-        val added=ids("entries")-initialEntries
-        val addedProfiles=ids("profiles")-initialProfiles
-        runBlocking {
-            val db=repo.database.openHelper.writableDatabase
-            added.forEach {id->
-                db.execSQL("DELETE FROM history WHERE entryId = ?",arrayOf(id))
-                db.execSQL("DELETE FROM bookmarks WHERE entryId = ?",arrayOf(id))
-                db.execSQL("DELETE FROM daily WHERE entryId = ?",arrayOf(id))
-                db.execSQL("DELETE FROM entries WHERE id = ?",arrayOf(id))
+        try {
+            if(::sourceModel.isInitialized) InstrumentationRegistry.getInstrumentation().runOnMainSync {
+                sourceModel.closeDetail();sourceModel.cancelConfig();sourceModel.cancelDiscovery()
             }
-            addedProfiles.forEach {db.execSQL("DELETE FROM profiles WHERE id = ?",arrayOf(it))}
-            for(name in listOf("activeProfile","recentDaily")) {
-                val original=originalPreferences.firstOrNull {it.name==name}
-                if(original!=null) repo.database.dao().put(original) else db.execSQL("DELETE FROM preferences WHERE name = ?",arrayOf(name))
+            // A failed setup must not restore an uninitialized snapshot or mask its root error.
+            if(snapshotReady) {
+                repo.providerClient=originalClient ?: OpenAiCompatibleProvider.defaultClient()
+                originalCredential?.let {credentialFile.writeBytes(it)} ?: credentialFile.delete()
+                val added=ids("entries")-initialEntries
+                val addedProfiles=ids("profiles")-initialProfiles
+                runBlocking {
+                    val db=repo.database.openHelper.writableDatabase
+                    added.forEach {id->
+                        db.execSQL("DELETE FROM history WHERE entryId = ?",arrayOf(id))
+                        db.execSQL("DELETE FROM bookmarks WHERE entryId = ?",arrayOf(id))
+                        db.execSQL("DELETE FROM daily WHERE entryId = ?",arrayOf(id))
+                        db.execSQL("DELETE FROM entries WHERE id = ?",arrayOf(id))
+                    }
+                    addedProfiles.forEach {db.execSQL("DELETE FROM profiles WHERE id = ?",arrayOf(it))}
+                    for(name in listOf("activeProfile","recentDaily")) {
+                        val original=originalPreferences.firstOrNull {it.name==name}
+                        if(original!=null) repo.database.dao().put(original) else db.execSQL("DELETE FROM preferences WHERE name = ?",arrayOf(name))
+                    }
+                }
+                Appearance.mode.value=originalMode;Appearance.accent.value=originalAccent
+                repo.daily.value=originalDaily
+            }
+        } finally {
+            try {
+                if(::server.isInitialized) server.shutdown()
+            } finally {
+                if(screenFlagCaptured && !originalKeepScreenOn) InstrumentationRegistry.getInstrumentation().runOnMainSync {
+                    compose.activity.window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+                }
             }
         }
-        Appearance.mode.value=originalMode;Appearance.accent.value=originalAccent
-        repo.daily.value=originalDaily
-        server.shutdown()
     }
 }

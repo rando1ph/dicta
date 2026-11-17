@@ -55,9 +55,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-/** Normal Activity in Chrome's task; no overlay permission or text replacement. */
+/** Joins ordinary callers' tasks; NEW_TASK callers get a host separate from Dicta's main task. */
 class ProcessTextActivity : ComponentActivity() {
     val model: LookupViewModel by viewModels()
+    private var externalDetail by mutableStateOf(false)
     var sourceReadOnly: Boolean = true
         private set
 
@@ -66,22 +67,27 @@ class ProcessTextActivity : ComponentActivity() {
         setResult(RESULT_CANCELED)
         if (!validIntent(intent)) { finish(); return }
         sourceReadOnly = readOnly(intent)
+        externalDetail = savedInstanceState?.getBoolean("externalDetail") ?: false
         if (model.state.value == LookupState.Idle) {
             if (savedInstanceState != null) {
                 val id = savedInstanceState.getString("snapshotId")
                 if (id != null) model.openSnapshot(id) else model.restoredWithoutRequest(savedInstanceState.getString("query").orEmpty())
             } else model.lookup(selectedText(intent), "popup")
         }
-        setContent { DictaTheme { WithSpeech { Popup(model, ::dismiss) { id ->
-            startActivity(Intent(this, MainActivity::class.java).putExtra("snapshotId",id).putExtra("fromPopup",true))
-            dismiss()
-        } } } }
+        // Keep the external session rooted at this receiver, including full details.
+        // NEW_TASK callers can then deliver a new selection with singleTop even
+        // when a previous full entry was left in the background.
+        setContent { DictaTheme { WithSpeech {
+            if (externalDetail) MainScreen(model, ::dismiss)
+            else Popup(model, ::dismiss) { externalDetail = true }
+        } } }
     }
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         if (!validIntent(intent)) { dismiss();return }
         setIntent(intent)
         sourceReadOnly = readOnly(intent)
+        externalDetail = false
         model.lookup(selectedText(intent), "popup")
     }
     private fun readOnly(intent:Intent):Boolean = try { intent.getBooleanExtra(Intent.EXTRA_PROCESS_TEXT_READONLY,true) } catch (_: RuntimeException) { true }
@@ -95,6 +101,7 @@ class ProcessTextActivity : ComponentActivity() {
         super.onDestroy()
     }
     override fun onSaveInstanceState(outState: Bundle) {
+        outState.putBoolean("externalDetail", externalDetail)
         saveQueryState(outState,model.state.value)
         super.onSaveInstanceState(outState)
     }

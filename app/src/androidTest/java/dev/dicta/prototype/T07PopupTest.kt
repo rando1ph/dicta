@@ -5,10 +5,7 @@ import androidx.compose.ui.test.*
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
 import dev.dicta.prototype.platform.ProcessTextActivity
-import dev.dicta.prototype.platform.MainActivity
-import androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry
-import androidx.test.runner.lifecycle.Stage
-import androidx.test.platform.app.InstrumentationRegistry
+import androidx.lifecycle.Lifecycle
 import dev.dicta.prototype.query.LookupState
 import org.junit.Assert.*
 import org.junit.Test
@@ -16,7 +13,7 @@ import org.junit.Test
 class T07PopupTest:T07MockFixture() {
     private fun popup()=Intent(context,ProcessTextActivity::class.java).setAction(Intent.ACTION_PROCESS_TEXT).setType("text/plain")
         .putExtra(Intent.EXTRA_PROCESS_TEXT,"ephemeral").putExtra(Intent.EXTRA_PROCESS_TEXT_READONLY,true)
-    @Test fun popupOpenUsesSnapshotHidesBottomNavigationAndBackFinishesDetail() {
+    @Test fun popupOpenKeepsReceiverAndSnapshotAndBackFinishesExternalSession() {
         seed(legacy=true)
         val before=posts()
         ActivityScenario.launch<ProcessTextActivity>(popup()).use {scenario->
@@ -32,15 +29,25 @@ class T07PopupTest:T07MockFixture() {
             compose.waitUntil(10000) {compose.onAllNodesWithTag("wordDetail").fetchSemanticsNodes().isNotEmpty()}
             compose.onNodeWithTag("bottomNavigation").assertDoesNotExist()
             assertEquals(before,posts())
-            var detail:MainActivity?=null
-            InstrumentationRegistry.getInstrumentation().runOnMainSync {
-                detail=ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED).filterIsInstance<MainActivity>().firstOrNull()
+            var snapshotId=""
+            var receiver:ProcessTextActivity?=null
+            scenario.onActivity {
+                receiver=it
+                snapshotId=(it.model.state.value as LookupState.Success).entry.id
             }
-            assertNotNull(detail)
+            scenario.recreate()
+            compose.waitUntil(10000) {compose.onAllNodesWithTag("wordDetail").fetchSemanticsNodes().isNotEmpty()}
+            scenario.onActivity {
+                assertNotSame(receiver,it)
+                assertEquals(snapshotId,(it.model.state.value as LookupState.Success).entry.id)
+            }
+            compose.onNodeWithTag("bottomNavigation").assertDoesNotExist()
+            compose.onNodeWithTag("dictaPopup").assertDoesNotExist()
+            assertEquals(before,posts())
             Espresso.pressBackUnconditionally()
             val deadline=System.currentTimeMillis()+5000
-            while(detail?.isDestroyed!=true && System.currentTimeMillis()<deadline) Thread.sleep(50)
-            assertTrue(detail?.isDestroyed==true)
+            while(scenario.state!=Lifecycle.State.DESTROYED && System.currentTimeMillis()<deadline) Thread.sleep(50)
+            assertEquals(Lifecycle.State.DESTROYED,scenario.state)
         }
     }
     @Test fun popupDismissAndRecreationKeepSnapshotAndNeverReplaceSelectedText() {

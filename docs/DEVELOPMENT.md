@@ -18,8 +18,11 @@ optionally, `DICTA_GRADLE_USER_HOME`; the helper does not change global tools.
 ./tools/m1/build.sh :app:assembleDebug
 ```
 
-Debug and release builds use different signing identities. Do not install a
-debug build over the public app; Android rejects that signature change.
+Debug builds use `dev.randolf.dicta.debug`, the `Dicta Debug` launcher and
+PROCESS_TEXT label, and a `-debug` version suffix. They can coexist with the
+public app and keep separate credentials, history and vocabulary. Release
+retains `dev.randolf.dicta` and the existing signing identity. Do not install
+historical, unisolated Debug APKs over the public app.
 
 For unattended signing with the existing Dicta identity, see
 [SIGNING.md](SIGNING.md). Never commit a JKS, password, API key or generated
@@ -48,11 +51,17 @@ certificate. The final v1.1.0 build uses `1.1.0` and the existing release signin
 identity. A debug build cannot update the signed public app; do not uninstall
 the public app to test a debug build.
 
-For T07's local TLS mock acceptance suite, run
+For T09's guarded OnePlus 6T Debug-only suite and local TLS review session, see
+[tools/t09](../tools/t09/README.md). T09 performs no production signing or
+release; the version remains 1.1.0 until a later approved release task.
+
+For T07's historical (pre-Debug-isolation) local TLS mock acceptance suite, run
 `bash tools/t07/test.sh emulator-5554` with the actual emulator serial. The
 script refuses physical devices, preserves application data and excludes the
 historical live-API / installed-TTS-engine tests. See [T07's report](t07/REPORT.md)
 for the responsive matrix, test evidence and screenshot review index.
+Its package-specific runner is historical; use the T09 runner for the current
+isolated Debug identity and authorized physical-device checks.
 
 The final 2026-11-11 release decision supersedes the earlier upgrade-test plan:
 T07 feature tests and user review are complete, and the user approved T08.
