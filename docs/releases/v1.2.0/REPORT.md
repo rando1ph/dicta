@@ -125,3 +125,25 @@ downgrade. For a confirmed post-release regression, retain old artifacts and
 user data, document the affected behavior, and use an authorized forward
 fix with a higher versionCode. An older release is not an automatic safe
 data-preserving downgrade path.
+
+## Published asset verification
+
+[GitHub Release](https://github.com/rando1ph/dicta/releases/tag/v1.2.0) was
+published at `2026-11-17T18:44:42Z` (2026-11-18 02:44:42 Asia/Shanghai),
+as a formal release, not a draft or prerelease. Annotated tag `v1.2.0` resolves
+to `ed9187b0c65601e3536de23aadff49bc2b9657b9`, independently checked on the
+remote. The publication body contains both language versions of the notes.
+
+[Publication evidence](publication.json) records anonymous HTTP 200 downloads
+of all four assets. Every asset matches its local bytes, size, SHA-256 and
+GitHub digest. The downloaded production APK again passed package/version,
+non-debuggable flag, original certificate, APK v2/v3, alignment, ZIP CRC and
+`sha256sum -c SHA256SUMS` checks.
+
+The anonymous latest-release API, `releases/latest` page redirect and dynamic
+`releases/latest/download/Dicta-v1.2.0.apk` download all resolve to v1.2.0; the
+dynamic APK equals the verified asset. Existing v1.0.0/v1.1.0 releases retain
+their four assets and historical APK digests. The dedicated emulator is no
+longer connected; only the untouched original phone remains in ADB inventory.
+This publication-evidence update is a documentation-only commit after the
+release tag; the tag and signed APK were not replaced.

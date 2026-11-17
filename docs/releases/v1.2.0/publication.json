@@ -1,0 +1,72 @@
+{
+  "verifiedAt": "2026-11-17T18:45:46.634501+00:00",
+  "releaseId": 449051398,
+  "releaseUrl": "https://github.com/rando1ph/dicta/releases/tag/v1.2.0",
+  "tag": "v1.2.0",
+  "tagCommit": "ed9187b0c65601e3536de23aadff49bc2b9657b9",
+  "publishedAt": "2026-11-17T18:44:42Z",
+  "draft": false,
+  "prerelease": false,
+  "assets": [
+    {
+      "name": "Dicta-v1.2.0.apk",
+      "url": "https://github.com/rando1ph/dicta/releases/download/v1.2.0/Dicta-v1.2.0.apk",
+      "httpStatus": 200,
+      "bytes": 8518281,
+      "sha256": "b159e1fd0d9ebf7c9469e506679cbcb298bd59b1d3046ea3616f6c5aea2ea34b",
+      "githubDigest": "sha256:b159e1fd0d9ebf7c9469e506679cbcb298bd59b1d3046ea3616f6c5aea2ea34b",
+      "localBytesMatch": true,
+      "anonymous": true
+    },
+    {
+      "name": "Release-Notes.en.md",
+      "url": "https://github.com/rando1ph/dicta/releases/download/v1.2.0/Release-Notes.en.md",
+      "httpStatus": 200,
+      "bytes": 2893,
+      "sha256": "a8b7564688092c83264dcdf9282ef0ea8754508795b79e0b56164b0daa47dc10",
+      "githubDigest": "sha256:a8b7564688092c83264dcdf9282ef0ea8754508795b79e0b56164b0daa47dc10",
+      "localBytesMatch": true,
+      "anonymous": true
+    },
+    {
+      "name": "Release-Notes.zh-CN.md",
+      "url": "https://github.com/rando1ph/dicta/releases/download/v1.2.0/Release-Notes.zh-CN.md",
+      "httpStatus": 200,
+      "bytes": 2612,
+      "sha256": "28e88f259eada7627318f95d1762325a51a7cbac39516d03e8d4551fbd3bb2e7",
+      "githubDigest": "sha256:28e88f259eada7627318f95d1762325a51a7cbac39516d03e8d4551fbd3bb2e7",
+      "localBytesMatch": true,
+      "anonymous": true
+    },
+    {
+      "name": "SHA256SUMS",
+      "url": "https://github.com/rando1ph/dicta/releases/download/v1.2.0/SHA256SUMS",
+      "httpStatus": 200,
+      "bytes": 83,
+      "sha256": "054d27d92d6492a3c170bff19ec0965a05f0bca1cc54c9d13af326ea62938f45",
+      "githubDigest": "sha256:054d27d92d6492a3c170bff19ec0965a05f0bca1cc54c9d13af326ea62938f45",
+      "localBytesMatch": true,
+      "anonymous": true
+    }
+  ],
+  "latestApiTag": "v1.2.0",
+  "latestPageUrl": "https://github.com/rando1ph/dicta/releases/tag/v1.2.0",
+  "latestDynamicApkMatches": true,
+  "downloadedApkChecks": {
+    "package": "dev.randolf.dicta",
+    "version": "1.2.0",
+    "versionCode": 7,
+    "debuggable": false,
+    "v2Verified": true,
+    "v3Verified": true,
+    "certificateSha256": "6c7e7a2bb39749ef9d7cf6a0c534d6e7b39e3fdc5ab9b9558aafc7cdab6bceb8",
+    "zipalign": true,
+    "zipCrc": true,
+    "sha256sumFile": true
+  },
+  "remoteAnnotatedTagMatches": true,
+  "oldReleasesAndApkDigestsRetained": [
+    "v1.0.0",
+    "v1.1.0"
+  ]
+}
